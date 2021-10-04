@@ -1,0 +1,23 @@
+#ifndef TYPES_HPP_INCLUDED
+#define TYPES_HPP_INCLUDED
+#include <SDL.h>
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+typedef unsigned long long u64;
+typedef unsigned __int128 u128;
+
+typedef char s8;
+typedef short s16;
+typedef int s32;
+typedef long long s64;
+
+typedef double f32;
+typedef double f64;
+
+typedef struct{
+    SDL_Renderer *renderer;
+    SDL_Window *window;
+
+} app;
+#endif // TYPES_HPP_INCLUDED
