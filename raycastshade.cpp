@@ -121,7 +121,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
         }
 
     }
-    for(double x=bx-(40*(scrnw/1024));x<(bx+(40*(scrnw/1024)));x+=1){
+    for(double x=bx-30-(scrnw/64);x<(bx+30+(scrnw/64));x+=1){
                 compute_ray(x,tmpy+3,sun_deg,15,0);
     }
 

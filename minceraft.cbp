@@ -17,6 +17,8 @@
 					<Add option="-std=gnu++17" />
 					<Add option="-g" />
 					<Add option="-Ofast" />
+					<Add option="-march=native" />
+					<Add option="-mtune=native" />
 					<Add directory="/home/clement/Desktop/minceraft/include" />
 					<Add directory="include" />
 				</Compiler>
