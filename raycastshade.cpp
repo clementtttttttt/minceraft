@@ -55,7 +55,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
     double cx=orgx,cy=orgy;
     double d2=direction;
     ppos=entity_list[0]->getpos();
-    int weakencounter=90;
+    int weakencounter=60;
     //oob check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
     #define oob_check ((tmpx-30>0)&&(cx>=(tmpx-30))&&(cy<=(tmpy+2))&&(cx<(30+tmpx+scrnw/64))&&(cy>round(tmpy-scrnh/64)))
     while(light>0&&reflectcount!=0){
@@ -92,7 +92,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
         }
         if(weakencounter==0){
             --light;
-                weakencounter=90;
+                weakencounter=60;
 
 
         }
@@ -121,7 +121,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
         }
 
     }
-    for(double x=bx-30-(scrnw/64);x<(bx+30+(scrnw/64));x+=1){
+    for(double x=bx-25-(scrnw/64);x<(bx+25+(scrnw/64));x+=1){
                 compute_ray(x,tmpy+3,sun_deg,15,0);
     }
 
