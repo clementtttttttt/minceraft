@@ -28,7 +28,7 @@ void blit(SDL_Texture *texture,SDL_Rect* clip,SDL_Rect* dest)
     memcpy(&b,clip,sizeof(b));
     clip->w=abs(clip->w);
 
-    SDL_RenderCopyEx(mainapp.renderer,texture,clip,dest,NULL,NULL,flip);
+    SDL_RenderCopyEx(mainapp.renderer,texture,clip,dest,(double)NULL,(SDL_Point*)NULL,flip);
     memcpy(clip,&b,sizeof(b));
 
 }

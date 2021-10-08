@@ -42,7 +42,7 @@ int main()
     mainapp.renderer = SDL_CreateRenderer(mainapp.window, -1, SDL_RENDERER_ACCELERATED);
     if (!mainapp.renderer)
     {
-        printf("SDL_CreateRenderer FAIL, ERROR=%d\n", SDL_GetError());
+        printf("SDL_CreateRenderer FAIL, ERROR=%ld \n",(long) SDL_GetError());
         exit(1);
     }
 

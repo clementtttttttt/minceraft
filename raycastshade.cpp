@@ -21,10 +21,24 @@ double fastcos(double val);
 
 }
 
+static inline long long fround(double d)
+{
+    union cvert{
+        double d;
+        long long i;
+    };
+    cvert d2;
+    d2.d=(d+4503599627370496.0);
+    d2.i<<=13;
+    d2.i>>=13;
+    return d2.i;
+}
+
 asm (
     R"(
         .globl fastsin
         .globl fastcos
+
         .section .data
             asmtmp: .quad 0,0
             asmtmp2: .quad 0,0
@@ -47,7 +61,7 @@ asm (
 );
 
 int rec_count=0;
-int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=7){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
+int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=16){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
     struct vec2 hitblock,ppos;
 
     double sy=fastcos(direction rad)*0.5;
@@ -57,7 +71,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
     ppos=entity_list[0]->getpos();
     int weakencounter=60;
     //oob check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
-    #define oob_check ((tmpx-30>0)&&(cx>=(tmpx-30))&&(cy<=(tmpy+2))&&(cx<(30+tmpx+scrnw/64))&&(cy>round(tmpy-scrnh/64)))
+    #define oob_check ((tmpx-30>0)&&(cx>=(tmpx-30))&&(cy<=(tmpy+2))&&(cx<(30+tmpx+scrnw/64))&&(cy>fround(tmpy-scrnh/64)))
     while(light>0&&reflectcount!=0){
         if(!oob_check&&reflected){
             return 0;
@@ -86,7 +100,14 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                 shouldcalc=0;
             }
             if(direction>=90&&direction<180&&newdir>=0&&newdir<90&&shouldcalc){
-                for(double i=-88;i<=88;i+=22){
+                for(double i=-84;i<=84;i+=16.8){
+                    shouldlight|=compute_ray(cx,cy+0.5,i,light,1,reflectcount-1);
+                }
+                shouldcalc=0;
+
+            }
+            if(direction>=180&&direction<270&&newdir>=270&&newdir<360&&shouldcalc){
+                for(double i=-84;i<=84;i+=16.8){
                     shouldlight|=compute_ray(cx,cy+0.5,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
@@ -117,7 +138,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             }
              return 0;
         }
-        if((round(cx)==round(ppos.x))&&(round(cy)==round(ppos.y+1))){
+        if((fround(cx)==fround(ppos.x))&&(fround(cy)==fround(ppos.y+1))){
                 if(world[cx][cy].light<light)
                     world[cx][cy].light=light;
 
@@ -154,8 +175,8 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
         }
 
     }
-    for(double x=bx-14-(scrnw/64);x<(bx+14+(scrnw/64));x+=1){
-                compute_ray(x+0.5,tmpy,sun_deg,15,0);
+    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+14+(scrnw/64));x+=1){
+                compute_ray(x,tmpy+0.5,sun_deg,15,0);
 
     }
 

@@ -67,7 +67,7 @@ bool wt_toggle=false;
 void* game_thread(void* unused){
     while(1){
         if((world_time<24000)){
-            if((wt_toggle==true))
+            if(wt_toggle==true)
                 world_time+=1;
         }
         else world_time=0;
