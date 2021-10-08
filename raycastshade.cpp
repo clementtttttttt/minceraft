@@ -47,7 +47,7 @@ asm (
 );
 
 int rec_count=0;
-int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=10){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
+int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=7){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
     struct vec2 hitblock,ppos;
 
     double sy=fastcos(direction rad)*0.5;
@@ -78,30 +78,35 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             if(newdir<0){
                 newdir=360-newdir;
             }
-            if(direction>=0&&direction<90&&newdir>=90&&newdir<180){
-                for(double i=-90;i<=90;i+=30){
-                    shouldlight|=compute_ray(cx,cy+0.5,newdir+i,light,1,reflectcount-1);
+            int shouldcalc=1;
+            if(direction>=0&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
+                for(double i=92;i<=268;i+=44){
+                    shouldlight|=compute_ray(cx,cy-0.5,i,light,1,reflectcount-1);
                 }
+                shouldcalc=0;
+            }
+            if(direction>=90&&direction<180&&newdir>=0&&newdir<90&&shouldcalc){
+                for(double i=-88;i<=88;i+=22){
+                    shouldlight|=compute_ray(cx,cy+0.5,i,light,1,reflectcount-1);
+                }
+                shouldcalc=0;
 
             }
-            if(direction>=90&&direction<180&&newdir>=0&&newdir<90){
-                for(double i=-90;i<=90;i+=30){
-                    shouldlight|=compute_ray(cx,cy+0.5,newdir+i,light,1,reflectcount-1);
+            if(direction>=90&&direction<180&&newdir>=180&&newdir<270&&shouldcalc){
+                for(double i=2;i<=178;i+=44){
+                    shouldlight|=compute_ray(cx-0.5,cy,i,light,1,reflectcount-1);
                 }
+                shouldcalc=0;
 
             }
-            if(direction>=90&&direction<180&&newdir>=180&&newdir<270){
-                for(double i=0;i<=180;i+=30){
-                    shouldlight|=compute_ray(cx,cy+0.5,newdir+i,light,1,reflectcount-1);
+            if(direction>=270&&direction<360&&newdir>=180&&newdir<270&&shouldcalc){
+                for(double i=92;i<=268;i+=44){
+                    shouldlight|=compute_ray(cx+0.5,cy,i,light,1,reflectcount-1);
                 }
+                shouldcalc=0;
 
             }
-            if(direction>=180&&direction<270&&newdir>=90&&newdir<180){
-                for(double i=0;i<=180;i+=30){
-                    shouldlight|=compute_ray(cx,cy+0.5,newdir+i,light,1,reflectcount-1);
-                }
 
-            }
 
 
             if(shouldlight){
@@ -149,8 +154,8 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
         }
 
     }
-    for(double x=bx-13-(scrnw/64);x<(bx+13+(scrnw/64));x+=1){
-                compute_ray(x,tmpy,sun_deg,15,0);
+    for(double x=bx-14-(scrnw/64);x<(bx+14+(scrnw/64));x+=1){
+                compute_ray(x+0.5,tmpy,sun_deg,15,0);
 
     }
 

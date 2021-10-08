@@ -15,8 +15,9 @@
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-fexpensive-optimizations" />
 					<Add option="-flto" />
+					<Add option="-Og" />
+					<Add option="-g" />
 					<Add option="-std=gnu++17" />
-					<Add option="-Ofast" />
 					<Add directory="/home/clement/Desktop/minceraft/include" />
 					<Add directory="include" />
 				</Compiler>
@@ -31,9 +32,14 @@
 				<Option output="bin/Release/minceraft" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
-				<Option compiler="gcc" />
+				<Option compiler="zapcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-Ofast" />
+					<Add option="-mtune=native" />
+					<Add option="-march=native" />
+					<Add option="-mavx" />
+					<Add option="-mavx2" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
