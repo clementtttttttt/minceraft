@@ -203,9 +203,9 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             if(shouldlight){
                 if(world[cx][cy].light<light){
                     world[cx][cy].light=light;
-                    for(int i=0;i<air_list.size();++i){
-                        world[air_list[i].x][air_list[i].y].light=light;
-                    }
+                  //  for(int i=0;i<air_list.size();++i){
+                 //       world[air_list[i].x][air_list[i].y].light=light;
+                 //   }
 
                 }
 
@@ -257,9 +257,9 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     tmpx=bx;
     tmpy=by+scrnh/64;
     globx=bx;
-    char envlight=0;
-    if(sun_deg>180&&sun_deg<360){
-    //    envlight=5;
+    char envlight=15;
+    if(sun_deg>90&&sun_deg<270){
+        envlight=5;
     }
     for(long long x=bx-5;x<((bx+(scrnw/64)+5));++x){
         for(long long y=by-2;y<(by+(scrnh/64)+5);++y){
