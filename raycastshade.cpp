@@ -257,7 +257,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     tmpy=by+scrnh/64;
     globx=bx;
     char envlight=15;
-    if(sun_deg>90&&sun_deg<270){
+    if(sun_deg<90&&sun_deg>270){
         envlight=5;
     }
     for(long long x=bx-5;x<((bx+(scrnw/64)+5));++x){
