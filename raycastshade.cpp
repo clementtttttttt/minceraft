@@ -43,6 +43,28 @@ static inline double fastabs(double d){
 
 }
 
+double diffuse_normal[]={-20,60,50,-62,-59,
+-65,-52,-8,80,-39,
+85,83,-42,-24,-48,
+-26,-69,-72,-20,55,
+33,-23,-16,-25,27,
+83,-87,42,-30,-60,
+67,79,55,-68,-49,
+-66,56,7,-44,-42,
+71,-12,-33,-35,6,
+90,59,-38,-66,43,
+42,-65,-19,-44,-73,
+25,64,63,-27,1,
+-70,-89,-55,-54,79,
+8,20,-74,-36,25,
+-15,-24,54,-79,-70,
+-82,-10,80,1,72,
+31,-43,-60,-18,11,
+25,-36,-81,-76,16,
+34,46,-57,-2,-66,
+57,52,69,-15,-20,46,34
+};
+
 asm (
     R"(
         .globl fastsincos
@@ -102,7 +124,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                 newdir=360-newdir;
             }
             int shouldcalc=1;
-
+/*
             if(direction>=0&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
                 for(double i=92;i<=268;i+=44){
                     shouldlight|=compute_ray(cx,cy-1,i,light,1,reflectcount-1);
@@ -138,6 +160,45 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
 
             }
 
+*/
+            double unused;
+
+            if(direction>=0&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
+                double f=modf(cx,&unused)*100;
+                shouldlight|=compute_ray(cx,cy-1,180+(diffuse_normal[(long)f]),light,1,reflectcount-1);
+
+                shouldcalc=0;
+            }
+            if(direction>=90&&direction<180&&newdir>=0&&newdir<90&&shouldcalc){
+                 double f=modf(cx,&unused)*100;
+
+                shouldlight|=compute_ray(cx,cy+1,(diffuse_normal[(long)f]),light,1,reflectcount-1);
+
+                shouldcalc=0;
+
+            }
+            if(direction>=180&&direction<270&&newdir>=270&&newdir<360&&shouldcalc){
+                double f=modf(cx,&unused)*100;
+                shouldlight|=compute_ray(cx,cy+1,(diffuse_normal[(long)f]),light,1,reflectcount-1);
+
+                shouldcalc=0;
+
+            }
+            if(direction>=90&&direction<180&&newdir>=180&&newdir<270&&shouldcalc){
+                double f=modf(cy,&unused)*100;
+
+                shouldlight|=compute_ray(cx-1,cy,90+(diffuse_normal[(long)f]),light,1,reflectcount-1);
+
+                shouldcalc=0;
+
+            }
+            if(direction>=270&&direction<360&&newdir>=180&&newdir<270&&shouldcalc){
+                double f=modf(cy,&unused)*100;
+                shouldlight|=compute_ray(cx+1,cy,180+(diffuse_normal[(long)f])*(rand()%2-1),light,1,reflectcount-1);
+
+                shouldcalc=0;
+
+            }
 
             if(shouldlight){
                 if(world[cx][cy].light<light){
@@ -206,7 +267,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     }
     pthread_create(&rtxthreado,NULL,rtxthread,NULL);
 
-    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=1){
+    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=0.01){
                 compute_ray(x,tmpy+0.5,sun_deg,15,0);
 
     }
