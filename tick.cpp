@@ -62,7 +62,7 @@ void input_tick(){
     }
 
 }
-int world_time=6000; //23:59==23999
+int world_time=8000; //23:59==23999
 bool wt_toggle=false;
 void* game_thread(void* unused){
     while(1){
