@@ -62,13 +62,13 @@ void input_tick(){
     }
 
 }
-int world_time=7000; //23:59==23999
+int world_time=0; //23:59==23999
 bool wt_toggle=false;
 void* game_thread(void* unused){
     while(1){
         if((world_time<24000)){
             if(wt_toggle==true)
-                world_time+=1;
+                world_time+=100;
         }
         else world_time=0;
         keystate=(unsigned char*)SDL_GetKeyboardState(NULL);

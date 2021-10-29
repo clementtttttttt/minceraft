@@ -6,6 +6,7 @@ struct block{
     unsigned char type;
     unsigned char blockdat;
     unsigned char blockdat2;
+    unsigned char wassolid:1;
     unsigned char generated:1;
     unsigned char waterfilled:1;
     unsigned char cavegened:1;

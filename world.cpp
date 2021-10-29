@@ -22,7 +22,8 @@ SDL_Rect block_clips[]={
 };
 extern std::vector <block_entry> blockreg;
 extern int world_time;
-FastNoiseLite n;
+FastNoiseLite n,n2;
+long waterlvl=42;
 bool init=false;
     double scrnoffx;
     double scrnoffy;
@@ -33,9 +34,11 @@ void worldrendr(){
     scrnoffx=entity_list[0]->getpos().x-(long long) (entity_list[0]->getpos().x);
     scrnoffy=round(entity_list[0]->getpos().y)-entity_list[0]->getpos().y;
    n.SetSeed((long long)worldrendr);
+   n.SetSeed((long long)&mainapp);
 
     for(long long x=-5;x<=(scrnw/64)+1;++x){
         double noiseval=n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+50;
+        double noiseval2=n2.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+10;
             long long posx=blockcorner_x+x+scrnoffx;
 
         for(long long y=0;y<=(scrnh/64)+1;++y){
@@ -57,9 +60,19 @@ void worldrendr(){
                     if((*world_ref2)[absposx][posy].generated==0){ //world generator
                         double cavenoiseval=0;
                         if(posy<noiseval/*basic terrain gen*/&&(cavenoiseval<45)){
-                            if(posy<noiseval-20)
+                            if(posy<=waterlvl&&noiseval2>9&&(posy+1)>=blockcorner_y&&(*world_ref2)[absposx][posy+1].type==0&&(*world_ref2)[absposx][posy+1].wassolid==0)
+                                (*world_ref2)[absposx][posy].type=4;
+                            else if (posy>noiseval){
                                 (*world_ref2)[absposx][posy].type=3;
-                            else (*world_ref2)[absposx][posy].type=2;
+                                (*world_ref2)[absposx][posy].wassolid=1;
+
+
+                            }
+                            else{
+                                (*world_ref2)[absposx][posy].type=2;
+                                (*world_ref2)[absposx][posy].wassolid=1;
+
+                            }
                         }
                         else (*world_ref2)[absposx][posy].type=0;
                         (*world_ref2)[absposx][posy].generated=1;

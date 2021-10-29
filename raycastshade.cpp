@@ -107,21 +107,21 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
         }
                        //     std::cout << oob_check<<std::endl;
         if(oob_check&&(world[cx][cy].type==0)){
-            if(world[cx][cy].light<light)
+            if(world[cx][cy].light<light){
                 air_list.push_back(vec2(cx,cy));
+            }
         }
         if(oob_check &&(world[cx][cy].type!=0)){
             double newdir=180-direction;
             int shouldlight=0;
             --light;
-            --light;
-                        --light;
+
 
             if(direction<0){
-                direction=360-direction;
+                direction=360+direction;
             }
             if(newdir<0){
-                newdir=360-newdir;
+                newdir=360+newdir;
             }
             int shouldcalc=1;
 /*
@@ -179,7 +179,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             }
             if(direction>=180&&direction<270&&newdir>=270&&newdir<360&&shouldcalc){
                 double f=modf(cx,&unused)*100;
-                shouldlight|=compute_ray(cx,cy+1,(diffuse_normal[(long)f]),light,1,reflectcount-1);
+                shouldlight|=compute_ray(cx,cy+1,-(diffuse_normal[(long)f]),light,1,reflectcount-1);
 
                 shouldcalc=0;
 
@@ -194,7 +194,7 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             }
             if(direction>=270&&direction<360&&newdir>=180&&newdir<270&&shouldcalc){
                 double f=modf(cy,&unused)*100;
-                shouldlight|=compute_ray(cx+1,cy,180+(diffuse_normal[(long)f])*(rand()%2-1),light,1,reflectcount-1);
+                shouldlight|=compute_ray(cx+1,cy,180+(diffuse_normal[(long)f]),light,1,reflectcount-1);
 
                 shouldcalc=0;
 
@@ -203,6 +203,9 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             if(shouldlight){
                 if(world[cx][cy].light<light){
                     world[cx][cy].light=light;
+                    for(int i=0;i<air_list.size();++i){
+                        world[air_list[i].x][air_list[i].y].light=light;
+                    }
 
                 }
 
@@ -237,7 +240,7 @@ pthread_t rtxthreado;
 double globx,globlsundeg;
 void* rtxthread(void* unused){
 
-    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=1){
+    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=0.01){
                 compute_ray(x,tmpy+0.5,globlsundeg,15,0);
 
     }
@@ -248,13 +251,15 @@ int sunmoon_radius=15;//1 unit=1 metre lol
 void compute_shade(long long bx,long long by,struct vec2 p_pos){
     double sun_deg=(((double)world_time/24000*360));
     globlsundeg=sun_deg;
+            std::cout << sun_deg<<std::endl;
+
     double moon_deg=(360- (double)world_time/24000*360-90-180);
     tmpx=bx;
     tmpy=by+scrnh/64;
     globx=bx;
-    char envlight=15;
+    char envlight=0;
     if(sun_deg>180&&sun_deg<360){
-        envlight=5;
+    //    envlight=5;
     }
     for(long long x=bx-5;x<((bx+(scrnw/64)+5));++x){
         for(long long y=by-2;y<(by+(scrnh/64)+5);++y){
