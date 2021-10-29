@@ -251,7 +251,6 @@ int sunmoon_radius=15;//1 unit=1 metre lol
 void compute_shade(long long bx,long long by,struct vec2 p_pos){
     double sun_deg=(((double)world_time/24000*360));
     globlsundeg=sun_deg;
-            std::cout << sun_deg<<std::endl;
 
     double moon_deg=(360- (double)world_time/24000*360-90-180);
     tmpx=bx;
