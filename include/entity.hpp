@@ -5,8 +5,17 @@
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-struct vec2{
-    double x,y;
+class vec2{
+    public:
+        double x,y;
+
+    vec2(double x,double y){
+        this->x=x;
+        this->y=y;
+    }
+    vec2(){
+
+    }
 };
 
 class entity{
@@ -23,8 +32,8 @@ class entity{
             this->ymomentum=ymomentum;
             }
         }
-        struct vec2 getpos(){
-                struct vec2 v;
+         vec2 getpos(){
+                 vec2 v;
 
             v.x=this->x;
             v.y=this->y;

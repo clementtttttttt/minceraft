@@ -4,6 +4,7 @@
 #include <cmath>
 #include "entity.hpp"
 #include <utils.hpp>
+#include <pthread.h>
 #define deg *57.2958
 #define rad *0.0174533
 struct vec2 sun,moon;
@@ -16,17 +17,16 @@ extern int world_time;
 long long tmpx,tmpy;
 //TODO: NEW IMPROVED RAY SYSTEM
 extern "C"{
-double fastsin(double val);
-double fastcos(double val);
+double* fastsincos(double val);
 
 }
-
-static inline long long fround(double d)
-{
     union cvert{
         double d;
         long long i;
     };
+static inline long long fround(double d)
+{
+
     cvert d2;
     d2.d=(d+4503599627370496.0);
     d2.i<<=13;
@@ -34,42 +34,49 @@ static inline long long fround(double d)
     return d2.i;
 }
 
+static inline double fastabs(double d){
+    cvert d2;
+    d2.d=d;
+    d2.i<<=1;
+    d2.i>>=1;
+    return d2.i;
+
+}
+
 asm (
     R"(
-        .globl fastsin
-        .globl fastcos
+        .globl fastsincos
 
         .section .data
-            asmtmp: .quad 0,0
-            asmtmp2: .quad 0,0
+            asmtmp: .quad 0
+            asmtmp2: .quad 0
         .section .text
-    fastsin:
+    fastsincos:
         movq %xmm0,asmtmp(%rip)
         fldl asmtmp(%rip)
-        fsin
+        fsincos
         fstpl asmtmp(%rip)
-        movq asmtmp(%rip),%xmm0
-        ret
-    fastcos:
-        movq %xmm0,asmtmp2(%rip)
-        fldl asmtmp2(%rip)
-        fcos
         fstpl asmtmp2(%rip)
-        movq asmtmp2(%rip),%xmm0
+        leaq asmtmp(%rip), %rax
         ret
+
     )"
 );
+
+
+
 
 int rec_count=0;
 int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=16){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
     struct vec2 hitblock,ppos;
-
-    double sy=fastcos(direction rad)*0.5;
-    double sx=fastsin(direction rad)*0.5;
+    double* p=fastsincos(direction rad);
+    double sx=p[1];
+    double sy=p[0];
     double cx=orgx,cy=orgy;
     double d2=direction;
     ppos=entity_list[0]->getpos();
     int weakencounter=60;
+    std::vector<vec2> air_list;
     //oob check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
     #define oob_check ((tmpx-30>0)&&(cx>=(tmpx-30))&&(cy<=(tmpy+2))&&(cx<(30+tmpx+scrnw/64))&&(cy>fround(tmpy-scrnh/64)))
     while(light>0&&reflectcount!=0){
@@ -79,13 +86,15 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                        //     std::cout << oob_check<<std::endl;
         if(oob_check&&(world[cx][cy].type==0)){
             if(world[cx][cy].light<light)
-                world[cx][cy].light=light;
+                air_list.push_back(vec2(cx,cy));
         }
         if(oob_check &&(world[cx][cy].type!=0)){
             double newdir=180-direction;
             int shouldlight=0;
             --light;
             --light;
+                        --light;
+
             if(direction<0){
                 direction=360-direction;
             }
@@ -93,46 +102,48 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                 newdir=360-newdir;
             }
             int shouldcalc=1;
+
             if(direction>=0&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
                 for(double i=92;i<=268;i+=44){
-                    shouldlight|=compute_ray(cx,cy-0.5,i,light,1,reflectcount-1);
+                    shouldlight|=compute_ray(cx,cy-1,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
             }
             if(direction>=90&&direction<180&&newdir>=0&&newdir<90&&shouldcalc){
-                for(double i=-84;i<=84;i+=16.8){
-                    shouldlight|=compute_ray(cx,cy+0.5,i,light,1,reflectcount-1);
+                for(double i=-84;i<=84;i+=3.5){
+                shouldlight|=compute_ray(cx,cy+1,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
 
             }
             if(direction>=180&&direction<270&&newdir>=270&&newdir<360&&shouldcalc){
-                for(double i=-84;i<=84;i+=16.8){
-                    shouldlight|=compute_ray(cx,cy+0.5,i,light,1,reflectcount-1);
+                for(double i=-84;i<=84;i+=3.5){
+                    shouldlight|=compute_ray(cx,cy+1,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
 
             }
             if(direction>=90&&direction<180&&newdir>=180&&newdir<270&&shouldcalc){
                 for(double i=2;i<=178;i+=44){
-                    shouldlight|=compute_ray(cx-0.5,cy,i,light,1,reflectcount-1);
+                    shouldlight|=compute_ray(cx-1,cy,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
 
             }
             if(direction>=270&&direction<360&&newdir>=180&&newdir<270&&shouldcalc){
                 for(double i=92;i<=268;i+=44){
-                    shouldlight|=compute_ray(cx+0.5,cy,i,light,1,reflectcount-1);
+                    shouldlight|=compute_ray(cx+1,cy,i,light,1,reflectcount-1);
                 }
                 shouldcalc=0;
 
             }
 
 
-
             if(shouldlight){
-                if(world[cx][cy].light<light)
+                if(world[cx][cy].light<light){
                     world[cx][cy].light=light;
+
+                }
 
                 return 1;
             }
@@ -161,23 +172,44 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
     #undef oob_check
     return 0;
 }
+pthread_t rtxthreado;
+double globx,globlsundeg;
+void* rtxthread(void* unused){
+
+    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=1){
+                compute_ray(x,tmpy+0.5,globlsundeg,15,0);
+
+    }
+    return 0;
+}
 int tempcount;
 int sunmoon_radius=15;//1 unit=1 metre lol
 void compute_shade(long long bx,long long by,struct vec2 p_pos){
     double sun_deg=(((double)world_time/24000*360));
+    globlsundeg=sun_deg;
     double moon_deg=(360- (double)world_time/24000*360-90-180);
     tmpx=bx;
     tmpy=by+scrnh/64;
-
-    for(long long x=bx-5;x<(bx+(scrnw/64)+5);++x){
+    globx=bx;
+    char envlight=15;
+    if(sun_deg>180&&sun_deg<360){
+        envlight=5;
+    }
+    for(long long x=bx-5;x<((bx+(scrnw/64)+5));++x){
         for(long long y=by-2;y<(by+(scrnh/64)+5);++y){
-            world[x][y].light=0;
+            if(world[x][y].type==0){
+                world[x][y].light=envlight;
+            }
+            else world[x][y].light=0;
         }
 
     }
-    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+14+(scrnw/64));x+=1){
+    pthread_create(&rtxthreado,NULL,rtxthread,NULL);
+
+    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=1){
                 compute_ray(x,tmpy+0.5,sun_deg,15,0);
 
     }
+    pthread_join(rtxthreado,NULL);
 
 }

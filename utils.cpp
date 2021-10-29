@@ -7,6 +7,7 @@
 
 
 
+
 extern app mainapp;
 
 SDL_Texture* loadtex(std::string file){

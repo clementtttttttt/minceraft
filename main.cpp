@@ -18,6 +18,8 @@ extern std::vector<entity*> entity_list;
 unsigned char* keystate;
 unsigned long long tickselapsed=0;
 
+
+
 int main()
 {
 
