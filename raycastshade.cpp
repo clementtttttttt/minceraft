@@ -92,8 +92,8 @@ int rec_count=0;
 int compute_ray(double orgx,double orgy,double direction,int light,int reflected,int reflectcount=16){//returns true when the ray hits player, false when ray gets to light==0 without hitting player eye, LIGHT SRC ONLY
     struct vec2 hitblock,ppos;
     double* p=fastsincos(direction rad);
-    double sx=p[1];
-    double sy=p[0];
+    double sx=p[1]*0.25;
+    double sy=p[0]*0.25;
     double cx=orgx,cy=orgy;
     double d2=direction;
     ppos=entity_list[0]->getpos();
@@ -108,7 +108,8 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                        //     std::cout << oob_check<<std::endl;
         if(oob_check&&(world[cx][cy].type==0)){
             if(world[cx][cy].light<light){
-                air_list.push_back(vec2(cx,cy));
+             //ddAd   air_list.push_back(vec2(cx,cy));
+             //   world[cx][cy].light=light;
             }
         }
         if(oob_check &&(world[cx][cy].type!=0)){
@@ -184,6 +185,14 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
                 shouldcalc=0;
 
             }
+            if(direction>=0&&direction<90&&newdir>=270&&newdir<360&&shouldcalc){
+                double f=modf(cy,&unused)*100;
+
+                shouldlight|=compute_ray(cx-1,cy,90+(diffuse_normal[(long)f]),light,1,reflectcount-1);
+
+                shouldcalc=0;
+
+            }
             if(direction>=90&&direction<180&&newdir>=180&&newdir<270&&shouldcalc){
                 double f=modf(cy,&unused)*100;
 
@@ -203,9 +212,9 @@ int compute_ray(double orgx,double orgy,double direction,int light,int reflected
             if(shouldlight){
                 if(world[cx][cy].light<light){
                     world[cx][cy].light=light;
-                  //  for(int i=0;i<air_list.size();++i){
-                 //       world[air_list[i].x][air_list[i].y].light=light;
-                 //   }
+                    //for(int i=0;i<air_list.size();++i){
+                      // world[air_list[i].x][air_list[i].y].light=light;
+                    //}
 
                 }
 
@@ -240,7 +249,7 @@ pthread_t rtxthreado;
 double globx,globlsundeg;
 void* rtxthread(void* unused){
 
-    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=0.01){
+    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=0.005){
                 compute_ray(x,tmpy+0.5,globlsundeg,15,0);
 
     }
@@ -258,7 +267,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     globx=bx;
     char envlight=15;
     if(sun_deg<90&&sun_deg>270){
-        envlight=5;
+        envlight=4;
     }
     for(long long x=bx-5;x<((bx+(scrnw/64)+5));++x){
         for(long long y=by-2;y<(by+(scrnh/64)+5);++y){
@@ -271,7 +280,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     }
     pthread_create(&rtxthreado,NULL,rtxthread,NULL);
 
-    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=0.01){
+    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=0.005){
                 compute_ray(x,tmpy+0.5,sun_deg,15,0);
 
     }

@@ -3,6 +3,7 @@
 #include <string>
 #include <SDL_image.h>
 #include <iostream>
+#include <blocks.hpp>
 
 
 
@@ -37,5 +38,5 @@ void blit(SDL_Texture *texture,SDL_Rect* clip,SDL_Rect* dest)
 
 void putblocc(u32 type,u32 x,u32 y,u32 sz){
     SDL_Rect rec{(int)x,(int)y,(int)sz,(int)sz};
-    blit(tex,&block_clips[type],&rec);
+    blit(tex,&blockreg[type].tex,&rec);
 }

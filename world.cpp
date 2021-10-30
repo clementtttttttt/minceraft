@@ -10,16 +10,7 @@ extern SDL_Texture* tex;
 
     int scrnw,scrnh;
 std::vector<std::vector<block>> world;
-SDL_Rect block_clips[]={
-    {0,0,16,16},
-    {16,0,16,16},
-    {32,0,16,16},
-    {48,0,16,16},
-    {64,0,16,16},
-    {80,0,16,16},
-    {96,16,16,16},
-    {240,240,16,16}
-};
+
 extern std::vector <block_entry> blockreg;
 extern int world_time;
 FastNoiseLite n,n2;
@@ -27,15 +18,16 @@ long waterlvl=42;
 bool init=false;
     double scrnoffx;
     double scrnoffy;
+long long worldseed=-573947210;
 void worldrendr(){
     SDL_GetRendererOutputSize(mainapp.renderer,&scrnw,&scrnh);
     long long blockcorner_x=(entity_list[0]->getpos().x)-(scrnw/2/64);
     long long blockcorner_y=(entity_list[0]->getpos().y)-(scrnh/2/64)+1;
     scrnoffx=entity_list[0]->getpos().x-(long long) (entity_list[0]->getpos().x);
     scrnoffy=round(entity_list[0]->getpos().y)-entity_list[0]->getpos().y;
-   n.SetSeed((long long)worldrendr);
-   n.SetSeed((long long)&mainapp);
-
+    n.SetSeed((long long)worldseed);
+    n2.SetSeed((long long)worldseed*12^1157  );
+    bool watercheck=false,fillwater=false;
     for(long long x=-5;x<=(scrnw/64)+1;++x){
         double noiseval=n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+50;
         double noiseval2=n2.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+10;
@@ -60,23 +52,48 @@ void worldrendr(){
                     if((*world_ref2)[absposx][posy].generated==0){ //world generator
                         double cavenoiseval=0;
                         if(posy<noiseval/*basic terrain gen*/&&(cavenoiseval<45)){
-                            if(posy<=waterlvl&&noiseval2>9&&(posy+1)>=blockcorner_y&&(*world_ref2)[absposx][posy+1].type==0&&(*world_ref2)[absposx][posy+1].wassolid==0)
+                            if(posy<=waterlvl&&noiseval2>4&&(posy+1)>=(n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+50)&&(*world_ref2)[absposx][posy+1].wassolid==0){
                                 (*world_ref2)[absposx][posy].type=4;
-                            else if (posy>noiseval){
-                                (*world_ref2)[absposx][posy].type=3;
+                                (*world_ref2)[absposx][posy].wassolid=1;
+                            }
+                            else if (posy>(noiseval-14)){
+                                (*world_ref2)[absposx][posy].type=2;
                                 (*world_ref2)[absposx][posy].wassolid=1;
 
 
                             }
                             else{
-                                (*world_ref2)[absposx][posy].type=2;
+                                (*world_ref2)[absposx][posy].type=3;
                                 (*world_ref2)[absposx][posy].wassolid=1;
 
                             }
                         }
                         else (*world_ref2)[absposx][posy].type=0;
                         (*world_ref2)[absposx][posy].generated=1;
+                        //water handling
+                        if(posy==(waterlvl-1)){
+                            if((*world_ref2)[absposx][posy].type==0){
+                                if(!watercheck){
+                                    if(noiseval2>12){
+                                        fillwater=true;
+                                        watercheck=true;
+                                    }
+                                    else{
+                                        watercheck=true;
+                                    }
+                                }
 
+                            }
+                            else{
+                                watercheck=false;
+                                fillwater=false;
+                            }
+                            if(fillwater){
+                                for(long long i=posy;i>(blockcorner_y-scrnh/64)&&i>0&&(*world_ref2)[absposx][i].type==0;--i){
+                                    (*world_ref2)[absposx][i].type=5;
+                                }
+                            }
+                        }
                     }
                     int  c=(((double)((*world_ref2)[absposx][posy].light))/15)*255+4;
                     if(c>255){
