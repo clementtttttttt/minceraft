@@ -57,16 +57,15 @@ int main()
     pthread_create(&gamethread,NULL,game_thread, NULL);
     entity_list.push_back(new player(rand()%700+70,60));
     SDL_Rect block_clips[]={
-    {80,0,16,16},
     {96,16,16,16},
     {240,240,16,16}
     };
     register_block(0,0,0,(SDL_Rect){0,0,16,16},"Air");
-    register_block(1,0,0,(SDL_Rect){16,0,16,16},"Grass");
-    register_block(2,0,0,(SDL_Rect){32,0,16,16},"Dirt");
-    register_block(3,0,0,(SDL_Rect){48,0,16,16},"Stone");
-    register_block(4,0,0,(SDL_Rect){64,0,16,16},"Sand");
-    register_block(5,0,0,{0,0,16,16},"Air");
+    register_block(1,0,1,(SDL_Rect){16,0,16,16},"Grass");
+    register_block(2,0,1,(SDL_Rect){32,0,16,16},"Dirt");
+    register_block(3,0,1,(SDL_Rect){48,0,16,16},"Stone");
+    register_block(4,0,1,(SDL_Rect){64,0,16,16},"Sand");
+    register_block(5,0,0,(SDL_Rect) {80,0,16,16},"Water");
 
     while(1)
     {

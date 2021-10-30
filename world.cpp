@@ -29,7 +29,7 @@ void worldrendr(){
     n2.SetSeed((long long)worldseed*12^1157  );
     bool watercheck=false,fillwater=false;
     for(long long x=-5;x<=(scrnw/64)+1;++x){
-        double noiseval=n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+50;
+        double noiseval=n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*12+48;
         double noiseval2=n2.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+10;
             long long posx=blockcorner_x+x+scrnoffx;
 
@@ -52,7 +52,7 @@ void worldrendr(){
                     if((*world_ref2)[absposx][posy].generated==0){ //world generator
                         double cavenoiseval=0;
                         if(posy<noiseval/*basic terrain gen*/&&(cavenoiseval<45)){
-                            if(posy<=waterlvl&&noiseval2>4&&(posy+1)>=(n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*10+50)&&(*world_ref2)[absposx][posy+1].wassolid==0){
+                            if(posy<=waterlvl&&noiseval2>4&&(posy+1)>=(n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*12+48)&&(*world_ref2)[absposx][posy+1].wassolid==0){
                                 (*world_ref2)[absposx][posy].type=4;
                                 (*world_ref2)[absposx][posy].wassolid=1;
                             }
@@ -68,17 +68,22 @@ void worldrendr(){
 
                             }
                         }
-                        else (*world_ref2)[absposx][posy].type=0;
+                        else{
+                            (*world_ref2)[absposx][posy].type=0;
+                            (*world_ref2)[absposx][posy].wassolid=1;
+
+                        }
                         (*world_ref2)[absposx][posy].generated=1;
                         //water handling
-                        if(posy==(waterlvl-1)){
-                            if((*world_ref2)[absposx][posy].type==0){
-                                if(!watercheck){
-                                    if(noiseval2>12){
+                        if(posy==(waterlvl)){
+                            if((*world_ref2)[absposx][posy].type==0&&(*world_ref2)[absposx][posy].waterfilled==0){
+                                if(watercheck==false){
+                                    if(noiseval2>13||((*world_ref2)[absposx-1][posy].type==5)){
                                         fillwater=true;
                                         watercheck=true;
                                     }
                                     else{
+                                        fillwater=false;
                                         watercheck=true;
                                     }
                                 }
@@ -86,13 +91,15 @@ void worldrendr(){
                             }
                             else{
                                 watercheck=false;
-                                fillwater=false;
                             }
                             if(fillwater){
-                                for(long long i=posy;i>(blockcorner_y-scrnh/64)&&i>0&&(*world_ref2)[absposx][i].type==0;--i){
+                                for(long long i=posy;(i>(blockcorner_y-scrnh/64))&&i>0&&((*world_ref2)[absposx][i].type==0);--i){
                                     (*world_ref2)[absposx][i].type=5;
+                                     (*world_ref2)[absposx][i].generated=1;
+                                    (*world_ref2)[absposx][i].wassolid=1;
                                 }
                             }
+                            else (*world_ref2)[absposx][posy].waterfilled=1;
                         }
                     }
                     int  c=(((double)((*world_ref2)[absposx][posy].light))/15)*255+4;
@@ -134,7 +141,7 @@ void worldtick(){
             long long absposx=abs(posx);
 
             if(((absposx)<world_ref->size() ) && (posy+scrnoffy)>=0){
-                    if((*world_ref)[absposx][posy].type!=0){
+                    if((blockreg[(*world_ref)[absposx][posy].type].bitfield&0b1000000)){
                         block_coll.push_back(aabb(posx,posy,absposx+1,posy+1));
                     }
                     switch((*world_ref)[absposx][posy].type){
