@@ -1,0 +1,1442 @@
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 2320, Column: 16 }
+Function:        _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5c_strEv
+Args:
+  - Callee:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_M_dataEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 195, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5c_strEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 2320, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          c_str
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 158, Column: 15 }
+Function:        _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+Args:
+  - Callee:          _ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate
+  - String:          ' will not be inlined into '
+  - Caller:          _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 158, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 158, Column: 27 }
+Function:        _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE7rdstateEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 138, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 158, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          setstate
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 158, Column: 37 }
+Function:        _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+Args:
+  - Callee:          _ZStorSt12_Ios_IostateS_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/ios_base.h', 
+                       Line: 170, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 158, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-35'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          setstate
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/char_traits.h', 
+                   Line: 371, Column: 9 }
+Function:        _ZNSt11char_traitsIcE6lengthEPKc
+Args:
+  - Callee:          strlen
+  - String:          ' will not be inlined into '
+  - Caller:          _ZNSt11char_traitsIcE6lengthEPKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/char_traits.h', 
+                       Line: 366, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 611, Column: 2 }
+Function:        _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+Args:
+  - Callee:          _ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+  - String:          ' will not be inlined into '
+  - Caller:          _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 607, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 609, Column: 8 }
+Function:        _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+Args:
+  - Callee:          _ZNSt9basic_iosIcSt11char_traitsIcEE8setstateESt12_Ios_Iostate
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 158, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 607, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '10'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<<std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '3'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 612, Column: 29 }
+Function:        _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+Args:
+  - Callee:          _ZNSt11char_traitsIcE6lengthEPKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/char_traits.h', 
+                       Line: 366, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 607, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<<std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 2332, Column: 16 }
+Function:        _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4dataEv
+Args:
+  - Callee:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_M_dataEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 195, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4dataEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 2332, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          data
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 6534, Column: 14 }
+Function:        _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+Args:
+  - Callee:          _ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l
+  - String:          ' will not be inlined into '
+  - Caller:          _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6531, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 6534, Column: 43 }
+Function:        _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+Args:
+  - Callee:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4dataEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 2332, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6531, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<<char, std::char_traits<char>, std::allocator<char> >'
+  - String:          ':'
+  - Line:            '5'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 6534, Column: 57 }
+Function:        _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+Args:
+  - Callee:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4sizeEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 920, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6531, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<<char, std::char_traits<char>, std::allocator<char> >'
+  - String:          ':'
+  - Line:            '5'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: utils.cpp, Line: 15, Column: 13 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          IMG_LoadTexture
+  - String:          ' will not be inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 15, Column: 52 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5c_strEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 2320, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '2'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 19, Column: 62 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNSolsEPFRSoS_E
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 109, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-427'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 113, Column: 9 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '90'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 14 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 17, Column: 19 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 607, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 17, Column: 44 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6531, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '15'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 17, Column: 52 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNSolsEPFRSoS_E
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 109, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-427'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 113, Column: 9 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '90'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 14 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 19, Column: 20 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 607, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 19, Column: 54 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6531, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '15'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 34 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 40 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 34 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 40 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '40'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 16 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '5'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '6'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 16 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - Callee:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+    DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '5'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+  - String:          ' @ '
+  - String:          'operator<<'
+  - String:          ':'
+  - Line:            '5'
+  - String:          ' @ '
+  - String:          loadtex
+  - String:          ':'
+  - Line:            '4'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 195, Column: 28 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 195, Column: 28 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 611, Column: 2 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 920, Column: 16 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 611, Column: 2 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 30 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            '%"class.std::ctype"*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 877, Column: 6 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 878, Column: 11 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 195, Column: 28 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 195, Column: 28 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 611, Column: 2 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                   Line: 920, Column: 16 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 611, Column: 2 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 29 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 30 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            '%"class.std::ctype"*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 877, Column: 6 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 878, Column: 11 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            i8
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_string.h', 
+                       Line: 6534, Column: 14 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 50, Column: 2 }
+Function:        _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+Args:
+  - Callee:          _ZSt16__throw_bad_castv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 879, Column: 8 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - Callee:          _ZNKSt5ctypeIcE13_M_widen_initEv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt5ctypeIcE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 16 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - Callee:          _ZSt13__check_facetISt5ctypeIcEERKT_PS3_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 48, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '5'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                   Line: 450, Column: 40 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - Callee:          _ZNKSt5ctypeIcE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 876, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '45'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          widen
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 704, Column: 19 }
+Function:        _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNSo5flushEv
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 25 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNSo3putEc
+  - String:          ' will not be inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 34 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/basic_ios.h', 
+                       Line: 450, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '85'
+  - String:          ', threshold='
+  - Threshold:       '250'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                   Line: 682, Column: 14 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - Callee:          _ZSt5flushIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 704, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/ostream', 
+                       Line: 682, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '0'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          'endl<char, std::char_traits<char> >'
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)**'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                   Line: 880, Column: 15 }
+Function:        _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+Args:
+  - String:          'load of type '
+  - Type:            'i8 (%"class.std::ctype"*, i8)*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/locale_facets.h', 
+                       Line: 879, Column: 8 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: utils.cpp, Line: 32, Column: 5 }
+Function:        _Z4blitP11SDL_TextureP8SDL_RectS2_
+Args:
+  - Callee:          SDL_RenderCopyEx
+  - String:          ' will not be inlined into '
+  - Caller:          _Z4blitP11SDL_TextureP8SDL_RectS2_
+    DebugLoc:        { File: utils.cpp, Line: 25, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: utils.cpp, Line: 40, Column: 5 }
+Function:        _Z8putbloccjjjj
+Args:
+  - Callee:          _Z4blitP11SDL_TextureP8SDL_RectS2_
+    DebugLoc:        { File: utils.cpp, Line: 25, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _Z8putbloccjjjj
+    DebugLoc:        { File: utils.cpp, Line: 38, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '70'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          putblocc
+  - String:          ':'
+  - Line:            '2'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                   Line: 74, Column: 25 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          _ZNSt8ios_base4InitC1Ev
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                   Line: 74, Column: 25 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          __cxa_atexit
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/utils.cpp', Line: 0, 
+                   Column: 0 }
+Function:        _GLOBAL__sub_I_utils.cpp
+Args:
+  - Callee:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _GLOBAL__sub_I_utils.cpp
+    DebugLoc:        { File: '/home/clement/Desktop/minceraft/utils.cpp', 
+                       Line: 0, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-14950'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _GLOBAL__sub_I_utils.cpp
+  - String:          ':'
+  - Line:            '0'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - NumStackBytes:   '24'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: utils.cpp, Line: 13, Column: 0 }
+Function:        _Z7loadtexNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+Args:
+  - NumInstructions: '60'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: utils.cpp, Line: 25, Column: 0 }
+Function:        _Z4blitP11SDL_TextureP8SDL_RectS2_
+Args:
+  - NumStackBytes:   '24'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: utils.cpp, Line: 25, Column: 0 }
+Function:        _Z4blitP11SDL_TextureP8SDL_RectS2_
+Args:
+  - NumInstructions: '24'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: utils.cpp, Line: 38, Column: 0 }
+Function:        _Z8putbloccjjjj
+Args:
+  - NumStackBytes:   '40'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: utils.cpp, Line: 38, Column: 0 }
+Function:        _Z8putbloccjjjj
+Args:
+  - NumInstructions: '29'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/utils.cpp', Line: 0, 
+                   Column: 0 }
+Function:        _GLOBAL__sub_I_utils.cpp
+Args:
+  - NumStackBytes:   '8'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/utils.cpp', Line: 0, 
+                   Column: 0 }
+Function:        _GLOBAL__sub_I_utils.cpp
+Args:
+  - NumInstructions: '8'
+  - String:          ' instructions in function'
+...

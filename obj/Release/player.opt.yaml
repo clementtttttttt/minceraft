@@ -1,0 +1,1489 @@
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 29, Column: 28 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZN4aabb12clipYCollideES_d
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 37, Column: 10 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZN4aabbC1Edddd
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZN4aabb12clipXCollideES_d
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 34, Column: 28 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZN4aabb12clipXCollideES_d
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 55, Column: 23 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZN4aabbC1Edddd
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 25, Column: 38 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZNKSt6vectorI4aabbSaIS0_EE4sizeEv
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 919, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          tick
+  - String:          ':'
+  - Line:            '5'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 34, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZNSt6vectorI4aabbSaIS0_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          tick
+  - String:          ':'
+  - Line:            '14'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 29, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - Callee:          _ZNSt6vectorI4aabbSaIS0_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player4tickEv
+    DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          tick
+  - String:          ':'
+  - Line:            '9'
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 34, Column: 47 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 47 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 41 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 29, Column: 47 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 47 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 41 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 28 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadPRE
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          load eliminated by PRE
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 28 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 28 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 48, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 21, Column: 18 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadPRE
+DebugLoc:        { File: player.cpp, Line: 48, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          load eliminated by PRE
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 48, Column: 12 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 50, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 22, Column: 18 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 50, Column: 12 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 56, Column: 8 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 55, Column: 23 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 28 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 34, Column: 28 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.aabb*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 29, Column: 28 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 48, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 21, Column: 18 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 48, Column: 12 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 50, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 22, Column: 18 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 50, Column: 12 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 37, Column: 32 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 56, Column: 8 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 55, Column: 23 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          SDL_GetRendererOutputSize
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: player.cpp, Line: 101, Column: 5 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _Z4blitP11SDL_TextureP8SDL_RectS2_
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 72, Column: 27 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZNSt6vectorIP6entitySaIS1_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-35'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 91, Column: 39 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZSt3absd
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h', 
+                       Line: 72, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '20'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 81, Column: 39 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZSt3absd
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_abs.h', 
+                       Line: 72, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '10'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 79, Column: 31 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZN6entity6getposEv
+    DebugLoc:        { File: 'include/entity.hpp', Line: 26, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '8'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 79, Column: 15 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZNSt6vectorIP6entitySaIS1_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-35'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '8'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 78, Column: 31 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZN6entity6getposEv
+    DebugLoc:        { File: 'include/entity.hpp', Line: 26, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '7'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 78, Column: 15 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZNSt6vectorIP6entitySaIS1_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-35'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '7'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 73, Column: 43 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZN6entity6getposEv
+    DebugLoc:        { File: 'include/entity.hpp', Line: 26, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '2'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 73, Column: 27 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZNSt6vectorIP6entitySaIS1_EEixEm
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1044, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-35'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '2'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 72, Column: 43 }
+Function:        _ZN6player7rentickEv
+Args:
+  - Callee:          _ZN6entity6getposEv
+    DebugLoc:        { File: 'include/entity.hpp', Line: 26, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6player7rentickEv
+    DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rentick
+  - String:          ':'
+  - Line:            '1'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.entity**'
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1046, Column: 25 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 78, Column: 15 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.entity*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: 'include/entity.hpp', Line: 29, Column: 23 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: 'include/entity.hpp', Line: 30, Column: 23 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 79, Column: 61 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 73, Column: 56 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 80, Column: 14 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 91, Column: 12 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 92, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: player.cpp, Line: 95, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  phi
+    DebugLoc:        { File: player.cpp, Line: 95, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 81, Column: 12 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 82, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Passed
+Pass:            gvn
+Name:            LoadElim
+DebugLoc:        { File: player.cpp, Line: 85, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' eliminated'
+  - String:          ' in favor of '
+  - InfavorOfValue:  phi
+    DebugLoc:        { File: player.cpp, Line: 85, Column: 16 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 101, Column: 10 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%struct.SDL_Texture*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 101, Column: 26 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.entity**'
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                       Line: 1046, Column: 25 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 78, Column: 15 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%class.entity*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: 'include/entity.hpp', Line: 29, Column: 23 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: 'include/entity.hpp', Line: 30, Column: 23 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 79, Column: 61 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: player.cpp, Line: 73, Column: 56 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 80, Column: 14 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 91, Column: 12 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 92, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 81, Column: 12 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 82, Column: 16 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 101, Column: 10 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            '%struct.SDL_Texture*'
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: player.cpp, Line: 101, Column: 26 }
+Function:        _ZN6player7rentickEv
+Args:
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: player.cpp, Line: 77, Column: 5 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: 'include/entity.hpp', Line: 33, Column: 25 }
+Function:        _ZN6entityC2Ev
+Args:
+  - Callee:          _ZN4aabbC1Edddd
+  - String:          ' will not be inlined into '
+  - Caller:          _ZN6entityC2Ev
+    DebugLoc:        { File: 'include/entity.hpp', Line: 12, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: player.cpp, Line: 60, Column: 9 }
+Function:        _ZN6playerC2Edd
+Args:
+  - Callee:          _ZN6entityC2Ev
+    DebugLoc:        { File: 'include/entity.hpp', Line: 12, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _ZN6playerC2Edd
+    DebugLoc:        { File: player.cpp, Line: 60, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '35'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          player
+  - String:          ':'
+  - Line:            '0'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                   Line: 74, Column: 25 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          _ZNSt8ios_base4InitC1Ev
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                   Line: 74, Column: 25 }
+Function:        __cxx_global_var_init
+Args:
+  - Callee:          __cxa_atexit
+  - String:          ' will not be inlined into '
+  - Caller:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/player.cpp', 
+                   Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_player.cpp
+Args:
+  - Callee:          __cxx_global_var_init
+    DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/iostream', 
+                       Line: 74, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          _GLOBAL__sub_I_player.cpp
+    DebugLoc:        { File: '/home/clement/Desktop/minceraft/player.cpp', 
+                       Line: 0, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-14950'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          _GLOBAL__sub_I_player.cpp
+  - String:          ':'
+  - Line:            '0'
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonReductionValueUsedOutsideLoop
+DebugLoc:        { File: player.cpp, Line: 28, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'loop not vectorized: '
+  - String:          value that could not be identified as reduction is used outside the loop
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            CantVectorizeInstruction
+DebugLoc:        { File: player.cpp, Line: 28, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'loop not vectorized: '
+  - String:          instruction cannot be vectorized
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: player.cpp, Line: 28, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          loop not vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonReductionValueUsedOutsideLoop
+DebugLoc:        { File: player.cpp, Line: 33, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'loop not vectorized: '
+  - String:          value that could not be identified as reduction is used outside the loop
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            CantVectorizeInstruction
+DebugLoc:        { File: player.cpp, Line: 33, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'loop not vectorized: '
+  - String:          instruction cannot be vectorized
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: player.cpp, Line: 33, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          loop not vectorized
+...
+--- !Passed
+Pass:            slp-vectorizer
+Name:            StoresVectorized
+DebugLoc:        { File: player.cpp, Line: 50, Column: 12 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'Stores SLP vectorized with cost '
+  - Cost:            '-1'
+  - String:          ' and with tree size '
+  - TreeSize:        '4'
+...
+--- !Passed
+Pass:            slp-vectorizer
+Name:            StoresVectorized
+DebugLoc:        { File: player.cpp, Line: 51, Column: 14 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'Stores SLP vectorized with cost '
+  - Cost:            '-1'
+  - String:          ' and with tree size '
+  - TreeSize:        '4'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotBeneficial
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'List vectorization was possible but not beneficial with cost '
+  - Cost:            '0'
+  - String:          ' >= '
+  - Treshold:        '0'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: player.cpp, Line: 28, Column: 37 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotPossible
+DebugLoc:        { File: player.cpp, Line: 28, Column: 5 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'Cannot SLP vectorize list: vectorization was impossible'
+  - String:          ' with available vectorization factors'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotBeneficial
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 919, Column: 40 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'List vectorization was possible but not beneficial with cost '
+  - Cost:            '0'
+  - String:          ' >= '
+  - Treshold:        '0'
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotBeneficial
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 919, Column: 40 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          'List vectorization was possible but not beneficial with cost '
+  - Cost:            '0'
+  - String:          ' >= '
+  - Treshold:        '0'
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: '/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h', 
+                   Line: 1046, Column: 25 }
+Function:        _ZN6player4tickEv
+Args:
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+Function:        _ZN6player4tickEv
+Args:
+  - NumStackBytes:   '152'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: player.cpp, Line: 20, Column: 0 }
+Function:        _ZN6player4tickEv
+Args:
+  - NumInstructions: '113'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+Function:        _ZN6player7rentickEv
+Args:
+  - NumStackBytes:   '40'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: player.cpp, Line: 71, Column: 0 }
+Function:        _ZN6player7rentickEv
+Args:
+  - NumInstructions: '115'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: player.cpp, Line: 66, Column: 0 }
+Function:        _ZN6player7gettypeEv
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: player.cpp, Line: 66, Column: 0 }
+Function:        _ZN6player7gettypeEv
+Args:
+  - NumInstructions: '2'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: player.cpp, Line: 60, Column: 0 }
+Function:        _ZN6playerC2Edd
+Args:
+  - NumStackBytes:   '24'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: player.cpp, Line: 60, Column: 0 }
+Function:        _ZN6playerC2Edd
+Args:
+  - NumInstructions: '23'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'include/entity.hpp', Line: 15, Column: 0 }
+Function:        _ZN6entity4tickEv
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: 'include/entity.hpp', Line: 15, Column: 0 }
+Function:        _ZN6entity4tickEv
+Args:
+  - NumInstructions: '1'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'include/entity.hpp', Line: 16, Column: 0 }
+Function:        _ZN6entity7rentickEv
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: 'include/entity.hpp', Line: 16, Column: 0 }
+Function:        _ZN6entity7rentickEv
+Args:
+  - NumInstructions: '1'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'include/entity.hpp', Line: 17, Column: 0 }
+Function:        _ZN6entity7gettypeEv
+Args:
+  - NumStackBytes:   '0'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: 'include/entity.hpp', Line: 17, Column: 0 }
+Function:        _ZN6entity7gettypeEv
+Args:
+  - NumInstructions: '2'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/player.cpp', 
+                   Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_player.cpp
+Args:
+  - NumStackBytes:   '8'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: '/home/clement/Desktop/minceraft/player.cpp', 
+                   Line: 0, Column: 0 }
+Function:        _GLOBAL__sub_I_player.cpp
+Args:
+  - NumInstructions: '8'
+  - String:          ' instructions in function'
+...
