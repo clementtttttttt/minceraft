@@ -1,6 +1,8 @@
 #include <entity/player.hpp>
 #include <entity.hpp>
 #include <iostream>
+#include <blocks.hpp>
+#include <world.hpp>
 #include <utils.hpp>
 #include "aabb.hpp"
 extern SDL_Texture* tex;
@@ -45,15 +47,20 @@ void player::tick(){
 
 
 
+    this->onground=ymorg!=tmpy&&ymorg<0;
+
     this->y+=ymomentum;
 
     this->x+=xmomentum;
-    xmomentum*=0.85;
 
-    ymomentum*=0.85;
+
+
+    xmomentum*=blockreg[world[this->x][this->y].type].cfriction;
+
+    ymomentum*=blockreg[world[this->x][this->y].type].cfriction;
 
     this->entity_aabb=aabb(this->x,this->y,this->x+0.9,this->y+1.8);
-    if(ymomentum>-9.8){
+    if(ymomentum>-blockreg[world[this->x][this->y].type].cgrav){
         ymomentum-=0.07;
     }
 }
@@ -77,8 +84,8 @@ void player::rentick(){
     SDL_GetRendererOutputSize(mainapp.renderer,&w,&h);
     center.x=(entity_list[0]->getpos().x-blockcorner_x)*64;
     center.y=(entity_list[0]->getpos().y-blockcorner_y)*64+(scrnh%64);
-    if(this->xmomentum>0.09){
-        if(tickselapsed%(long long)(8-abs(xmomentum*10))==0){
+    if(this->xmomentum>0.009){
+        if(tickselapsed%(long long)(10-abs(xmomentum*30)+2)==0){
             if(anim_count>3){
                 anim_count=1;
             }
@@ -87,8 +94,8 @@ void player::rentick(){
             else anim_count=1;
         }
     }
-    else if(this->xmomentum<-0.09){
-        if(tickselapsed%(long long)(8-abs(xmomentum*10))==0){
+    else if(this->xmomentum<-0.009){
+        if(tickselapsed%(long long)(10-abs(xmomentum*30)+2)==0){
             if(anim_count<3){
                 anim_count=3;
             }

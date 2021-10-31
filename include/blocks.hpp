@@ -13,7 +13,7 @@ struct block{
     unsigned char light=7;//max=15;
 }__attribute__((packed));
 struct block_entry{
-    unsigned char bitfield;  //HAVEGRAV,HAVECOLL,CUSTOMPHYS,unused x 5
+    unsigned char bitfield;  //HAVEGRAV,HAVECOLL,infjmp,unused x 5
     SDL_Rect tex;
     char* name;
     double cfriction,cgrav;
@@ -24,7 +24,7 @@ being in it
 if collision then cfriction means friction of surface and gravity does nothing
 
 */
-void register_block(int val,char havegrav,char havecoll,SDL_Rect tex,char* name);
+void register_block(int val,char havegrav,char havecoll,char infjmp,SDL_Rect tex,char* name,double cfriction,double cgrav);
 extern std::vector <block_entry> blockreg;
 
 #endif // BLOCKS_HPP_INCLUDED

@@ -51,22 +51,22 @@ int main()
     SDL_SetRenderDrawColor(mainapp.renderer, 0x87, 0xce, 0xeb, 255);
     SDL_RenderSetLogicalSize(mainapp.renderer, screensz_x, screensz_y);
     SDL_RenderClear(mainapp.renderer);
+
      mob=loadtex("mobs.png");
      tex=loadtex("tex.png");
     font=loadtex("font.png");
-    pthread_create(&gamethread,NULL,game_thread, NULL);
-    entity_list.push_back(new player(rand()%700+70,60));
     SDL_Rect block_clips[]={
     {96,16,16,16},
     {240,240,16,16}
     };
-    register_block(0,0,0,(SDL_Rect){0,0,16,16},"Air");
-    register_block(1,0,1,(SDL_Rect){16,0,16,16},"Grass");
-    register_block(2,0,1,(SDL_Rect){32,0,16,16},"Dirt");
-    register_block(3,0,1,(SDL_Rect){48,0,16,16},"Stone");
-    register_block(4,0,1,(SDL_Rect){64,0,16,16},"Sand");
-    register_block(5,0,0,(SDL_Rect) {80,0,16,16},"Water");
-
+    register_block(0,0,0,0,(SDL_Rect){0,0,16,16},"Air",0.85,9.8);
+    register_block(1,0,1,0,(SDL_Rect){16,0,16,16},"Grass",0.85,9.8);
+    register_block(2,0,1,0,(SDL_Rect){32,0,16,16},"Dirt",0.85,9.8);
+    register_block(3,0,1,0,(SDL_Rect){48,0,16,16},"Stone",0.85,9.8);
+    register_block(4,0,1,0,(SDL_Rect){64,0,16,16},"Sand",0.85,9.8);
+    register_block(5,0,0,1,(SDL_Rect) {80,0,16,16},"Water",0.4,1);
+    entity_list.push_back(new player(180,60));
+    bool init=false;
     while(1)
     {
         while(SDL_PollEvent(&e))
@@ -79,6 +79,11 @@ int main()
                 break;
 
             }
+                ren_tick();
+                if(init==false){
+                    init=true;
+                    pthread_create(&gamethread,NULL,game_thread, NULL);
+                }
         }
 
 

@@ -39,9 +39,24 @@ class entity{
             v.y=this->y;
             return v;
         }
+        vec2 getmomentum(){
+                 vec2 v;
+
+            v.x=this->xmomentum;
+            v.y=this->ymomentum;
+            return v;
+        }
+
+        bool getonground(){
+            return this->onground;
+
+        }
+
         aabb entity_aabb={0,0,0,0};
 
     protected:
+            bool onground;
+
         double x=0,y=0,xmomentum=0,ymomentum=0;
         int health=100;
 };

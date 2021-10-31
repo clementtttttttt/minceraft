@@ -51,7 +51,7 @@ void worldrendr(){
 
                     if((*world_ref2)[absposx][posy].generated==0){ //world generator
                         double cavenoiseval=0;
-                        if(posy<noiseval/*basic terrain gen*/&&(cavenoiseval<45)){
+                        if(posy<noiseval/*basic terrain gen*/){
                             if(posy<=waterlvl&&noiseval2>4&&(posy+1)>=(n.GetNoise((double)blockcorner_x+x+(double)scrnoffx,(double)1024)*12+48)&&(*world_ref2)[absposx][posy+1].wassolid==0){
                                 (*world_ref2)[absposx][posy].type=4;
                                 (*world_ref2)[absposx][posy].wassolid=1;
@@ -78,7 +78,7 @@ void worldrendr(){
                         if(posy==(waterlvl)){
                             if((*world_ref2)[absposx][posy].type==0&&(*world_ref2)[absposx][posy].waterfilled==0){
                                 if(watercheck==false){
-                                    if(noiseval2>13||((*world_ref2)[absposx-1][posy].type==5)){
+                                    if(noiseval2>13||((*world_ref2)[absposx-1][posy].type==5)||((*world_ref2)[absposx+1][posy].type==5)){
                                         fillwater=true;
                                         watercheck=true;
                                     }
@@ -93,13 +93,25 @@ void worldrendr(){
                                 watercheck=false;
                             }
                             if(fillwater){
-                                for(long long i=posy;(i>(blockcorner_y-scrnh/64))&&i>0&&((*world_ref2)[absposx][i].type==0);--i){
+                                long long i=posy;
+                                while((i>(blockcorner_y-scrnh/64))&&i>0){
+                                    if(((*world_ref2)[absposx][i].type!=0)){
+                                        goto out;
+                                    }
                                     (*world_ref2)[absposx][i].type=5;
-                                     (*world_ref2)[absposx][i].generated=1;
                                     (*world_ref2)[absposx][i].wassolid=1;
+                                    (*world_ref2)[absposx][i].waterfilled=1;
+                                    --i;
+                                }
+                                out:;
+                            }
+
+                            else {
+                                    for(long long i=posy;(i>(blockcorner_y-scrnh/64))&&i>0&&((*world_ref2)[absposx][i].type==0);--i){
+                                       // (*world_ref2)[absposx][i].generated=1;
+                                        (*world_ref2)[absposx][posy].waterfilled=1;
                                 }
                             }
-                            else (*world_ref2)[absposx][posy].waterfilled=1;
                         }
                     }
                     int  c=(((double)((*world_ref2)[absposx][posy].light))/15)*255+4;

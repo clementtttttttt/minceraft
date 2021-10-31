@@ -35,6 +35,8 @@ void ren_tick(){
 }
 double prevy;
 void input_tick(){
+    extern std::vector<std::vector<block>> world;
+
     if(keystate[SDL_SCANCODE_D]){
 
         entity_list[0]->setmomentum(keystate[SDL_SCANCODE_LSHIFT]?0.3:0.2,0);
@@ -44,13 +46,13 @@ void input_tick(){
     }
 
     if(keystate[SDL_SCANCODE_SPACE]){
-        if(entity_list[0]->getpos().y==prevy)
-        entity_list[0]->setmomentum(0,0.6);
+        vec2 pos=entity_list[0]->getpos();
+        if(entity_list[0]->getonground()||(blockreg[world[pos.x][pos.y].type].bitfield&1<<5))
+            entity_list[0]->setmomentum(0,0.6*blockreg[world[pos.x][pos.y].type].cfriction);
     }
-    prevy=entity_list[0]->getpos().y;
+    prevy=entity_list[0]->getmomentum().y;
     int mx,my;
     unsigned int mbuttons=SDL_GetMouseState(&mx,&my);
-    extern std::vector<std::vector<block>> world;
      extern    int scrnw,scrnh;
     double  scrnoffx=entity_list[0]->getpos().x-(long long) (entity_list[0]->getpos().x);
     double scrnoffy=round(entity_list[0]->getpos().y)-entity_list[0]->getpos().y;
