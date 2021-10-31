@@ -36,19 +36,19 @@ void ren_tick(){
 double prevy;
 void input_tick(){
     extern std::vector<std::vector<block>> world;
+    vec2 pos=entity_list[0]->getpos();
 
     if(keystate[SDL_SCANCODE_D]){
 
-        entity_list[0]->setmomentum(keystate[SDL_SCANCODE_LSHIFT]?0.3:0.2,0);
+        entity_list[0]->setmomentum(keystate[SDL_SCANCODE_LSHIFT]?0.3*blockreg[world[pos.x][pos.y].type].cfriction:0.2*blockreg[world[pos.x][pos.y].type].cfriction,0);
     }
     if(keystate[SDL_SCANCODE_A]){
-        entity_list[0]->setmomentum(keystate[SDL_SCANCODE_LSHIFT]?-0.3:-0.2,0);
+        entity_list[0]->setmomentum(keystate[SDL_SCANCODE_LSHIFT]?-0.3*blockreg[world[pos.x][pos.y].type].cfriction:-0.2*blockreg[world[pos.x][pos.y].type].cfriction,0);
     }
 
     if(keystate[SDL_SCANCODE_SPACE]){
-        vec2 pos=entity_list[0]->getpos();
         if(entity_list[0]->getonground()||(blockreg[world[pos.x][pos.y].type].bitfield&1<<5))
-            entity_list[0]->setmomentum(0,0.6*blockreg[world[pos.x][pos.y].type].cfriction);
+            entity_list[0]->setmomentum(0,0.8*(blockreg[world[pos.x][pos.y].type].cfriction*0.8));
     }
     prevy=entity_list[0]->getmomentum().y;
     int mx,my;

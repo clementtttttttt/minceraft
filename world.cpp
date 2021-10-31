@@ -101,6 +101,9 @@ void worldrendr(){
                                     (*world_ref2)[absposx][i].type=5;
                                     (*world_ref2)[absposx][i].wassolid=1;
                                     (*world_ref2)[absposx][i].waterfilled=1;
+                                    (*world_ref2)[absposx][i].blockdat2=1;
+                                    (*world_ref2)[absposx][i].blockdat=0;
+
                                     --i;
                                 }
                                 out:;
@@ -108,7 +111,6 @@ void worldrendr(){
 
                             else {
                                     for(long long i=posy;(i>(blockcorner_y-scrnh/64))&&i>0&&((*world_ref2)[absposx][i].type==0);--i){
-                                       // (*world_ref2)[absposx][i].generated=1;
                                         (*world_ref2)[absposx][posy].waterfilled=1;
                                 }
                             }
@@ -166,6 +168,9 @@ void worldtick(){
                             if((*world_ref)[absposx][posy+1].type!=0){
                                 (*world_ref)[absposx][posy].type=2;
                             }
+                            break;
+                        case 5:
+
                             break;
                     }
             }
