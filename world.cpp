@@ -170,7 +170,20 @@ void worldtick(){
                             }
                             break;
                         case 5:
+                            if((*world_ref)[absposx][posy].blockdat2==1){
+                                if((*world_ref)[absposx+1][posy].type==0){
+                                    (*world_ref)[absposx+1][posy].type=5;
+                                    (*world_ref)[absposx+1][posy].blockdat2=0;
+                                    ++(*world_ref)[absposx+1][posy].blockdat;
+                                }
+                            }
+                            else if ((*world_ref)[absposx][posy].blockdat2==0){
+                                    ++(*world_ref)[absposx+1][posy].blockdat;
+                                    if((*world_ref)[absposx+1][posy].blockdat<15){
 
+                                    }
+
+                            }
                             break;
                     }
             }
