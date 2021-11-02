@@ -17,6 +17,7 @@ extern SDL_Rect block_clips[];
 extern SDL_Texture* tex;
 void putblocc(u32 type,u32 x,u32 y,u32 sz=96);
 void blit(SDL_Texture *texture,SDL_Rect* clip,SDL_Rect* dest);
+void putblocc(u32 type,u32 x,u32 y,u32 sz,u32 wlevel);
 SDL_Texture* loadtex(std::string file);
 
 #endif // UTILS_HPP_INCLUDED

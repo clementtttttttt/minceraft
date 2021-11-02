@@ -18,13 +18,13 @@ extern std::vector<entity*> entity_list;
 unsigned char* keystate;
 unsigned long long tickselapsed=0;
 
-
+u8 upmousebutton;
+    SDL_Event e;
 
 int main()
 {
 
     *((u128*)&mainapp)=0;
-    SDL_Event e;
     SDL_Rect a1;
     if(SDL_Init(SDL_INIT_VIDEO))
     {
@@ -64,17 +64,21 @@ int main()
     register_block(2,0,1,0,(SDL_Rect){32,0,16,16},"Dirt",0.85,9.8);
     register_block(3,0,1,0,(SDL_Rect){48,0,16,16},"Stone",0.85,9.8);
     register_block(4,0,1,0,(SDL_Rect){64,0,16,16},"Sand",0.85,9.8);
-    register_block(5,0,0,1,(SDL_Rect) {80,0,16,16},"Water",0.4,1);
+    register_block(5,0,0,1,(SDL_Rect) {80,0,16,16},"Water",0.5,1);
     entity_list.push_back(new player(180,60));
     bool init=false;
     while(1)
     {
         while(SDL_PollEvent(&e))
         {
+            upmousebutton=0;
             switch(e.type)
             {
             case SDL_QUIT:
                 goto quit;
+            case SDL_MOUSEBUTTONUP:
+                upmousebutton=e.button.button;
+            break;
             default:
                 break;
 

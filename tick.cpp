@@ -33,8 +33,11 @@ void ren_tick(){
 
 
 }
+bool canbreak=true;
 double prevy;
+extern SDL_Event e;
 void input_tick(){
+    extern u8 upmousebutton;
     extern std::vector<std::vector<block>> world;
     vec2 pos=entity_list[0]->getpos();
 
@@ -52,16 +55,17 @@ void input_tick(){
     }
     prevy=entity_list[0]->getmomentum().y;
     int mx,my;
+
     unsigned int mbuttons=SDL_GetMouseState(&mx,&my);
      extern    int scrnw,scrnh;
     double  scrnoffx=entity_list[0]->getpos().x-(long long) (entity_list[0]->getpos().x);
     double scrnoffy=round(entity_list[0]->getpos().y)-entity_list[0]->getpos().y;
     double blockcorner_x=(entity_list[0]->getpos().x)-(scrnw/2/64)+scrnoffx;
     double blockcorner_y=(entity_list[0]->getpos().y)-(scrnh/2/64)+1+scrnoffy;
-
-    if(mbuttons&SDL_BUTTON_LMASK){
+    if((mbuttons&SDL_BUTTON_LMASK)&&canbreak==true&&world[(blockcorner_x+(mx)/64-(scrnw%64)/64)][(blockcorner_y+(scrnh-my)/64-(scrnh%64)/64)].type!=5){
         world[(blockcorner_x+(mx)/64-(scrnw%64)/64)][(blockcorner_y+(scrnh-my)/64-(scrnh%64)/64)].type=0;
     }
+
 
 }
 int world_time=8000; //23:59==23999

@@ -4,7 +4,7 @@
 #include <vector>
 struct block{
     unsigned char type;
-    unsigned char blockdat; //water: howmanyblocksflowed
+    char blockdat; //water: howmanyblocksflowed
     unsigned char blockdat2; //water: iswatersrc
     unsigned char wassolid:1;
     unsigned char generated:1;

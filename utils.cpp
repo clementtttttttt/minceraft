@@ -39,4 +39,19 @@ void blit(SDL_Texture *texture,SDL_Rect* clip,SDL_Rect* dest)
 void putblocc(u32 type,u32 x,u32 y,u32 sz){
     SDL_Rect rec{(int)x,(int)y,(int)sz,(int)sz};
     blit(tex,&blockreg[type].tex,&rec);
+
+
+
 }
+
+#pragma push
+#pragma GCC diagnostic ignored "-Wnarrowing"
+void putblocc(u32 type,u32 x,u32 y,u32 sz,u32 wlevel){
+    SDL_Rect rec{(int)x,(int)y+((float)sz*(1-(float)wlevel/16.0f)),(int)sz,(int) ((float)sz*((float)wlevel/16.0f))};
+    SDL_Rect texrec{(int)blockreg[type].tex.x,(int)blockreg[type].tex.y,(int)blockreg[type].tex.w,(int)blockreg[type].tex.w};
+    blit(tex,&texrec,&rec);
+
+
+
+}
+#pragma pop

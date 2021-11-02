@@ -102,7 +102,7 @@ void worldrendr(){
                                     (*world_ref2)[absposx][i].wassolid=1;
                                     (*world_ref2)[absposx][i].waterfilled=1;
                                     (*world_ref2)[absposx][i].blockdat2=1;
-                                    (*world_ref2)[absposx][i].blockdat=0;
+                                    (*world_ref2)[absposx][i].blockdat=16;
 
                                     --i;
                                 }
@@ -123,16 +123,19 @@ void worldrendr(){
                     SDL_SetTextureColorMod(tex,c,c,c);
 
                     SDL_SetRenderDrawBlendMode(mainapp.renderer, SDL_BLENDMODE_ADD);
-
-                    putblocc((*world_ref2)[absposx][posy].type,x*64-(scrnoffx*64),scrnh-(y*64+scrnoffy*64),64);
-
+                    if((*world_ref2)[absposx][posy].type!=5)
+                        putblocc((*world_ref2)[absposx][posy].type,x*64-(scrnoffx*64),scrnh-(y*64+scrnoffy*64),64);
+                    else{
+                        putblocc((*world_ref2)[absposx][posy].type,x*64-(scrnoffx*64),scrnh-(y*64+scrnoffy*64),64,(((*world_ref2)[absposx][posy+1].type!=5?(*world_ref2)[absposx][posy].blockdat:16)));
+                    }
             }
 
             else putblocc(7,(x*64-scrnoffx*64),scrnh-(y*64+scrnoffy*64),64);
 
 
 
-        }else  putblocc(7,(x*64-scrnoffx*64),scrnh-(y*64+scrnoffy*64),64);
+        }
+        else  putblocc(7,(x*64-scrnoffx*64),scrnh-(y*64+scrnoffy*64),64);
         }
     }
                     compute_shade(blockcorner_x,blockcorner_y,entity_list[0]->getpos());
@@ -140,12 +143,14 @@ void worldrendr(){
 }
 std::vector<aabb> block_coll;
 void worldtick(){
+
     block_coll.clear();
     long long blockcorner_x=entity_list[0]->getpos().x-(scrnw/2/64);
     long long blockcorner_y=entity_list[0]->getpos().y-(scrnh/2/64)-1;
 
     for(long long x=-10;x<=(scrnw/64)+10;++x){
         for(long long y=0;y<=(scrnh/64)+10;++y){
+
             long long posx=blockcorner_x+x;
 
             long long posy=blockcorner_y+y;
@@ -158,6 +163,7 @@ void worldtick(){
                     if((blockreg[(*world_ref)[absposx][posy].type].bitfield&0b1000000)){
                         block_coll.push_back(aabb(posx,posy,absposx+1,posy+1));
                     }
+
                     switch((*world_ref)[absposx][posy].type){
                         case 2:
                             if((*world_ref)[absposx][posy+1].type==0){
@@ -170,20 +176,45 @@ void worldtick(){
                             }
                             break;
                         case 5:
-                            if((*world_ref)[absposx][posy].blockdat2==1){
-                                if((*world_ref)[absposx+1][posy].type==0){
-                                    (*world_ref)[absposx+1][posy].type=5;
-                                    (*world_ref)[absposx+1][posy].blockdat2=0;
-                                    ++(*world_ref)[absposx+1][posy].blockdat;
+                                if((*world_ref)[absposx][posy].blockdat==0){
+                                    (*world_ref)[absposx][posy].type=0;
+                                    (*world_ref)[absposx][posy].blockdat=0;
+
                                 }
-                            }
-                            else if ((*world_ref)[absposx][posy].blockdat2==0){
-                                    ++(*world_ref)[absposx+1][posy].blockdat;
-                                    if((*world_ref)[absposx+1][posy].blockdat<15){
+                                else{
+                                    if((*world_ref)[absposx][posy-1].type==0){
+                                        (*world_ref)[absposx][posy-1].type=5;
+                                        (*world_ref)[absposx][posy-1].blockdat=0;
+                                    }
+                                    if((*world_ref)[absposx][posy-1].type==5&&(*world_ref)[absposx][posy-1].blockdat!=16&&(*world_ref)[absposx][posy-1].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>0){
+                                            (*world_ref)[absposx][posy-1].blockdat+=1;
+                                            (*world_ref)[absposx][posy].blockdat-=1;
 
                                     }
+                                    else{
+                                        if((*world_ref)[absposx+1][posy].type==0){
+                                            (*world_ref)[absposx+1][posy].type=5;
+                                            (*world_ref)[absposx+1][posy].blockdat=0;
+                                        }
+                                        if((*world_ref)[absposx-1][posy].type==0){
+                                            (*world_ref)[absposx-1][posy].type=5;
+                                            (*world_ref)[absposx-1][posy].blockdat=0;
+                                        }
+                                        if((*world_ref)[absposx-1][posy].type==5&&(*world_ref)[absposx-1][posy].blockdat!=16&&(*world_ref)[absposx-1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>0){
+                                            (*world_ref)[absposx-1][posy].blockdat+=1;
+                                            (*world_ref)[absposx][posy].blockdat-=1;
 
-                            }
+                                        }
+                                        if((*world_ref)[absposx+1][posy].type==5&&(*world_ref)[absposx+1][posy].blockdat!=16&&(*world_ref)[absposx+1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>0){
+                                            (*world_ref)[absposx+1][posy].blockdat+=1;
+                                            (*world_ref)[absposx][posy].blockdat-=1;
+
+                                        }
+                                    }
+                                }
+
+
+
                             break;
                     }
             }

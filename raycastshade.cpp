@@ -249,7 +249,7 @@ pthread_t rtxthreado;
 double globx,globlsundeg;
 void* rtxthread(void* unused){
 
-    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=0.005){
+    for(double x=((globx+(14+(scrnw/64))/2));x<((globx+14+(scrnw/64)));x+=0.01){
                 compute_ray(x,tmpy+0.5,globlsundeg,15,0);
 
     }
@@ -280,7 +280,7 @@ void compute_shade(long long bx,long long by,struct vec2 p_pos){
     }
     pthread_create(&rtxthreado,NULL,rtxthread,NULL);
 
-    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=0.005){
+    for(double x=bx-14-(scrnw/64)+0.5;x<(bx+(14+(scrnw/64))/2);x+=0.01){
                 compute_ray(x,tmpy+0.5,sun_deg,15,0);
 
     }
