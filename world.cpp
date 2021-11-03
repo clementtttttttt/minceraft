@@ -200,12 +200,12 @@ void worldtick(){
                                             (*world_ref)[absposx-1][posy].type=5;
                                             (*world_ref)[absposx-1][posy].blockdat=0;
                                         }
-                                        if((*world_ref)[absposx-1][posy].generated&&((*world_ref)[absposx-1][posy].blockdat<(*world_ref)[absposx][posy].blockdat)&&(*world_ref)[absposx-1][posy].type==5&&(*world_ref)[absposx-1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>1){
+                                        if((*world_ref)[absposx-1][posy].generated&&((*world_ref)[absposx-1][posy].blockdat<(*world_ref)[absposx][posy].blockdat)&&(*world_ref)[absposx-1][posy].type==5&&(*world_ref)[absposx-1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>0){
                                             (*world_ref)[absposx-1][posy].blockdat+=1;
                                             (*world_ref)[absposx][posy].blockdat-=1;
 
                                         }
-                                        if((*world_ref)[absposx+1][posy].generated&&((*world_ref)[absposx+1][posy].blockdat<(*world_ref)[absposx][posy].blockdat)&&(*world_ref)[absposx+1][posy].type==5&&(*world_ref)[absposx+1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>1){
+                                        if((*world_ref)[absposx+1][posy].generated&&((*world_ref)[absposx+1][posy].blockdat<(*world_ref)[absposx][posy].blockdat)&&(*world_ref)[absposx+1][posy].type==5&&(*world_ref)[absposx+1][posy].blockdat!=16&&(*world_ref)[absposx][posy].blockdat>0){
                                             (*world_ref)[absposx+1][posy].blockdat+=1;
                                             (*world_ref)[absposx][posy].blockdat-=1;
 

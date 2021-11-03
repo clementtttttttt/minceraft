@@ -59,12 +59,12 @@ int main()
     {96,16,16,16},
     {240,240,16,16}
     };
-    register_block(0,0,0,0,(SDL_Rect){0,0,16,16},"Air",0.85,9.8);
-    register_block(1,0,1,0,(SDL_Rect){16,0,16,16},"Grass",0.85,9.8);
-    register_block(2,0,1,0,(SDL_Rect){32,0,16,16},"Dirt",0.85,9.8);
-    register_block(3,0,1,0,(SDL_Rect){48,0,16,16},"Stone",0.85,9.8);
-    register_block(4,0,1,0,(SDL_Rect){64,0,16,16},"Sand",0.85,9.8);
-    register_block(5,0,0,1,(SDL_Rect) {80,0,16,16},"Water",0.5,1);
+    register_block(0,0,0,0,(SDL_Rect){0,0,16,16},"Air",0.85,9.8,1);
+    register_block(1,0,1,0,(SDL_Rect){16,0,16,16},"Grass",0.85,9.8,1);
+    register_block(2,0,1,0,(SDL_Rect){32,0,16,16},"Dirt",0.85,9.8,1);
+    register_block(3,0,1,0,(SDL_Rect){48,0,16,16},"Stone",0.85,9.8,1);
+    register_block(4,0,1,0,(SDL_Rect){64,0,16,16},"Sand",0.85,9.8,1);
+    register_block(5,0,0,1,(SDL_Rect) {80,0,16,16},"Water",0.5,1,1.33333333);
     entity_list.push_back(new player(180,60));
     bool init=false;
     while(1)
