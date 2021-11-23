@@ -43,4 +43,15 @@ void putblocc(u32 type, u32 x, u32 y, u32 sz, u32 wlevel) {
                   (int)blockreg[type].tex.w, (int)blockreg[type].tex.w};
   blit(tex, &texrec, &rec);
 }
+void putfont(char in,u32 x,u32 y){
+    SDL_Rect rec{(int) x,(int) y,(int)32,(int)64};
+    int xindex,yindex;
+    if(in>='A'&&in<='Z'){
+        xindex=((in-'A')%12)*8;
+        yindex=((in-'A')>=12)?16:0;
+    }
+    SDL_Rect texrec{(int) xindex,(int) yindex,(int)8,(int)16};
+      blit(font, &texrec, &rec);
+
+}
 #pragma pop

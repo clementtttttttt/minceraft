@@ -18,6 +18,8 @@ void ren_tick() {
 
     worldrendr();
     entity_rentick();
+  putfont('A',70,70);
+
     SDL_RenderPresent(mainapp.renderer);
   }
   ++tickselapsed;
