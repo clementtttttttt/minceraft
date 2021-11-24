@@ -20,4 +20,16 @@ typedef struct{
     SDL_Window *window;
 
 } app;
+class vec2{
+    public:
+        double x,y;
+
+    vec2(double x,double y){
+        this->x=x;
+        this->y=y;
+    }
+    vec2(){
+
+    }
+};
 #endif // TYPES_HPP_INCLUDED

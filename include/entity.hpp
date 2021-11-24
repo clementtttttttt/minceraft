@@ -2,21 +2,11 @@
 #include <vector>
 #include  <aabb.hpp>
 #include <iostream>
+#include <types.hpp>
 #ifndef ENTITY_HPP_INCLUDED
 #define ENTITY_HPP_INCLUDED
 
-class vec2{
-    public:
-        double x,y;
 
-    vec2(double x,double y){
-        this->x=x;
-        this->y=y;
-    }
-    vec2(){
-
-    }
-};
 
 class entity{
     public:

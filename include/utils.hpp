@@ -19,6 +19,7 @@ void putblocc(u32 type,u32 x,u32 y,u32 sz=96);
 void blit(SDL_Texture *texture,SDL_Rect* clip,SDL_Rect* dest);
 void putblocc(u32 type,u32 x,u32 y,u32 sz,u32 wlevel);
 void putfont(char in,u32 x,u32 y);
+void prints(u32 x,u32 y,const char* format, ...);
 SDL_Texture* loadtex(std::string file);
 
 #endif // UTILS_HPP_INCLUDED

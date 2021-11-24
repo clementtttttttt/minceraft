@@ -12,13 +12,14 @@ extern unsigned char *keystate;
 extern unsigned long long tickselapsed;
 char mousebuttonstate[2]; // 0 is mleftbutton, 1 is mrightbutton
 char frameskip_toggle = 1;
+bool gamerunning=false;
 void ren_tick() {
   timer_start if (frameskip_toggle) {
     SDL_RenderClear(mainapp.renderer);
-
-    worldrendr();
-    entity_rentick();
-  putfont('A',70,70);
+    if(gamerunning){
+        worldrendr();
+        entity_rentick();
+    }
 
     SDL_RenderPresent(mainapp.renderer);
   }
@@ -34,6 +35,7 @@ bool canbreak = true;
 double prevy;
 extern SDL_Event e;
 void input_tick() {
+  if(gamerunning){
   extern u8 upmousebutton;
   extern std::vector<std::vector<block>> world;
   vec2 pos = entity_list[0]->getpos();
@@ -81,6 +83,7 @@ void input_tick() {
          [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)]
              .type = 0;
   }
+  }
 }
 int world_time = 8000; // 23:59==23999
 bool wt_toggle = false;
@@ -92,10 +95,12 @@ void *game_thread(void *unused) {
     } else
       world_time = 0;
     keystate = (unsigned char *)SDL_GetKeyboardState(NULL);
-    worldtick();
+    if(gamerunning){
+        worldtick();
+        entity_tick();
+    }
     input_tick();
 
-    entity_tick();
     SDL_Delay(25);
     wt_toggle = !wt_toggle;
   }

@@ -4,6 +4,7 @@
 #include <string>
 #include <types.hpp>
 #include <utils.hpp>
+#include <stdarg.h>
 
 extern app mainapp;
 
@@ -43,15 +44,55 @@ void putblocc(u32 type, u32 x, u32 y, u32 sz, u32 wlevel) {
                   (int)blockreg[type].tex.w, (int)blockreg[type].tex.w};
   blit(tex, &texrec, &rec);
 }
+
+
 void putfont(char in,u32 x,u32 y){
+    if(in=='p'||in=='q'||in=='g'){
+          y+=28;
+    }
     SDL_Rect rec{(int) x,(int) y,(int)32,(int)64};
+
     int xindex,yindex;
     if(in>='A'&&in<='Z'){
         xindex=((in-'A')%12)*8;
-        yindex=((in-'A')>=12)?16:0;
+        yindex=((in-'A')/12)*16;
+    }
+    if(in>='a'&&in<='z'){
+        in;
+        xindex=((in-'a'+2)%12)*8;
+        yindex=((in-'a'+2)/12+2)*16;
+
+    }
+    if(in>='0'&&in<='9'){
+        in;
+        xindex=((in-'0'+4)%12)*8;
+        yindex=((in-'0'+4)/12+4)*16;
     }
     SDL_Rect texrec{(int) xindex,(int) yindex,(int)8,(int)16};
+    if(in!=' '&&in!='\n')
       blit(font, &texrec, &rec);
+
+}
+
+void prints(u32 x,u32 y,const char* format, ...){
+  char buf[1024];
+  va_list args;
+  va_start (args, format);
+  vsprintf(buf,format,args);
+  char* s=&buf[0];
+  u32 c=0,yc=0;
+  while(*s){
+
+    putfont(*s,x+c*32+c*4,y+yc*64);
+    if(*s=='\n'){
+        c=0;
+        ++yc;
+    }else{
+        ++c;
+    }
+    ++s;
+  }
+    va_end(args);
 
 }
 #pragma pop
