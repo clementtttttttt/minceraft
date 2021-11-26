@@ -57,11 +57,18 @@
 		</Linker>
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
+		<Unit filename="gui/elements/label.cpp" />
+		<Unit filename="gui/gui.cpp" />
+		<Unit filename="gui/title.cpp" />
 		<Unit filename="include/aabb.hpp" />
 		<Unit filename="include/blocks.hpp" />
 		<Unit filename="include/entity.hpp" />
 		<Unit filename="include/entity/player.hpp" />
 		<Unit filename="include/fastnoise.hpp" />
+		<Unit filename="include/gui/elements/label.hpp" />
+		<Unit filename="include/gui/gui.hpp" />
+		<Unit filename="include/gui/guielement.hpp" />
+		<Unit filename="include/gui/title.hpp" />
 		<Unit filename="include/raycastshade.hpp" />
 		<Unit filename="include/tick.hpp" />
 		<Unit filename="include/types.hpp" />

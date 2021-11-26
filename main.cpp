@@ -10,8 +10,7 @@
 #include <types.hpp>
 #include <utils.hpp>
 SDL_Texture *tex, *mob, *font;
-#define screensz_x 1024
-#define screensz_y 640
+
 app mainapp;
 pthread_t gamethread;
 extern std::vector<entity *> entity_list;

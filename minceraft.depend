@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1637670257 source:/home/clement/Desktop/minceraft/main.cpp
+1637941071 source:/home/clement/Desktop/minceraft/main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<blocks.hpp>
@@ -395,7 +395,7 @@
 	<utils.hpp>
 	<stdarg.h>
 
-1637741747 /home/clement/Desktop/minceraft/include/utils.hpp
+1637941101 /home/clement/Desktop/minceraft/include/utils.hpp
 	<SDL.h>
 	<string>
 	<types.hpp>
@@ -417,7 +417,7 @@
 
 1615783840 /home/clement/Desktop/minceraft/include/tick.hpp
 
-1637759628 source:/home/clement/Desktop/minceraft/tick.cpp
+1637917358 source:/home/clement/Desktop/minceraft/tick.cpp
 	<SDL.h>
 	<blocks.hpp>
 	<chrono>
@@ -427,6 +427,7 @@
 	<types.hpp>
 	<utils.hpp>
 	<world.hpp>
+	<gui/gui.hpp>
 
 1637753332 /home/clement/Desktop/minceraft/include/entity.hpp
 	<string>
@@ -495,19 +496,36 @@
 1633186510 /home/clement/Desktop/minceraft/include/raycastshade.hpp
 	"entity.hpp"
 
-1637755890 source:/home/clement/Desktop/minceraft/gui/elements/label.cpp
+1637940864 source:/home/clement/Desktop/minceraft/gui/elements/label.cpp
 	<utils.hpp>
-	<gui/label.hpp>
+	"gui/elements/label.hpp"
 
 1637751214 source:/home/clement/Desktop/minceraft/gui/elements/guielement.cpp
 	"gui/guielement.hpp"
 
-1637755484 /home/clement/Desktop/minceraft/include/gui/guielement.hpp
+1637940094 /home/clement/Desktop/minceraft/include/gui/guielement.hpp
 	<types.hpp>
 
 1637758219 /home/clement/Desktop/minceraft/include/gui/label.hpp
 	<gui/guielement.hpp>
 	<vector>
 
-1637759566 source:/home/clement/Desktop/minceraft/gui/gui.cpp
+1637940837 source:/home/clement/Desktop/minceraft/gui/gui.cpp
+	"gui/gui.hpp"
+	"gui/title.hpp"
+	<iostream>
+
+1637917316 /home/clement/Desktop/minceraft/include/gui/gui.hpp
+
+1637940882 /home/clement/Desktop/minceraft/include/gui/elements/label.hpp
+	<gui/guielement.hpp>
+	<vector>
+
+1637941477 source:/home/clement/Desktop/minceraft/gui/title.cpp
+	<gui/title.hpp>
+	<gui/elements/label.hpp>
+	<utils.hpp>
+
+1637940082 /home/clement/Desktop/minceraft/include/gui/title.hpp
+	"gui/guielement.hpp"
 

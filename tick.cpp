@@ -7,6 +7,7 @@
 #include <types.hpp>
 #include <utils.hpp>
 #include <world.hpp>
+#include <gui/gui.hpp>
 extern app mainapp;
 extern unsigned char *keystate;
 extern unsigned long long tickselapsed;
@@ -20,6 +21,7 @@ void ren_tick() {
         worldrendr();
         entity_rentick();
     }
+    guitick();
 
     SDL_RenderPresent(mainapp.renderer);
   }
