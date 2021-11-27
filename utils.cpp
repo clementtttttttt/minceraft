@@ -46,12 +46,11 @@ void putblocc(u32 type, u32 x, u32 y, u32 sz, u32 wlevel) {
 }
 
 
-void putfont(char in,u32 x,u32 y){
-    if(in=='p'||in=='q'||in=='g'){
-          y+=28;
+void putfont(char in,u32 x,u32 y,float xscale,float yscale){
+    if(in=='p'||in=='q'||in=='g'||in=='y'){
+          y+=28*0.6;
     }
-    SDL_Rect rec{(int) x,(int) y,(int)32,(int)64};
-
+    SDL_Rect rec{(int) x,(int) y,(int)((float)32*xscale),(int)((float)64*yscale)};
     int xindex,yindex;
     if(in>='A'&&in<='Z'){
         xindex=((in-'A')%12)*8;
@@ -74,6 +73,28 @@ void putfont(char in,u32 x,u32 y){
 
 }
 
+void prints(u32 x,u32 y,float xscale,float yscale,const char* format, ...){
+  char buf[1024];
+  va_list args;
+  va_start (args, format);
+  vsprintf(buf,format,args);
+  char* s=&buf[0];
+  u32 c=0,yc=0;
+  while(*s){
+
+    putfont(*s,x+c*(32*xscale)+c*4,y+yc*(yscale*64),xscale,yscale);
+    if(*s=='\n'){
+        c=0;
+        ++yc;
+    }else{
+        ++c;
+    }
+    ++s;
+  }
+    va_end(args);
+
+}
+
 void prints(u32 x,u32 y,const char* format, ...){
   char buf[1024];
   va_list args;
@@ -83,7 +104,7 @@ void prints(u32 x,u32 y,const char* format, ...){
   u32 c=0,yc=0;
   while(*s){
 
-    putfont(*s,x+c*32+c*4,y+yc*64);
+    putfont(*s,x+c*32+c*4,y+yc*64,1,1);
     if(*s=='\n'){
         c=0;
         ++yc;

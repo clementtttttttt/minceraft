@@ -71,6 +71,7 @@
 		<Unit filename="include/gui/title.hpp" />
 		<Unit filename="include/raycastshade.hpp" />
 		<Unit filename="include/tick.hpp" />
+		<Unit filename="include/tinyfiledialogs.h" />
 		<Unit filename="include/types.hpp" />
 		<Unit filename="include/utils.hpp" />
 		<Unit filename="include/world.hpp" />
@@ -79,6 +80,9 @@
 		<Unit filename="raycastshade.cpp" />
 		<Unit filename="src/aabb.cpp" />
 		<Unit filename="tick.cpp" />
+		<Unit filename="tinyfiledialogs.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="utils.cpp" />
 		<Unit filename="world.cpp" />
 		<Extensions />
