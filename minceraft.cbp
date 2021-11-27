@@ -45,6 +45,9 @@
 				<Linker>
 					<Add option="-s" />
 				</Linker>
+				<ExtraCommands>
+					<Add before='echo &quot;const char *gitversion =  `git rev-parse HEAD`;&quot; &gt; rev.c' />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
@@ -58,6 +61,7 @@
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
 		<Unit filename="gui/elements/button.cpp" />
+		<Unit filename="gui/elements/image.cpp" />
 		<Unit filename="gui/elements/label.cpp" />
 		<Unit filename="gui/gui.cpp" />
 		<Unit filename="gui/ingame.cpp" />
@@ -68,6 +72,7 @@
 		<Unit filename="include/entity/player.hpp" />
 		<Unit filename="include/fastnoise.hpp" />
 		<Unit filename="include/gui/elements/button.hpp" />
+		<Unit filename="include/gui/elements/image.hpp" />
 		<Unit filename="include/gui/elements/label.hpp" />
 		<Unit filename="include/gui/gui.hpp" />
 		<Unit filename="include/gui/guielement.hpp" />

@@ -32,4 +32,6 @@ class vec2{
 
     }
 };
+
+
 #endif // TYPES_HPP_INCLUDED

@@ -68,8 +68,10 @@ void player::rentick() {
   center.h = player_tex[0].h * 4;
   int w, h;
   SDL_GetRendererOutputSize(mainapp.renderer, &w, &h);
-  center.x = (entity_list[0]->getpos().x - blockcorner_x) * 64;
-  center.y = (entity_list[0]->getpos().y - blockcorner_y) * 64 + (scrnh % 64);
+  //            putblocc((*world_ref2)[absposx][posy].type,x * 64 - (scrnoffx * 64), scrnh - (y * 64 + scrnoffy * 64),64);
+  center.x = (entity_list[0]->getpos().x - blockcorner_x) * 64 ;
+  center.y = (entity_list[0]->getpos().y - blockcorner_y) * 64 + (scrnh%128);
+  //center.y=scrnh/2-(scrnh/2%64);
   if (this->xmomentum > 0.009) {
     if (tickselapsed % (long long)(10 - abs(xmomentum * 30) + 2) == 0) {
       if (anim_count > 3) {

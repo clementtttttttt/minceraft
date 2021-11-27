@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1637941071 source:/home/clement/Desktop/minceraft/main.cpp
+1638023570 source:/home/clement/Desktop/minceraft/main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<blocks.hpp>
@@ -383,7 +383,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1637753316 /home/clement/Desktop/minceraft/include/types.hpp
+1638019708 /home/clement/Desktop/minceraft/include/types.hpp
 	<SDL.h>
 
 1638013161 source:/home/clement/Desktop/minceraft/utils.cpp
@@ -395,7 +395,7 @@
 	<utils.hpp>
 	<stdarg.h>
 
-1638012822 /home/clement/Desktop/minceraft/include/utils.hpp
+1638028118 /home/clement/Desktop/minceraft/include/utils.hpp
 	<SDL.h>
 	<string>
 	<types.hpp>
@@ -446,7 +446,7 @@
 
 1615966228 /home/clement/Desktop/minceraft/include/api.hpp
 
-1636008237 source:/home/clement/Desktop/minceraft/player.cpp
+1638028092 source:/home/clement/Desktop/minceraft/player.cpp
 	"aabb.hpp"
 	<blocks.hpp>
 	<entity.hpp>
@@ -460,7 +460,7 @@
 
 1615993508 /home/clement/Desktop/minceraft/include/worldrendr.hpp
 
-1636008237 source:/home/clement/Desktop/minceraft/world.cpp
+1638023942 source:/home/clement/Desktop/minceraft/world.cpp
 	"fastnoise.hpp"
 	"raycastshade.hpp"
 	<blocks.hpp>
@@ -522,13 +522,15 @@
 	<gui/guielement.hpp>
 	<vector>
 
-1638017286 source:/home/clement/Desktop/minceraft/gui/title.cpp
+1638023751 source:/home/clement/Desktop/minceraft/gui/title.cpp
 	<gui/title.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
+	<gui/elements/image.hpp>
 	<utils.hpp>
 	<iostream>
 	<gui/gui.hpp>
+	<tinyfiledialogs.h>
 
 1637940082 /home/clement/Desktop/minceraft/include/gui/title.hpp
 	"gui/guielement.hpp"
@@ -559,7 +561,7 @@
 	<iostream>
 	"gui/elements/button.hpp"
 
-1638016287 /home/clement/Desktop/minceraft/include/gui/elements/button.hpp
+1638020184 /home/clement/Desktop/minceraft/include/gui/elements/button.hpp
 	<gui/guielement.hpp>
 	<vector>
 
@@ -572,4 +574,12 @@
 
 1638017151 /home/clement/Desktop/minceraft/include/gui/ingame.hpp
 	"gui/guielement.hpp"
+
+1638023776 source:/home/clement/Desktop/minceraft/gui/elements/image.cpp
+	<utils.hpp>
+	"gui/elements/image.hpp"
+
+1638023693 /home/clement/Desktop/minceraft/include/gui/elements/image.hpp
+	<gui/guielement.hpp>
+	<vector>
 
