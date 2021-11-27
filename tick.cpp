@@ -16,12 +16,15 @@ char frameskip_toggle = 1;
 bool render_gamerunning=false;
 bool gamerunning=false;
 
+
+
 void ren_tick() {
   timer_start if (frameskip_toggle) {
     SDL_RenderClear(mainapp.renderer);
     if(render_gamerunning){
         worldrendr();
         entity_rentick();
+        gamerunning=true;
     }
     guitick();
 
@@ -93,10 +96,7 @@ int world_time = 8000; // 23:59==23999
 bool wt_toggle = false;
 void *game_thread(void *unused) {
   while (1) {
-    if(render_gamerunning){
-        gamerunning=true;
-    }
-    else gamerunning=false;
+
     if ((world_time < 24000)) {
       if (wt_toggle == true)
         world_time += 1;
