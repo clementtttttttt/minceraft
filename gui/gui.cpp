@@ -1,17 +1,27 @@
 #include "gui/gui.hpp"
 #include "gui/title.hpp"
+#include "gui/ingame.hpp"
+
 #include <iostream>
 guielement* (*gamegui[])[]={
-    &title
+    &title,&ingame
 };
 
+extern bool render_gamerunning;
 extern bool gamerunning;
 
+
 void togglegame(){
-    gamerunning=!gamerunning;
+   render_gamerunning=!render_gamerunning;
+
 }
 
+
 int currentguiidx=0;//title screen
+
+void changegui(int in){
+    currentguiidx=in;
+}
 
 void guitick(){
     int i=0;
