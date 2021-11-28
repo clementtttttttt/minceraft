@@ -56,7 +56,7 @@
 			<Add option="-lpng -lSDL2_image -lSDL2" />
 		</Linker>
 		<ExtraCommands>
-			<Add before='generate-gitrev' />
+			<Add before="./generate-gitrev" />
 		</ExtraCommands>
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
@@ -87,6 +87,9 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="player.cpp" />
 		<Unit filename="raycastshade.cpp" />
+		<Unit filename="rev.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/aabb.cpp" />
 		<Unit filename="tick.cpp" />
 		<Unit filename="tinyfiledialogs.c">
