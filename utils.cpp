@@ -82,7 +82,7 @@ void prints(u32 x,u32 y,float xscale,float yscale,const char* format, ...){
   u32 c=0,yc=0;
   while(*s){
 
-    putfont(*s,x+c*(32*xscale)+c*4,y+yc*(yscale*64),xscale,yscale);
+    putfont(*s,x+c*(32*xscale)+c*4*xscale,y+yc*(yscale*64),xscale,yscale);
     if(*s=='\n'){
         c=0;
         ++yc;
