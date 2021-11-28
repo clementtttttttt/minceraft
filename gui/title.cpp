@@ -27,7 +27,7 @@ label title_minceraft("Minceraft",screensz_x/2-(144)-(18),calctoppos(60));
 button play_button("Play",calccentrepos(4),calctoppos(200),32*4,64,playbuttonhandler);
 image background("guitex/title_background.png",0,0,screensz_x,screensz_y,128,72);
 char gitrevstr[77]="git rev ";
-label commitver(strcat(gitrevstr,gitversion),5,screensz_y-24,0.25,0.25);
+label commitver(strcat(gitrevstr,gitversion),5,screensz_y-24,0.25,0.25,255,255,255);
 
 guielement* title[]={
     &background,&title_minceraft,&play_button,&commitver,(guielement*) 0

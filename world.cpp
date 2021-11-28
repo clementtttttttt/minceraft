@@ -133,7 +133,6 @@ void worldrendr() {
           }
           SDL_SetTextureColorMod(tex, c, c, c);
 
-          SDL_SetRenderDrawBlendMode(mainapp.renderer, SDL_BLENDMODE_ADD);
           if ((*world_ref2)[absposx][posy].type != 5)
             putblocc((*world_ref2)[absposx][posy].type,
                      x * 64 - (scrnoffx * 64), scrnh - (y * 64 + scrnoffy * 64),
