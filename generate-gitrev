@@ -1,0 +1,1 @@
+echo "const char *gitversion =  \"`git rev-parse HEAD`\";" > rev.c
