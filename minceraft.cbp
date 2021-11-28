@@ -45,9 +45,6 @@
 				<Linker>
 					<Add option="-s" />
 				</Linker>
-				<ExtraCommands>
-					<Add before='echo &quot;const char *gitversion =  `git rev-parse HEAD`;&quot; &gt; rev.c' />
-				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
@@ -58,6 +55,9 @@
 			<Add option="-lpthread" />
 			<Add option="-lpng -lSDL2_image -lSDL2" />
 		</Linker>
+		<ExtraCommands>
+			<Add before='generate-gitrev' />
+		</ExtraCommands>
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
 		<Unit filename="gui/elements/button.cpp" />

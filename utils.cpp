@@ -48,7 +48,7 @@ void putblocc(u32 type, u32 x, u32 y, u32 sz, u32 wlevel) {
 
 void putfont(char in,u32 x,u32 y,float xscale,float yscale){
     if(in=='p'||in=='q'||in=='g'||in=='y'){
-          y+=28*0.6;
+          y+=28*yscale;
     }
     SDL_Rect rec{(int) x,(int) y,(int)((float)32*xscale),(int)((float)64*yscale)};
     int xindex,yindex;

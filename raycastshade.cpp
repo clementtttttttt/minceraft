@@ -65,7 +65,21 @@ asm(
         fstpl asmtmp2(%rip)
         leaq asmtmp(%rip), %rax
         ret
+    fastsin:
+        movq %xmm0,asmtmp(%rip)
+        fldl asmtmp(%rip)
+        fsin
+        fstpl asmtmp(%rip)
+        leaq asmtmp(%rip), %rax
+        ret
 
+    fastasin:
+        movq %xmm0,asmtmp(%rip)
+        fldl asmtmp(%rip)
+        fsin
+        fstpl asmtmp(%rip)
+        leaq asmtmp(%rip), %rax
+        ret
     )");
 
 double refangcalc(double iidx, double ridx, double ai) {
