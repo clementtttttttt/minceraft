@@ -21,14 +21,16 @@ bool gamerunning=false;
 void ren_tick() {
   timer_start if (frameskip_toggle) {
     SDL_RenderClear(mainapp.renderer);
+
     if(render_gamerunning){
         worldrendr();
         entity_rentick();
-        gamerunning=true;
     }
     guitick();
 
     SDL_RenderPresent(mainapp.renderer);
+    if(render_gamerunning)         gamerunning=true;
+
   }
   ++tickselapsed;
   timer_stop if ((timer_val / 1000) <= 17) {
@@ -37,6 +39,7 @@ void ren_tick() {
     frameskip_toggle = 1;
   }
   else if ((timer_val / 1000) <= 34) frameskip_toggle = !frameskip_toggle;
+
 }
 bool canbreak = true;
 double prevy;

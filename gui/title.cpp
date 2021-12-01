@@ -18,14 +18,15 @@ void playbuttonhandler(){
     if(path==0){
         tinyfd_messageBox("Warning","You will need to specify the location in which your world would be saved with the save world option in the pause menu, or else it will be saved as lastworld.minceworld!","ok","warning",1);
     }
-    changegui(1);
     togglegame();
+    changegui(1);
+
 
 }
 
 label title_minceraft("Minceraft",screensz_x/2-(144)-(18),calctoppos(60));
 button play_button("Play",calccentrepos(4),calctoppos(200),32*4,64,playbuttonhandler);
-image background("guitex/title_background.png",0,0,screensz_x,screensz_y,128,72);
+image background("guitex/title_background.png",0,0,screensz_x,screensz_y,128,72,255);
 char gitrevstr[77]="git rev ";
 label commitver(strcat(gitrevstr,gitversion),5,screensz_y-24,0.25,0.25,255,255,255);
 

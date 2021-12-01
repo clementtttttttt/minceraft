@@ -9,11 +9,12 @@ guielement* (*gamegui[])[]={
 
 extern bool render_gamerunning;
 extern bool gamerunning;
+bool guiidxchanged=false;
 
 
 void togglegame(){
    render_gamerunning=!render_gamerunning;
-
+    guiidxchanged=true;
 }
 
 
@@ -22,12 +23,16 @@ int currentguiidx=0;//title screen
 void changegui(int in){
     currentguiidx=in;
 }
-
+int i;
 void guitick(){
-    int i=0;
-    while((*gamegui[currentguiidx])[i]!=0){
+     i=0;
+    while((*gamegui[currentguiidx])[i]!=0&&!guiidxchanged){
+
+        std::cout << i << " "<< (*gamegui[currentguiidx])[i]<<std::endl;
         (*gamegui[currentguiidx])[i]->tick();
         ++i;
     }
+    guiidxchanged=false;
+
 
 }
