@@ -4,8 +4,8 @@
 #include <string>
 #include <types.hpp>
 #include <chrono>
-#define screensz_x 1280
-#define screensz_y 720
+#define screensz_x 1000
+#define screensz_y 640
 #define timer_start                     auto start=std::chrono::high_resolution_clock::now();
 #define timer_stop                    auto stop=std::chrono::high_resolution_clock::now();
 #define print_time std::cout << duration_cast<std::chrono::microseconds>(stop-start).count()<<std::endl;

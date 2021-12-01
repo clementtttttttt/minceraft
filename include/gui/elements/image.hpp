@@ -9,7 +9,6 @@ class image:public guielement{
         SDL_Texture* i;
         const char* path;
         u32 xs,ys,ixs,iys;
-        u8 transparency;
         bool init=false;
 
 };

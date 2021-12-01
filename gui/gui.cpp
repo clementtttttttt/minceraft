@@ -28,7 +28,6 @@ void guitick(){
      i=0;
     while((*gamegui[currentguiidx])[i]!=0&&!guiidxchanged){
 
-        std::cout << i << " "<< (*gamegui[currentguiidx])[i]<<std::endl;
         (*gamegui[currentguiidx])[i]->tick();
         ++i;
     }

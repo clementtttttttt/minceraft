@@ -4,6 +4,7 @@ class guielement{
     public:
         u32 x,y;
         virtual void tick(){}
+        u8 transparency;
 
 
 };
