@@ -44,6 +44,9 @@ void ren_tick() {
 bool canbreak = true;
 double prevy;
 extern SDL_Event e;
+
+int current_invbar_idx=0;
+
 void input_tick() {
   if(render_gamerunning){
   extern u8 upmousebutton;

@@ -17,20 +17,31 @@ void invbarachangehan(){
     if(mx>ingame[1]->x&&my>ingame[1]->y){
         if(mx<(ingame[1]->x+137*4)&&my<ingame[1]->y+18*4){
             ingame[1]->transparency=128;
+            ingame[2]->transparency=128;
+
         }
-        else ingame[1]->transparency=255;
+        else{
+            ingame[1]->transparency=255;
+            ingame[2]->transparency=255;
+
+        }
 
     }
-    else ingame[1]->transparency=255;
+    else {
+        ingame[1]->transparency=255;
+        ingame[2]->transparency=255;
 
+    }
 }
 
 image invbar("guitex/ingame_invbar.png",screensz_x/2-274,calctoppos(500),137*4,18*4,137,18,255);
+image invbar_selection("guitex/ingame_invbar_selection.png",screensz_x/2-274,calctoppos(500),18*4,18*4,18,18,255);
+
 customtick invbaralphachange(invbarachangehan);
 
 
 
 guielement* ingame[]={
-    &invbaralphachange,&invbar,(guielement*) 0
+    &invbaralphachange,&invbar,&invbar_selection,(guielement*) 0
 
 };
