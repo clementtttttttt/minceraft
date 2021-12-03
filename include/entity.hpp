@@ -22,6 +22,9 @@ class entity{
             this->ymomentum=ymomentum;
             }
         }
+        int gethealth(){
+            return this->health;
+        }
          vec2 getpos(){
                  vec2 v;
 
@@ -49,6 +52,7 @@ class entity{
 
         double x=0,y=0,xmomentum=0,ymomentum=0;
         int health=100;
+        long long inventory[8][4];
 };
 void entity_rentick();
 

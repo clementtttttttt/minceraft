@@ -45,7 +45,7 @@ bool canbreak = true;
 double prevy;
 extern SDL_Event e;
 
-int current_invbar_idx=0;
+int current_invbar_idx=1;
 
 void input_tick() {
   if(render_gamerunning){
@@ -75,6 +75,12 @@ void input_tick() {
       entity_list[0]->setmomentum(
           0, 0.8 * (blockreg[world[pos.x][pos.y].type].cfriction * 0.8));
   }
+  for(int i=0;i<8;++i){
+    if(keystate[SDL_SCANCODE_1+i]){
+        current_invbar_idx=i;
+    }
+  }
+
   prevy = entity_list[0]->getmomentum().y;
   int mx, my;
 

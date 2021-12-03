@@ -32,6 +32,9 @@ void invbarachangehan(){
         ingame[2]->transparency=255;
 
     }
+    extern int current_invbar_idx;
+
+    ingame[2]->x=((screensz_x/2)-274)+(current_invbar_idx*18*4)-current_invbar_idx*4;
 }
 
 image invbar("guitex/ingame_invbar.png",screensz_x/2-274,calctoppos(500),137*4,18*4,137,18,255);
