@@ -20,6 +20,8 @@ unsigned long long tickselapsed = 0;
 u8 upmousebutton;
 SDL_Event e;
 
+extern int mx,my;
+
 int main() {
 
   *((u128 *)&mainapp) = 0;
@@ -38,7 +40,7 @@ int main() {
   }
 
   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
-
+  SDL_SetHint(SDL_HINT_RENDER_VSYNC,"0");
   mainapp.renderer =
       SDL_CreateRenderer(mainapp.window, -1, SDL_RENDERER_ACCELERATED);
   if (!mainapp.renderer) {
@@ -70,17 +72,17 @@ int main() {
         goto quit;
       case SDL_MOUSEBUTTONUP:
         upmousebutton = e.button.button;
-        break;
-      default:
-        break;
+     // case SDL_MOUSEMOTION:;
+        //mx=e.motion.x;
+        //my=e.motion.y;
+
       }
-      ren_tick();
+
+    }
       if (init == false) {
         init = true;
         pthread_create(&gamethread, NULL, game_thread, NULL);
       }
-    }
-
     ren_tick();
   }
 quit:

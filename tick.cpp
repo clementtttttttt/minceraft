@@ -16,6 +16,7 @@ char frameskip_toggle = 1;
 bool render_gamerunning=false;
 bool gamerunning=false;
 
+  int mx, my,bmx,bmy;
 
 
 void ren_tick() {
@@ -82,7 +83,6 @@ void input_tick() {
   }
 
   prevy = entity_list[0]->getmomentum().y;
-  int mx, my;
 
   unsigned int mbuttons = SDL_GetMouseState(&mx, &my);
   extern int scrnw, scrnh;
@@ -94,14 +94,12 @@ void input_tick() {
       (entity_list[0]->getpos().x) - (scrnw / 2 / 64) + scrnoffx;
   double blockcorner_y =
       (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1 + scrnoffy;
-  if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true &&
-      world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)]
-           [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)]
-               .type != 5) {
-    world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)]
-         [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)]
-             .type = 0;
+  if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)] [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
+    world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)][(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type = 0;
   }
+  bmx=((mx) / 64 - (scrnw % 64) / 64);
+  bmy=((my) / 64 - (scrnh % 64) / 64);
+
   }
 }
 int world_time = 8000; // 23:59==23999
