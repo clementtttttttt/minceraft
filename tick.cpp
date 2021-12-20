@@ -8,6 +8,7 @@
 #include <utils.hpp>
 #include <world.hpp>
 #include <gui/gui.hpp>
+#include <cmath>
 #include <gui/guielement.hpp>
 extern guielement* ingame[];
 
@@ -92,7 +93,7 @@ void input_tick() {
   double scrnoffx =
       entity_list[0]->getpos().x - (long long)(entity_list[0]->getpos().x);
   double scrnoffy =
-      round(entity_list[0]->getpos().y) - entity_list[0]->getpos().y;
+      std::round(entity_list[0]->getpos().y) - entity_list[0]->getpos().y;
   double blockcorner_x =
       (entity_list[0]->getpos().x) - (scrnw / 2 / 64) + scrnoffx;
   double blockcorner_y =

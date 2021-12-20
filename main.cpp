@@ -1,3 +1,6 @@
+#ifdef __MINGW32__
+#define SDL_MAIN_HANDLED
+#endif
 #include <SDL.h>
 #include <SDL_image.h>
 #include <blocks.hpp>
@@ -23,8 +26,9 @@ SDL_Event e;
 extern int mx,my;
 
 int main() {
-
+#ifdef __SIZEOF_INT128__
   *((u128 *)&mainapp) = 0;
+#endif
   SDL_Rect a1;
   if (SDL_Init(SDL_INIT_VIDEO)) {
     std::cout << "SDL_Init() ERROR" << std::endl;
@@ -44,7 +48,7 @@ int main() {
   mainapp.renderer =
       SDL_CreateRenderer(mainapp.window, -1, SDL_RENDERER_ACCELERATED);
   if (!mainapp.renderer) {
-    printf("SDL_CreateRenderer FAIL, ERROR=%ld \n", (long)SDL_GetError());
+    printf("SDL_CreateRenderer FAIL, ERROR=%ld \n", (unsigned long long)SDL_GetError());
     exit(1);
   }
 
