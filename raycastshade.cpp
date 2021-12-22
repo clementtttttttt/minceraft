@@ -246,7 +246,7 @@ int compute_ray(
           direction = 360 + direction;
         }
       double refang = refangcalc(prevrefidx, blockreg[world[cx][cy].type].refindex, direction rad);
-      if (isnan(refang)) {
+      if (std::isnan(refang)) {
         int shouldlight = 0;
         double unused;
 
