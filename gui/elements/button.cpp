@@ -39,6 +39,8 @@ void button::tick(){
         this->handler();
         activate=false;
     }
-    prints(this->x+(26),this->y+10,0.6,0.6,"%s\n",this->text);
+        SDL_SetTextureColorMod(font,0,0,0);
+
+    prints(this->x+(26),this->y+10,0.6,0.6,"%s\n",this->text,255);
 
 }

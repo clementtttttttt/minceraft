@@ -24,7 +24,7 @@ void playbuttonhandler(){
 
 }
 
-label title_minceraft("Minceraft",screensz_x/2-(144)-(18),calctoppos(60));
+image title_minceraft("guitex/title_minceraft.png",screensz_x/2-(339*5/4/2),calctoppos(60),339*5/4,75*5/4,339,75,255);
 button play_button("Play",calccentrepos(4),calctoppos(200),32*4,64,playbuttonhandler);
 image background("guitex/title_background.png",0,0,screensz_x,screensz_y,128,72,255);
 char gitrevstr[77]="git rev ";
