@@ -102,7 +102,7 @@ void input_tick() {
   int modmy=(my+(scrnoffy*64));
 
   if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)] [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
-    world[(blockcorner_x + (ingame[3]->x/64))][(blockcorner_y + (scrnh-ingame[3]->y)/64)].type = 0;
+    world[(blockcorner_x + lround((mx-fmod(modmx,64))/64.0))][(blockcorner_y + (scrnh-ingame[3]->y)/64)].type = 0;
   }
   bmx=((mx) / 64 - (scrnw % 64) / 64);
   bmy=((my) / 64 - (scrnh % 64) / 64);
