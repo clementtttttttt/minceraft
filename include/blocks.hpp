@@ -11,6 +11,8 @@ struct block{
     unsigned char waterfilled:1;
     unsigned char cavegened:1;
     unsigned char light=7;//max=15;
+    unsigned char spawnattempt:1;
+    unsigned long long spawnattempt_timestamp,created_timestamp;
 }__attribute__((packed));
 struct block_entry{
     unsigned char bitfield;  //HAVEGRAV,HAVECOLL,infjmp,unused x 5

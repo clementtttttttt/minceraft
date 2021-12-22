@@ -80,6 +80,7 @@ void worldrendr() {
               (*world_ref2)[absposx][posy].wassolid = 1;
             }
             (*world_ref2)[absposx][posy].generated = 1;
+            (*world_ref2)[absposx][posy].created_timestamp=std::time(nullptr);
             // water handling
             if (posy == (waterlvl)) {
               if ((*world_ref2)[absposx][posy].type == 0 &&

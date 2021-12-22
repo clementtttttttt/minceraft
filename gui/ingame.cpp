@@ -39,13 +39,13 @@ void invbarachangehan(){    if(mx>ingame[1]->x&&my>ingame[1]->y){
     int modmx=(mx+(scrnoffx*64));
     ingame[3]->x=mx-modmx%64;
     int modmy=(my+(scrnoffy*64));
-    ingame[3]->y=my-modmy%64;
+    ingame[3]->y=my-modmy%64-1;
 
 }
 
 image invbar("guitex/ingame_invbar.png",screensz_x/2-274,calctoppos(500),137*4,18*4,137,18,255);
 image invbar_selection("guitex/ingame_invbar_selection.png",screensz_x/2-274,calctoppos(500),18*4,18*4,18,18,255);
-image block_selection("guitex/ingame_invbar_selection.png",0,0,16*4,16*4,18,18,255);
+image block_selection("guitex/ingame_block_selection.png",0,0,64,64,32,32,255);
 
 
 customtick invbaralphachange(invbarachangehan);

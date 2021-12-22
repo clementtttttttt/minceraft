@@ -97,8 +97,9 @@ void input_tick() {
   int modmx=(mx+(scrnoffx*64));
   int modmy=(my+(scrnoffy*64));
 
-  if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && world[(blockcorner_x + (mx) / 64 - (scrnw % 64) / 64)] [(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
-    world[(blockcorner_x + (mx-modmx%64) / 64 - (scrnw % 64) / 64)][(blockcorner_y + (scrnh - (my-modmy%64)) / 64 - (scrnh % 64) / 64)].type = 0;
+
+  if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && world[(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
+    world[(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - (my-modmy%64)) / 64 - (scrnh % 64) / 64)].type = 0;
   }
   bmx=((mx) / 64 - (scrnw % 64) / 64);
   bmy=((my) / 64 - (scrnh % 64) / 64);
