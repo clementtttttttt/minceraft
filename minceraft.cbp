@@ -15,9 +15,9 @@
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-fexpensive-optimizations" />
 					<Add option="-flto" />
-					<Add option="-Og" />
 					<Add option="-g" />
 					<Add option="-std=gnu++17" />
+					<Add option="-O0" />
 					<Add directory="/home/clement/Desktop/minceraft/include" />
 					<Add directory="include" />
 				</Compiler>
@@ -58,6 +58,7 @@
 		<ExtraCommands>
 			<Add before="./generate-gitrev" />
 		</ExtraCommands>
+		<Unit filename=".gitignore" />
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
 		<Unit filename="gui/elements/button.cpp" />

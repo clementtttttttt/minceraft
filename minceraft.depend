@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1639962511 source:/home/clement/Desktop/minceraft/main.cpp
+1640159015 source:/home/clement/Desktop/minceraft/main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<blocks.hpp>
@@ -12,7 +12,7 @@
 	<types.hpp>
 	<utils.hpp>
 
-1586798831 /usr/include/SDL2/SDL.h
+1639595416 /usr/include/SDL2/SDL.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -26,11 +26,13 @@
 	"SDL_filesystem.h"
 	"SDL_gamecontroller.h"
 	"SDL_haptic.h"
+	"SDL_hidapi.h"
 	"SDL_hints.h"
 	"SDL_joystick.h"
 	"SDL_loadso.h"
 	"SDL_log.h"
 	"SDL_messagebox.h"
+	"SDL_metal.h"
 	"SDL_mutex.h"
 	"SDL_power.h"
 	"SDL_render.h"
@@ -42,15 +44,17 @@
 	"SDL_timer.h"
 	"SDL_version.h"
 	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_main.h
+1639595416 /usr/include/SDL2/SDL_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_stdinc.h
+1639595416 /usr/include/SDL2/SDL_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -79,20 +83,20 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_config.h
+1639595416 /usr/include/SDL2/SDL_config.h
 	<SDL2/_real_SDL_config.h>
 
-1586798831 /usr/include/SDL2/begin_code.h
+1639595416 /usr/include/SDL2/begin_code.h
 
-1586798831 /usr/include/SDL2/close_code.h
+1639595416 /usr/include/SDL2/close_code.h
 
-1586798831 /usr/include/SDL2/SDL_assert.h
+1639595416 /usr/include/SDL2/SDL_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_atomic.h
+1639595416 /usr/include/SDL2/SDL_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -100,14 +104,14 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_platform.h
+1639595416 /usr/include/SDL2/SDL_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_audio.h
+1639595416 /usr/include/SDL2/SDL_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -117,55 +121,59 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_error.h
+1639595416 /usr/include/SDL2/SDL_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_endian.h
+1639595416 /usr/include/SDL2/SDL_endian.h
 	"SDL_stdinc.h"
+	<intrin.h>
 	<endian.h>
+	<endian.h>
+	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_mutex.h
+1639595416 /usr/include/SDL2/SDL_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_thread.h
+1639595416 /usr/include/SDL2/SDL_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
 	"SDL_mutex.h"
-	"begin_code.h"
 	<process.h>
 	<process.h>
 	<stdlib.h>
+	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_rwops.h
+1639595416 /usr/include/SDL2/SDL_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_clipboard.h
+1639595416 /usr/include/SDL2/SDL_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_cpuinfo.h
+1639595416 /usr/include/SDL2/SDL_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
+	<arm_neon.h>
 	<altivec.h>
 	<arm_neon.h>
 	<armintr.h>
 	<arm_neon.h>
-	<armintr.h>
-	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
 	<mm3dnow.h>
 	<immintrin.h>
 	<mmintrin.h>
@@ -175,7 +183,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_events.h
+1639595416 /usr/include/SDL2/SDL_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -189,7 +197,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_video.h
+1639595416 /usr/include/SDL2/SDL_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -197,13 +205,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_pixels.h
+1639595416 /usr/include/SDL2/SDL_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_rect.h
+1639595416 /usr/include/SDL2/SDL_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -211,7 +219,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_surface.h
+1639595416 /usr/include/SDL2/SDL_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -220,11 +228,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_blendmode.h
+1639595416 /usr/include/SDL2/SDL_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_keyboard.h
+1639595416 /usr/include/SDL2/SDL_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -232,45 +240,46 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_keycode.h
+1639595416 /usr/include/SDL2/SDL_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1586798831 /usr/include/SDL2/SDL_scancode.h
+1639595416 /usr/include/SDL2/SDL_scancode.h
 	"SDL_stdinc.h"
 
-1586798831 /usr/include/SDL2/SDL_mouse.h
+1639595416 /usr/include/SDL2/SDL_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_joystick.h
+1639595416 /usr/include/SDL2/SDL_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_gamecontroller.h
+1639595416 /usr/include/SDL2/SDL_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
+	"SDL_sensor.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_sensor.h
+1639595416 /usr/include/SDL2/SDL_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_quit.h
+1639595416 /usr/include/SDL2/SDL_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1586798831 /usr/include/SDL2/SDL_gesture.h
+1639595416 /usr/include/SDL2/SDL_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -278,42 +287,42 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_touch.h
+1639595416 /usr/include/SDL2/SDL_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_filesystem.h
+1639595416 /usr/include/SDL2/SDL_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_haptic.h
+1639595416 /usr/include/SDL2/SDL_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_hints.h
+1639595416 /usr/include/SDL2/SDL_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_loadso.h
+1639595416 /usr/include/SDL2/SDL_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_log.h
+1639595416 /usr/include/SDL2/SDL_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_messagebox.h
+1639595416 /usr/include/SDL2/SDL_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
@@ -324,19 +333,19 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_power.h
+1639595416 /usr/include/SDL2/SDL_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_render.h
+1639595416 /usr/include/SDL2/SDL_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_shape.h
+1639595416 /usr/include/SDL2/SDL_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -345,7 +354,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_system.h
+1639595416 /usr/include/SDL2/SDL_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -353,13 +362,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_timer.h
+1639595416 /usr/include/SDL2/SDL_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1586798831 /usr/include/SDL2/SDL_version.h
+1639595416 /usr/include/SDL2/SDL_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -375,10 +384,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1639977194 /home/clement/Desktop/minceraft/include/types.hpp
+1640159015 /home/clement/Desktop/minceraft/include/types.hpp
 	<SDL.h>
 
-1639962511 source:/home/clement/Desktop/minceraft/utils.cpp
+1640158727 source:/home/clement/Desktop/minceraft/utils.cpp
 	<SDL_image.h>
 	<blocks.hpp>
 	<iostream>
@@ -387,29 +396,45 @@
 	<utils.hpp>
 	<stdarg.h>
 
-1639962511 /home/clement/Desktop/minceraft/include/utils.hpp
+1640158727 /home/clement/Desktop/minceraft/include/utils.hpp
 	<SDL.h>
 	<string>
 	<types.hpp>
 	<chrono>
 
-1580767326 /usr/include/SDL2/SDL_image.h
+1635445229 /usr/include/SDL2/SDL_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
 
-1639962511 source:/home/clement/Desktop/minceraft/blocks/blocks.cpp
+1640158727 source:/home/clement/Desktop/minceraft/blocks/blocks.cpp
 	<blocks.hpp>
 	<vector>
 
-1639962511 /home/clement/Desktop/minceraft/include/blocks.hpp
+1640159015 /home/clement/Desktop/minceraft/include/blocks.hpp
 	<SDL.h>
 	<vector>
 
-1639962511 /home/clement/Desktop/minceraft/include/tick.hpp
+1640158727 /home/clement/Desktop/minceraft/include/tick.hpp
 
-1639976211 source:/home/clement/Desktop/minceraft/tick.cpp
+1639962511 D
+
+1640159015 source:/home/clement/Desktop/minceraft/tick.cpp
+	<SDL.h>
+	<blocks.hpp>
+	<chrono>
+	<entity.hpp>
+	<iostream>
+	<tick.hpp>
+	<types.hpp>
+	<utils.hpp>
+	<world.hpp>
+	<gui/gui.hpp>
+	<cmath>
+	<gui/guielement.hpp>
+
+1640154564 9fcf (latest commit)
 	<SDL.h>
 	<blocks.hpp>
 	<chrono>
@@ -422,14 +447,14 @@
 	<gui/gui.hpp>
 	<gui/guielement.hpp>
 
-1639962511 /home/clement/Desktop/minceraft/include/entity.hpp
+1640158727 /home/clement/Desktop/minceraft/include/entity.hpp
 	<string>
 	<vector>
 	<aabb.hpp>
 	<iostream>
 	<types.hpp>
 
-1639962511 source:/home/clement/Desktop/minceraft/entity/entity.cpp
+1640158727 source:/home/clement/Desktop/minceraft/entity/entity.cpp
 	<entity.hpp>
 	<utils.hpp>
 	<vector>
@@ -439,7 +464,7 @@
 
 1615966228 /home/clement/Desktop/minceraft/include/api.hpp
 
-1639962511 source:/home/clement/Desktop/minceraft/player.cpp
+1640158727 source:/home/clement/Desktop/minceraft/player.cpp
 	"aabb.hpp"
 	<blocks.hpp>
 	<entity.hpp>
@@ -448,12 +473,12 @@
 	<utils.hpp>
 	<world.hpp>
 
-1639962511 /home/clement/Desktop/minceraft/include/entity/player.hpp
+1640158727 /home/clement/Desktop/minceraft/include/entity/player.hpp
 	<entity.hpp>
 
 1615993508 /home/clement/Desktop/minceraft/include/worldrendr.hpp
 
-1639962511 source:/home/clement/Desktop/minceraft/world.cpp
+1640159015 source:/home/clement/Desktop/minceraft/world.cpp
 	"fastnoise.hpp"
 	"raycastshade.hpp"
 	<blocks.hpp>
@@ -462,22 +487,22 @@
 	<vector>
 	<world.hpp>
 
-1639962511 /home/clement/Desktop/minceraft/include/world.hpp
+1640158727 /home/clement/Desktop/minceraft/include/world.hpp
 	<vector>
 	"entity.hpp"
 	<blocks.hpp>
 
-1639962511 source:/home/clement/Desktop/minceraft/src/aabb.cpp
+1640158727 source:/home/clement/Desktop/minceraft/src/aabb.cpp
 	"aabb.hpp"
 	<iostream>
 
-1639962511 /home/clement/Desktop/minceraft/include/aabb.hpp
+1640158727 /home/clement/Desktop/minceraft/include/aabb.hpp
 	<iostream>
 
-1639962511 /home/clement/Desktop/minceraft/include/fastnoise.hpp
+1640158727 /home/clement/Desktop/minceraft/include/fastnoise.hpp
 	<cmath>
 
-1639962511 source:/home/clement/Desktop/minceraft/raycastshade.cpp
+1640159015 source:/home/clement/Desktop/minceraft/raycastshade.cpp
 	"raycastshade.hpp"
 	"aabb.hpp"
 	"blocks.hpp"
@@ -486,36 +511,36 @@
 	<pthread.h>
 	<utils.hpp>
 
-1639962511 /home/clement/Desktop/minceraft/include/raycastshade.hpp
+1640158727 /home/clement/Desktop/minceraft/include/raycastshade.hpp
 	"entity.hpp"
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/elements/label.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/elements/label.cpp
 	<utils.hpp>
 	"gui/elements/label.hpp"
 
 1637751214 source:/home/clement/Desktop/minceraft/gui/elements/guielement.cpp
 	"gui/guielement.hpp"
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/guielement.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/guielement.hpp
 	<types.hpp>
 
 1637758219 /home/clement/Desktop/minceraft/include/gui/label.hpp
 	<gui/guielement.hpp>
 	<vector>
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/gui.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/gui.cpp
 	"gui/gui.hpp"
 	"gui/title.hpp"
 	"gui/ingame.hpp"
 	<iostream>
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/gui.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/gui.hpp
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/elements/label.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/elements/label.hpp
 	<gui/guielement.hpp>
 	<vector>
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/title.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/title.cpp
 	<gui/title.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
@@ -526,10 +551,10 @@
 	<tinyfiledialogs.h>
 	<string>
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/title.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/title.hpp
 	"gui/guielement.hpp"
 
-1639962511 source:/home/clement/Desktop/minceraft/tinyfiledialogs.c
+1640158727 source:/home/clement/Desktop/minceraft/tinyfiledialogs.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -548,18 +573,18 @@
 	<signal.h>
 	"tinyfiledialogs.h"
 
-1639962511 /home/clement/Desktop/minceraft/include/tinyfiledialogs.h
+1640158727 /home/clement/Desktop/minceraft/include/tinyfiledialogs.h
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/elements/button.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/elements/button.cpp
 	<utils.hpp>
 	<iostream>
 	"gui/elements/button.hpp"
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/elements/button.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/elements/button.hpp
 	<gui/guielement.hpp>
 	<vector>
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/ingame.cpp
+1640159015 source:/home/clement/Desktop/minceraft/gui/ingame.cpp
 	<gui/title.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
@@ -568,22 +593,22 @@
 	<utils.hpp>
 	<iostream>
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/ingame.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/ingame.hpp
 	"gui/guielement.hpp"
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/elements/image.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/elements/image.cpp
 	<utils.hpp>
 	"gui/elements/image.hpp"
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/elements/image.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/elements/image.hpp
 	<gui/guielement.hpp>
 	<vector>
 
-1639962511 source:/home/clement/Desktop/minceraft/gui/elements/customtick.cpp
+1640158727 source:/home/clement/Desktop/minceraft/gui/elements/customtick.cpp
 	<utils.hpp>
 	"gui/elements/customtick.hpp"
 
-1639962511 /home/clement/Desktop/minceraft/include/gui/elements/customtick.hpp
+1640158727 /home/clement/Desktop/minceraft/include/gui/elements/customtick.hpp
 	<gui/guielement.hpp>
 	<vector>
 
