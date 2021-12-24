@@ -56,9 +56,9 @@ int main() {
   SDL_RenderSetLogicalSize(mainapp.renderer, screensz_x, screensz_y);
   SDL_RenderClear(mainapp.renderer);
 
-  mob = loadtex("mobs.png");
-  tex = loadtex("tex.png");
-  font = loadtex("font.png");
+  mob = loadtex("gametex/mobs.png");
+  tex = loadtex("gametex/blocks.png");
+  font = loadtex("gametex/font.png");
   SDL_Rect block_clips[] = {{96, 16, 16, 16}, {240, 240, 16, 16}};
   register_block(0, 0, 0, 0, (SDL_Rect){0, 0, 16, 16}, "Air", 0.85, 9.8, 1);
   register_block(1, 0, 1, 0, (SDL_Rect){16, 0, 16, 16}, "Grass", 0.85, 9.8, 1);

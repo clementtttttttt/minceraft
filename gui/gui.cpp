@@ -1,10 +1,11 @@
 #include "gui/gui.hpp"
 #include "gui/title.hpp"
 #include "gui/ingame.hpp"
+#include "gui/gpause.hpp"
 
 #include <iostream>
 guielement* (*gamegui[])[]={
-    &title,&ingame
+    &title,&ingame,&gpause
 };
 
 extern bool render_gamerunning;

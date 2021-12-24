@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1640159488 source:/home/clement/Desktop/minceraft/main.cpp
+1640225165 source:/home/clement/Desktop/minceraft/main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<blocks.hpp>
@@ -396,7 +396,7 @@
 	<utils.hpp>
 	<stdarg.h>
 
-1640158727 /home/clement/Desktop/minceraft/include/utils.hpp
+1640239169 /home/clement/Desktop/minceraft/include/utils.hpp
 	<SDL.h>
 	<string>
 	<types.hpp>
@@ -450,7 +450,7 @@
 
 1640158727 /home/clement/Desktop/minceraft/include/tick.hpp
 
-1640159547 source:/home/clement/Desktop/minceraft/tick.cpp
+1640230119 source:/home/clement/Desktop/minceraft/tick.cpp
 	<SDL.h>
 	<blocks.hpp>
 	<chrono>
@@ -558,10 +558,11 @@
 	<gui/guielement.hpp>
 	<vector>
 
-1640158727 source:/home/clement/Desktop/minceraft/gui/gui.cpp
+1640238631 source:/home/clement/Desktop/minceraft/gui/gui.cpp
 	"gui/gui.hpp"
 	"gui/title.hpp"
 	"gui/ingame.hpp"
+	"gui/gpause.hpp"
 	<iostream>
 
 1640158727 /home/clement/Desktop/minceraft/include/gui/gui.hpp
@@ -570,7 +571,7 @@
 	<gui/guielement.hpp>
 	<vector>
 
-1640166612 source:/home/clement/Desktop/minceraft/gui/title.cpp
+1640239309 source:/home/clement/Desktop/minceraft/gui/title.cpp
 	<gui/title.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
@@ -605,7 +606,7 @@
 
 1640158727 /home/clement/Desktop/minceraft/include/tinyfiledialogs.h
 
-1640166501 source:/home/clement/Desktop/minceraft/gui/elements/button.cpp
+1640225044 source:/home/clement/Desktop/minceraft/gui/elements/button.cpp
 	<utils.hpp>
 	<iostream>
 	"gui/elements/button.hpp"
@@ -614,8 +615,8 @@
 	<gui/guielement.hpp>
 	<vector>
 
-1640159470 source:/home/clement/Desktop/minceraft/gui/ingame.cpp
-	<gui/title.hpp>
+1640239303 source:/home/clement/Desktop/minceraft/gui/ingame.cpp
+	<gui/ingame.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
 	<gui/elements/image.hpp>
@@ -648,4 +649,10 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1640238718 source:/home/clement/Desktop/minceraft/gui/gpause.cpp
+	<gui/gpause.hpp>
+
+1640238579 /home/clement/Desktop/minceraft/include/gui/gpause.hpp
+	"gui/guielement.hpp"
 

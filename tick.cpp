@@ -80,6 +80,9 @@ void input_tick() {
       entity_list[0]->setmomentum(
           0, 0.8 * (blockreg[world[pos.x][pos.y].type].cfriction * 0.8));
   }
+  if(keystate[SDL_SCANCODE_ESCAPE]){
+
+  }
   for(int i=0;i<8;++i){
     if(keystate[SDL_SCANCODE_1+i]){
         current_invbar_idx=i;

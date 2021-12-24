@@ -49,6 +49,7 @@
 		</Build>
 		<Compiler>
 			<Add option="`sdl2-config --cflags`" />
+			<Add option="-I/usr/include/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add option="`sdl2-config --libs`" />
@@ -65,8 +66,10 @@
 		<Unit filename="gui/elements/customtick.cpp" />
 		<Unit filename="gui/elements/image.cpp" />
 		<Unit filename="gui/elements/label.cpp" />
+		<Unit filename="gui/gpause.cpp" />
 		<Unit filename="gui/gui.cpp" />
 		<Unit filename="gui/ingame.cpp" />
+		<Unit filename="gui/pause" />
 		<Unit filename="gui/title.cpp" />
 		<Unit filename="include/aabb.hpp" />
 		<Unit filename="include/blocks.hpp" />

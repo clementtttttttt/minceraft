@@ -24,7 +24,7 @@ void button::tick(){
     int mx, my;
     SDL_Rect src={0,0,95,36};
     unsigned int mbuttons = SDL_GetMouseState(&mx, &my);
-    SDL_Rect dest={this->x-3-8,this->y,this->szx+strlen(this->text)*4+2+16,this->szy+8};
+    SDL_Rect dest={(int)this->x-3-8,(int)this->y,(int)(this->szx+strlen(this->text)*4+2+16),(int)this->szy+8};
     if(mx>dest.x&&mx<dest.x+dest.w&&my>dest.y&&my<dest.y+dest.h){
         if(mbuttons&SDL_BUTTON_LMASK){
             blit(clicked,&src,&dest);
@@ -36,8 +36,13 @@ void button::tick(){
     }
     else blit(idle,&src,&dest);
     if(activate==true&&!(mbuttons&SDL_BUTTON_LMASK)){
-        this->handler();
-        activate=false;
+        if(mx>dest.x&&mx<dest.x+dest.w&&my>dest.y&&my<dest.y+dest.h){
+         this->handler();
+
+        }
+                activate=false;
+
+
     }
         SDL_SetTextureColorMod(font,0,0,0);
 
