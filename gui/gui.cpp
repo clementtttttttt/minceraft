@@ -15,6 +15,7 @@ bool guiidxchanged=false;
 
 void togglegame(){
    render_gamerunning=!render_gamerunning;
+   gamerunning=!gamerunning;
     guiidxchanged=true;
 }
 

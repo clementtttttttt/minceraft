@@ -52,6 +52,7 @@ double diffuse_normal[] = {
 asm(
     R"(
         .globl fastsincos
+        .globl fastsin
 
         .section .data
             asmtmp: .quad 0
@@ -70,7 +71,7 @@ asm(
         fldl asmtmp(%rip)
         fsin
         fstpl asmtmp(%rip)
-        leaq asmtmp(%rip), %rax
+        movq asmtmp(%rip),%xmm0
         ret
 
     fastasin:
@@ -78,12 +79,15 @@ asm(
         fldl asmtmp(%rip)
         fsin
         fstpl asmtmp(%rip)
-        leaq asmtmp(%rip), %rax
+        movq asmtmp(%rip),%xmm0
         ret
     )");
+extern "C"{
+    double fastsin(double in);
 
+}
 double refangcalc(double iidx, double ridx, double ai) {
-  return asin(iidx * sin(ai) / ridx)+(90 rad);
+  return asin(iidx * fastsin(ai) / ridx)+(90 rad);
 }
 
 int rec_count = 0;
@@ -94,8 +98,8 @@ int compute_ray(
               // light==0 without hitting player eye, LIGHT SRC ONLY
   struct vec2 hitblock, ppos;
   double *p = fastsincos(direction rad);
-  double sx = p[1] * 0.25;
-  double sy = p[0] * 0.25;
+  double sx = p[1] * 0.5;
+  double sy = p[0] * 0.5;
   double cx = orgx, cy = orgy;
   double d2 = direction;
   ppos = entity_list[0]->getpos();
@@ -330,8 +334,8 @@ int compute_ray(
           refang = (360 rad) + refang;
         }
         p = fastsincos(refang);
-        sx = p[1] * 0.25;
-        sy = p[0] * 0.25;
+        sx = p[1] * 0.5;
+        sy = p[0] * 0.5;
         direction=refang deg;
         d2=refang deg;
       }
@@ -360,8 +364,7 @@ pthread_t rtxthreado;
 double globx, globlsundeg;
 void *rtxthread(void *unused) {
 
-  for (double x = ((globx + (14 + (scrnw / 64)) / 2));
-       x < ((globx + 14 + (scrnw / 64))); x += 0.01) {
+  for (double x = ((globx + ((scrnw / 64)) / 2)); x < ((globx + 4    + (scrnw / 64))); x += 0.02) {
     compute_ray(x, tmpy + 0.5, globlsundeg, 15, 0);
   }
   return 0;
@@ -390,8 +393,8 @@ void compute_shade(long long bx, long long by, struct vec2 p_pos) {
   }
   pthread_create(&rtxthreado, NULL, rtxthread, NULL);
 
-  for (double x = bx - 14 - (scrnw / 64) + 0.5;
-       x < (bx + (14 + (scrnw / 64)) / 2); x += 0.01) {
+  for (double x = bx - 11 + 0.5;
+       x < (bx + ((scrnw / 64)) / 2); x += 0.02) {
         compute_ray(x, tmpy + 0.5, sun_deg, 15, 0);
 
   }

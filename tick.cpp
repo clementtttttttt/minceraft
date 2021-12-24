@@ -11,7 +11,7 @@
 #include <cmath>
 #include <gui/guielement.hpp>
 extern guielement* ingame[];
-
+extern int currentguiidx;
 extern app mainapp;
 extern unsigned char *keystate;
 extern unsigned long long tickselapsed;
@@ -34,7 +34,6 @@ void ren_tick() {
     guitick();
 
     SDL_RenderPresent(mainapp.renderer);
-    if(render_gamerunning)         gamerunning=true;
 
   }
   ++tickselapsed;
@@ -51,6 +50,8 @@ double prevy;
 extern SDL_Event e;
 
 int current_invbar_idx=1;
+
+bool escpressed=0;
 
 void input_tick() {
   if(render_gamerunning){
@@ -80,9 +81,16 @@ void input_tick() {
       entity_list[0]->setmomentum(
           0, 0.8 * (blockreg[world[pos.x][pos.y].type].cfriction * 0.8));
   }
-  if(keystate[SDL_SCANCODE_ESCAPE]){
-
+  if(keystate[SDL_SCANCODE_ESCAPE]&&!escpressed){
+    escpressed=true;
+    if(currentguiidx!=2){
+        changegui(2);
+    }
+    else changegui(1);
+    gamerunning=!gamerunning;
   }
+  if(!keystate[SDL_SCANCODE_ESCAPE])
+    escpressed=false;
   for(int i=0;i<8;++i){
     if(keystate[SDL_SCANCODE_1+i]){
         current_invbar_idx=i;
@@ -117,21 +125,21 @@ int world_time = 8000; // 23:59==23999
 bool wt_toggle = false;
 void *game_thread(void *unused) {
   while (1) {
-
-    if ((world_time < 24000)) {
-      if (wt_toggle == true)
-        world_time += 1;
-    } else
-      world_time = 0;
     keystate = (unsigned char *)SDL_GetKeyboardState(NULL);
     if(gamerunning){
+        if ((world_time < 24000)) {
+            if (wt_toggle == true)
+                world_time += 1;
+        } else
+            world_time = 0;
         worldtick();
         entity_tick();
+        wt_toggle = !wt_toggle;
+
     }
     input_tick();
 
     SDL_Delay(25);
-    wt_toggle = !wt_toggle;
   }
   return 0;
 }
