@@ -24,6 +24,8 @@ int currentguiidx=0;//title screen
 
 void changegui(int in){
     currentguiidx=in;
+        guiidxchanged=true;
+
 }
 int i;
 void guitick(){

@@ -65,6 +65,7 @@
 		<Unit filename=".gitignore" />
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
+		<Unit filename="fileformat.cpp" />
 		<Unit filename="gui/elements/button.cpp" />
 		<Unit filename="gui/elements/customtick.cpp" />
 		<Unit filename="gui/elements/image.cpp" />

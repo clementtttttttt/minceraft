@@ -7,7 +7,8 @@ void worldrendr();
 void worldtick();
 extern std::vector<entity*> entity_list;
 
-extern std::vector<std::vector<block>> world;
+extern std::vector<std::vector<block>> world,negworld;
+
 
 
 #endif // WORLDRENDR_HPP_INCLUDED

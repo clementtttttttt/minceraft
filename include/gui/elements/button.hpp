@@ -9,6 +9,8 @@ class button:public guielement{
         const char* text;
         u32 szx,szy;
         void (*handler)();
+        bool activate=false;
+
 
 
 };

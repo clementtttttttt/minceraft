@@ -15,6 +15,7 @@ SDL_Rect center;
 extern std::vector<aabb> block_coll;
 
 void player::tick() {
+
   double ymorg = ymomentum;
   double xmorg = xmomentum;
   double tmpx = xmomentum;
@@ -28,7 +29,7 @@ void player::tick() {
   for (unsigned long long i = 0; i < sz; ++i) {
     tmpx = block_coll[i].clipXCollide(this->entity_aabb, tmpx);
   }
-  tmpx = aabb(-20, -20, 20, 1000).clipXCollide(this->entity_aabb, tmpx);
+ // tmpx = aabb(-20, -20, 20, 1000).clipXCollide(this->entity_aabb, tmpx);
 
   if (xmorg != tmpx) {
     xmomentum = 0;
@@ -42,13 +43,14 @@ void player::tick() {
   this->y += ymomentum;
 
   this->x += xmomentum;
+    std::vector<std::vector<block>> *world_ref = this->x?&world:&negworld;
 
-  xmomentum *= blockreg[world[this->x][this->y].type].cfriction;
+  xmomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 
-  ymomentum *= blockreg[world[this->x][this->y].type].cfriction;
+  ymomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 
   this->entity_aabb = aabb(this->x, this->y, this->x + 0.9, this->y + 1.8);
-  if (ymomentum > -blockreg[world[this->x][this->y].type].cgrav) {
+  if (ymomentum > -blockreg[(*world_ref)[abs(this->x)][this->y].type].cgrav) {
     ymomentum -= 0.07;
   }
 }

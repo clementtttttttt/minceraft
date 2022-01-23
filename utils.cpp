@@ -57,15 +57,17 @@ void putfont(char in,u32 x,u32 y,float xscale,float yscale){
         yindex=((in-'A')/12)*16;
     }
     if(in>='a'&&in<='z'){
-        in;
         xindex=((in-'a'+2)%12)*8;
         yindex=((in-'a'+2)/12+2)*16;
 
     }
     if(in>='0'&&in<='9'){
-        in;
         xindex=((in-'0'+4)%12)*8;
         yindex=((in-'0'+4)/12+4)*16;
+    }
+    if(in=='&'){
+        xindex=56;
+        yindex=80;
     }
     SDL_Rect texrec{(int) xindex,(int) yindex,(int)8,(int)16};
     if(in!=' '&&in!='\n')

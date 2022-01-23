@@ -76,9 +76,7 @@ int main() {
         goto quit;
       case SDL_MOUSEBUTTONUP:
         upmousebutton = e.button.button;
-     // case SDL_MOUSEMOTION:;
-        //mx=e.motion.x;
-        //my=e.motion.y;
+
 
       }
 

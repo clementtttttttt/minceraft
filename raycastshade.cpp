@@ -10,11 +10,14 @@
 struct vec2 sun, moon;
 
 aabb sun_aabb(0, 0, 0, 0), moon_aabb(0, 0, 0, 0);
-extern std::vector<std::vector<block>> world;
+extern std::vector<std::vector<block>> world,negworld;
 extern int scrnw, scrnh;
 extern std::vector<aabb> block_coll;
 extern int world_time;
 long long tmpx, tmpy;
+
+
+
 // TODO: NEW IMPROVED RAY SYSTEM
 extern "C" {
 double *fastsincos(double val);
@@ -35,9 +38,8 @@ static inline long long fround(double d) {
 static inline double fastabs(double d) {
   cvert d2;
   d2.d = d;
-  d2.i <<= 1;
-  d2.i >>= 1;
-  return d2.i;
+  d2.i &= 0x7fffffffffffffff;
+  return d2.d;
 }
 
 double diffuse_normal[] = {
@@ -94,7 +96,9 @@ int rec_count = 0;
 int compute_ray(
     double orgx, double orgy, double direction, int light, int reflected,
     int reflectcount =
-        16) { // returns true when the ray hits player, false when ray gets to
+        16) {
+
+        // returns true when the ray hits player, false when ray gets to
               // light==0 without hitting player eye, LIGHT SRC ONLY
   struct vec2 hitblock, ppos;
   double *p = fastsincos(direction rad);
@@ -108,28 +112,31 @@ int compute_ray(
 // oob
 // check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
 #define oob_check                                                              \
-  ((tmpx - 30 > 0) && (cx >= (tmpx - 30)) && (cy <= (tmpy + 2)) &&             \
+  ((fastabs(cx) < world_ref->size()) && (cx >= (tmpx - 30)) && (cy <= (tmpy + 2)) &&             \
    (cx < (30 + tmpx + scrnw / 64)) && (cy > fround(tmpy - scrnh / 64)))
   double prevrefidx = 1;
+
   while (light > 0 && reflectcount != 0) {
-    if (!oob_check && reflected) {
-      return 0;
-    }
+    std::vector<std::vector<block>> *world_ref = cx>=0?&world:&negworld;
+
+    if (!oob_check && reflected) return 0;
     //     std::cout << oob_check<<std::endl;
 
-    if (oob_check &&((world[cx][cy].type == 5)))  {
-      if (world[cx][cy].light < light) {
+    if (oob_check &&(((*world_ref)[fastabs(cx)][cy].type == 5)))  {
+
+      if ((*world_ref)[fastabs(cx)][cy].light < light) {
         air_list.push_back(vec2(cx, cy));
-                         //world[cx][cy].light=light;
+                         //(*world_ref)[cx][cy].light=light;
 
       }
 
     }
-  //  if (oob_check )  world[cx][cy].light=light;
+//    if (oob_check && (*world_ref)[fastabs(cx)][cy].light<light)  (*world_ref)[fastabs(cx)][cy].light=light;
 
 
 
-    if (oob_check && (blockreg[world[cx][cy].type].bitfield & (1 << 6))) {
+    if (oob_check && (blockreg[(*world_ref)[fastabs(cx)][cy].type].bitfield & (1 << 6))) {
+
       double newdir = 180 - direction;
       int shouldlight = 0;
       --light;
@@ -233,23 +240,24 @@ int compute_ray(
       }
 
       if (shouldlight) {
-        if (world[cx][cy].light < light) {
-          world[cx][cy].light = light;
+        if ((*world_ref)[fastabs(cx)][cy].light < light) {
+          (*world_ref)[fastabs(cx)][cy].light = light;
         }
         for (int i = 0; i < air_list.size(); ++i) {
-          if (world[air_list[i].x][air_list[i].y].light < light)
-            world[air_list[i].x][air_list[i].y].light = light;
+          if ((*world_ref)[fastabs(air_list[i].x)][air_list[i].y].light < light)
+            (*world_ref)[fastabs(air_list[i].x)][air_list[i].y].light = light;
         }
 
         return 1;
       }
       return 0;
     }
-    if (oob_check && blockreg[world[cx][cy].type].refindex != prevrefidx) {
+    //water
+    if (oob_check && blockreg[(*world_ref)[fastabs(cx)][cy].type].refindex != prevrefidx) {
         if (direction < 0) {
           direction = 360 + direction;
         }
-      double refang = refangcalc(prevrefidx, blockreg[world[cx][cy].type].refindex, direction rad);
+      double refang = refangcalc(prevrefidx, blockreg[(*world_ref)[fastabs(cx)][cy].type].refindex, direction rad);
       if (std::isnan(refang)) {
         int shouldlight = 0;
         double unused;
@@ -318,12 +326,12 @@ int compute_ray(
         }
 
         if (shouldlight) {
-          if (world[cx][cy].light < light) {
-            world[cx][cy].light = light;
+          if ((*world_ref)[fastabs(cx)][cy].light < light) {
+            (*world_ref)[fastabs(cx)][cy].light = light;
           }
           for (int i = 0; i < air_list.size(); ++i) {
-            if (world[air_list[i].x][air_list[i].y].light < light)
-              world[air_list[i].x][air_list[i].y].light = light;
+            if ((*world_ref)[fastabs(air_list[i].x)][air_list[i].y].light < light)
+              (*world_ref)[fastabs(air_list[i].x)][air_list[i].y].light = light;
           }
           return 1;
         }
@@ -340,20 +348,21 @@ int compute_ray(
         d2=refang deg;
       }
     }
-    if ((fround(cx) == fround(ppos.x)) && (fround(cy) == fround(ppos.y + 1))) {
-      if (world[cx][cy].light < light)
-        world[cx][cy].light = light;
+    if (((fround(cx) == fround(ppos.x)) && (fround(cy) == fround(ppos.y + 1)))||((fround(cx) == fround(ppos.x)) && (fround(cy) == fround(ppos.y)))) {
+      if ((*world_ref)[fastabs(cx)][cy].light < light)
+        (*world_ref)[fastabs(cx)][cy].light = light;
 
       return 1;
     }
     if (weakencounter == 0) {
+
       --light;
       weakencounter = 60;
 
     } else {
       --weakencounter;
     }
-    prevrefidx = oob_check ? (blockreg[world[cx][cy].type].refindex) : 1;
+    prevrefidx = oob_check ? (blockreg[(*world_ref)[fastabs(cx)][cy].type].refindex) : 1;
     cx += sx;
     cy += sy;
   }
@@ -383,17 +392,21 @@ void compute_shade(long long bx, long long by, struct vec2 p_pos) {
   if (sun_deg < 90 && sun_deg > 270) {
     envlight = 4;
   }
+
+
   for (long long x = bx - 5; x < ((bx + (scrnw / 64) + 5)); ++x) {
     for (long long y = by - 2; y < (by + (scrnh / 64) + 5); ++y) {
-      if (world[x][y].type == 0) {
-        world[x][y].light = envlight;
+        std::vector<std::vector<block>> *world_ref = x>=0?&world:&negworld;
+      if(fastabs(x)<world_ref->size())
+      if ((*world_ref)[fastabs(x)][y].type == 0) {
+        (*world_ref)[fastabs(x)][y].light = envlight;
       } else
-        world[x][y].light = 0;
+        (*world_ref)[fastabs(x)][y].light = 0;
     }
   }
   pthread_create(&rtxthreado, NULL, rtxthread, NULL);
 
-  for (double x = bx - 11 + 0.5;
+  for (double x = bx - 13;
        x < (bx + ((scrnw / 64)) / 2); x += 0.02) {
         compute_ray(x, tmpy + 0.5, sun_deg, 15, 0);
 

@@ -19,6 +19,8 @@ struct block_entry{
     SDL_Rect tex;
     char* name;
     double cfriction,cgrav,refindex;
+    unsigned int breakcounter;
+
 };
 /*
 if no collision then cfriction means the friction of moving in it and gravity of

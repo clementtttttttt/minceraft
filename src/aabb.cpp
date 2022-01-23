@@ -30,14 +30,14 @@ void aabb::move(double xa, double d) {
 double aabb::clipXCollide(aabb c, double xa) {
   if (c.maxy > this->miny && c.miny < this->maxy) {
     double max;
-    if (xa > 0.0 && c.maxx <= this->minx) {
+    if (xa > 0.0 && c.maxx < this->minx) {
       max = this->minx - c.maxx;
       if (max < xa) {
         xa = max;
       }
     }
 
-    if (xa < 0.0 && c.minx >= this->maxx) {
+    if (xa < 0.0 && c.minx > this->maxx) {
       max = this->maxx - c.minx;
       if (max > xa) {
         xa = max;

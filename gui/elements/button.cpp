@@ -1,10 +1,10 @@
 #include <utils.hpp>
 #include <iostream>
 #include "gui/elements/button.hpp"
+#include <unistd.h>
 
 SDL_Texture *idle,*hover,*clicked;
 bool button_init=false;
-bool activate=false;
 button::button(const char* text,u32 x,u32 y,u32 szx,u32 szy,void(*in)()){
     this->x=x;
     this->y=y;
@@ -28,24 +28,25 @@ void button::tick(){
     if(mx>dest.x&&mx<dest.x+dest.w&&my>dest.y&&my<dest.y+dest.h){
         if(mbuttons&SDL_BUTTON_LMASK){
             blit(clicked,&src,&dest);
-            activate=true;
+            this->activate=true;
         }
         else   blit(hover,&src,&dest);
 
 
     }
     else blit(idle,&src,&dest);
-    if(activate==true&&!(mbuttons&SDL_BUTTON_LMASK)){
+    if(this->activate==true&&!(mbuttons&SDL_BUTTON_LMASK)){
         if(mx>dest.x&&mx<dest.x+dest.w&&my>dest.y&&my<dest.y+dest.h){
-         this->handler();
+            this->handler();
+            usleep(1);
 
         }
-                activate=false;
+                this->activate=false;
 
 
     }
         SDL_SetTextureColorMod(font,0,0,0);
 
-    prints(this->x+(26),this->y+10,0.6,0.6,"%s\n",this->text,255);
+    prints(this->x+(this->szx/2-strlen(this->text)*8)-3-4,this->y+10,0.6,0.6,"%s\n",this->text,255);
 
 }

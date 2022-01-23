@@ -10,7 +10,7 @@
 extern const char* gitversion;
 
 #define calccentrepos(strlength) screensz_x/2-(strlength/2*32)-(strlength/2*4)
-#define calctoppos(pos) pos*(screensz_y/640)
+#define calctoppos(pos) pos*screensz_y/640
 char const* pattern[]={"*.minceworld"};
 
 void playbuttonhandler(){

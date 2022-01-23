@@ -56,30 +56,33 @@ bool escpressed=0;
 void input_tick() {
   if(render_gamerunning){
   extern u8 upmousebutton;
-  extern std::vector<std::vector<block>> world;
+  extern std::vector<std::vector<block>> world,negworld;
   vec2 pos = entity_list[0]->getpos();
+    if(gamerunning){
+        std::vector<std::vector<block>> *world_ref = pos.x>=0?&world:&negworld;
 
   if (keystate[SDL_SCANCODE_D]) {
 
     entity_list[0]->setmomentum(
         keystate[SDL_SCANCODE_LSHIFT]
-            ? 0.3 * blockreg[world[pos.x][pos.y].type].cfriction
-            : 0.2 * blockreg[world[pos.x][pos.y].type].cfriction,
+            ? 0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
+            : 0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
         0);
   }
   if (keystate[SDL_SCANCODE_A]) {
     entity_list[0]->setmomentum(
         keystate[SDL_SCANCODE_LSHIFT]
-            ? -0.3 * blockreg[world[pos.x][pos.y].type].cfriction
-            : -0.2 * blockreg[world[pos.x][pos.y].type].cfriction,
+            ? -0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
+            : -0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
         0);
   }
 
   if (keystate[SDL_SCANCODE_SPACE]) {
     if (entity_list[0]->getonground() ||
-        (blockreg[world[pos.x][pos.y].type].bitfield & 1 << 5))
+        (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].bitfield & 1 << 5))
       entity_list[0]->setmomentum(
-          0, 0.8 * (blockreg[world[pos.x][pos.y].type].cfriction * 0.8));
+          0, 0.8 * (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction * 0.8));
+  }
   }
   if(keystate[SDL_SCANCODE_ESCAPE]&&!escpressed){
     escpressed=true;
@@ -112,9 +115,10 @@ void input_tick() {
   int modmx=(mx+(scrnoffx*64));
   int modmy=(my+(scrnoffy*64));
 
-
+    if(gamerunning){
   if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && world[(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
     world[(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - (my-modmy%64)) / 64 - (scrnh % 64) / 64)].type = 0;
+  }
   }
   bmx=((mx) / 64 - (scrnw % 64) / 64);
   bmy=((my) / 64 - (scrnh % 64) / 64);

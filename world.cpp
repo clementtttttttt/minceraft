@@ -9,7 +9,7 @@ extern app mainapp;
 extern SDL_Texture *tex;
 
 int scrnw, scrnh;
-std::vector<std::vector<block>> world;
+std::vector<std::vector<block>> world,negworld;
 
 extern std::vector<block_entry> blockreg;
 extern int world_time;
@@ -43,9 +43,8 @@ void worldrendr() {
     for (long long y = 0; y <= (scrnh / 64) + 1; ++y) {
 
       long long posy = blockcorner_y + y + scrnoffy;
-      if (posx >= 0) {
 
-        std::vector<std::vector<block>> *world_ref2 = &world;
+        std::vector<std::vector<block>> *world_ref2 = posx>=0?&world:&negworld;
 
         long long absposx = abs(posx);
 
@@ -152,9 +151,7 @@ void worldrendr() {
           putblocc(7, (x * 64 - scrnoffx * 64),
                    scrnh - (y * 64 + scrnoffy * 64), 64);
 
-      } else
-        putblocc(7, (x * 64 - scrnoffx * 64), scrnh - (y * 64 + scrnoffy * 64),
-                 64);
+
     }
   }
   compute_shade(blockcorner_x, blockcorner_y, entity_list[0]->getpos());
@@ -172,15 +169,14 @@ void worldtick() {
       long long posx = blockcorner_x + x;
 
       long long posy = blockcorner_y + y;
-      if (posx >= 0) {
-        std::vector<std::vector<block>> *world_ref = &world;
+        std::vector<std::vector<block>> *world_ref = posx>=0?&world:&negworld;
 
         long long absposx = abs(posx);
 
         if (((absposx) < world_ref->size()) && (posy + scrnoffy) >= 0) {
           if ((blockreg[(*world_ref)[absposx][posy].type].bitfield &
                0b1000000)) {
-            block_coll.push_back(aabb(posx, posy, absposx + 1, posy + 1));
+            block_coll.push_back(aabb(posx, posy, posx + 1, posy + 1));
           }
 
           switch ((*world_ref)[absposx][posy].type) {
@@ -217,6 +213,7 @@ void worldtick() {
                   (*world_ref)[absposx + 1][posy].type = 5;
                   (*world_ref)[absposx + 1][posy].blockdat = 0;
                 }
+                if((absposx-1)<world_ref->size()){
                 if ((*world_ref)[absposx - 1][posy].type == 0 &&
                     (*world_ref)[absposx - 1][posy].generated) {
                   (*world_ref)[absposx - 1][posy].type = 5;
@@ -230,6 +227,7 @@ void worldtick() {
                     (*world_ref)[absposx][posy].blockdat > 0) {
                   (*world_ref)[absposx - 1][posy].blockdat += 1;
                   (*world_ref)[absposx][posy].blockdat -= 1;
+                }
                 }
                 if ((*world_ref)[absposx + 1][posy].generated &&
                     ((*world_ref)[absposx + 1][posy].blockdat <
@@ -246,7 +244,7 @@ void worldtick() {
             break;
           }
         }
-      }
+
     }
   }
 }
