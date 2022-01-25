@@ -189,7 +189,7 @@ int compute_ray(
 
       if (direction >= 0 && direction < 90 && newdir >= 90 && newdir < 180 &&
           shouldcalc) {
-        double f = modf(cx, &unused) * 100;
+        double f = modf(fastabs(cx), &unused) * 100;
         shouldlight |= compute_ray(cx, cy - 1, 180 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -197,7 +197,7 @@ int compute_ray(
       }
       if (direction >= 90 && direction < 180 && newdir >= 0 && newdir < 90 &&
           shouldcalc) {
-        double f = modf(cx, &unused) * 100;
+        double f = modf(fastabs(cx), &unused) * 100;
 
         shouldlight |= compute_ray(cx, cy + 1, (diffuse_normal[(long)f]), light,
                                    1, reflectcount - 1);
@@ -206,7 +206,7 @@ int compute_ray(
       }
       if (direction >= 180 && direction < 270 && newdir >= 270 &&
           newdir < 360 && shouldcalc) {
-        double f = modf(cx, &unused) * 100;
+        double f = modf(fastabs(cx), &unused) * 100;
         shouldlight |= compute_ray(cx, cy + 1, -(diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -214,7 +214,7 @@ int compute_ray(
       }
       if (direction >= 0 && direction < 90 && newdir >= 270 && newdir < 360 &&
           shouldcalc) {
-        double f = modf(cy, &unused) * 100;
+        double f = modf(fastabs(cy), &unused) * 100;
 
         shouldlight |= compute_ray(cx - 1, cy, 90 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
@@ -223,7 +223,7 @@ int compute_ray(
       }
       if (direction >= 90 && direction < 180 && newdir >= 180 && newdir < 270 &&
           shouldcalc) {
-        double f = modf(cy, &unused) * 100;
+        double f = modf(fastabs(cy), &unused) * 100;
 
         shouldlight |= compute_ray(cx - 1, cy, 90 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
@@ -232,7 +232,7 @@ int compute_ray(
       }
       if (direction >= 270 && direction < 360 && newdir >= 180 &&
           newdir < 270 && shouldcalc) {
-        double f = modf(cy, &unused) * 100;
+        double f = modf(fastabs(cy), &unused) * 100;
         shouldlight |= compute_ray(cx + 1, cy, 180 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -274,7 +274,7 @@ int compute_ray(
         {
           if (direction >= 0 && direction < 90 && newdir >= 90 &&
               newdir < 180 && shouldcalc) {
-            double f = modf(cx, &unused) * 100;
+            double f = modf(fastabs(cx), &unused) * 100;
             shouldlight |=
                 compute_ray(cx, cy - 1, newdir, light, 1, reflectcount - 1);
 
@@ -282,7 +282,7 @@ int compute_ray(
           }
           if (direction >= 90 && direction < 180 && newdir >= 0 &&
               newdir < 90 && shouldcalc) {
-            double f = modf(cx, &unused) * 100;
+            double f = modf(fastabs(cx), &unused) * 100;
 
             shouldlight |=
                 compute_ray(cx, cy + 1, newdir, light, 1, reflectcount - 1);
@@ -291,7 +291,7 @@ int compute_ray(
           }
           if (direction >= 180 && direction < 270 && newdir >= 270 &&
               newdir < 360 && shouldcalc) {
-            double f = modf(cx, &unused) * 100;
+            double f = modf(fastabs(cx), &unused) * 100;
             shouldlight |=
                 compute_ray(cx, cy + 1, newdir, light, 1, reflectcount - 1);
 
@@ -299,7 +299,7 @@ int compute_ray(
           }
           if (direction >= 0 && direction < 90 && newdir >= 270 &&
               newdir < 360 && shouldcalc) {
-            double f = modf(cy, &unused) * 100;
+            double f = modf(fastabs(cy), &unused) * 100;
 
             shouldlight |=
                 compute_ray(cx - 1, cy, newdir, light, 1, reflectcount - 1);
@@ -308,7 +308,7 @@ int compute_ray(
           }
           if (direction >= 90 && direction < 180 && newdir >= 180 &&
               newdir < 270 && shouldcalc) {
-            double f = modf(cy, &unused) * 100;
+            double f = modf(fastabs(cy), &unused) * 100;
 
             shouldlight |=
                 compute_ray(cx - 1, cy, newdir, light, 1, reflectcount - 1);
@@ -317,7 +317,7 @@ int compute_ray(
           }
           if (direction >= 270 && direction < 360 && newdir >= 180 &&
               newdir < 270 && shouldcalc) {
-            double f = modf(cy, &unused) * 100;
+            double f = modf(fastabs(cy), &unused) * 100;
             shouldlight |=
                 compute_ray(cx + 1, cy, newdir, light, 1, reflectcount - 1);
 
