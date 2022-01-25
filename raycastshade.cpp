@@ -36,10 +36,8 @@ static inline long long fround(double d) {
 }
 
 static inline double fastabs(double d) {
-  cvert d2;
-  d2.d = d;
-  d2.i &= 0x7fffffffffffffff;
-  return d2.d;
+
+  return (d >= 0) ? d : -d;
 }
 
 double diffuse_normal[] = {
@@ -371,10 +369,14 @@ int compute_ray(
 }
 pthread_t rtxthreado;
 double globx, globlsundeg;
+extern int quitthread;
 void *rtxthread(void *unused) {
 
   for (double x = ((globx + ((scrnw / 64)) / 2)); x < ((globx + 4    + (scrnw / 64))); x += 0.02) {
     compute_ray(x, tmpy + 0.5, globlsundeg, 15, 0);
+    if(quitthread){
+        break;
+    }
   }
   return 0;
 }

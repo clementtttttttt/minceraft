@@ -5,6 +5,7 @@
 #include <utils.hpp>
 #include <iostream>
 #include <gui/gui.hpp>
+#include <fileformat.hpp>
 #include <tinyfiledialogs.h>
 #include <string>
 extern const char* gitversion;
@@ -17,10 +18,22 @@ void playbuttonhandler(){
     char* path=tinyfd_openFileDialog("Select your minceraft world","",1,pattern,"minceraft world",0);
     if(path==0){
 
-        tinyfd_messageBox("Warning","You will need to specify the location in which your world would be saved with the save world option in the pause menu, or else it will be saved as lastworld.minceworld!","ok","warning",1);
+        tinyfd_messageBox("Warning!","Making a new world!","ok","warning",1);
     }
+    else{
+        int err=load_world(path);
+        switch(err){
+            case 1:
+                tinyfd_messageBox("CRIKEY!","Invalid magic! Making a new world!","ok","warning",1);
+            break;
+            case 2:
+                tinyfd_messageBox("CRIKEY!","File doesn't exist / accecss denied! Making a new world!","ok","warning",1);
+            break;
+        }
+    }
+        changegui(1);
+
     togglegame();
-    changegui(1);
 
 
 }

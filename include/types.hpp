@@ -34,7 +34,7 @@ class vec2{
     vec2(){
 
     }
-};
+}__attribute__((packed));
 
 
 #endif // TYPES_HPP_INCLUDED

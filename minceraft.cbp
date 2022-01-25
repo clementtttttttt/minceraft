@@ -80,6 +80,7 @@
 		<Unit filename="include/entity.hpp" />
 		<Unit filename="include/entity/player.hpp" />
 		<Unit filename="include/fastnoise.hpp" />
+		<Unit filename="include/fileformat.hpp" />
 		<Unit filename="include/gui/elements/button.hpp" />
 		<Unit filename="include/gui/elements/customtick.hpp" />
 		<Unit filename="include/gui/elements/image.hpp" />

@@ -127,8 +127,12 @@ void input_tick() {
 }
 int world_time = 8000; // 23:59==23999
 bool wt_toggle = false;
+extern int quitthread;
 void *game_thread(void *unused) {
   while (1) {
+    if(quitthread){
+        break;
+    }
     keystate = (unsigned char *)SDL_GetKeyboardState(NULL);
     if(gamerunning){
         if ((world_time < 24000)) {

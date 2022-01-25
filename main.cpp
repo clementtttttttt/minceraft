@@ -11,9 +11,10 @@
 #include <stdio.h>
 #include <tick.hpp>
 #include <types.hpp>
+#include <fileformat.hpp>
 #include <utils.hpp>
 SDL_Texture *tex, *mob, *font;
-
+int quitthread=0;
 app mainapp;
 pthread_t gamethread;
 extern std::vector<entity *> entity_list;
@@ -87,6 +88,11 @@ int main() {
       }
     ren_tick();
   }
+  extern pthread_t rtxthreado;
 quit:
+  quitthread=1;
+  pthread_join(gamethread,0);
+  pthread_join(rtxthreado,0);
+
   exit(0);
 }

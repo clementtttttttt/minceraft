@@ -9,7 +9,7 @@ extern app mainapp;
 extern SDL_Texture *tex;
 
 int scrnw, scrnh;
-std::vector<std::vector<block>> world,negworld;
+std::vector<std::vector<block>> world(1000,std::vector<block>(200)),negworld(1000,std::vector<block>(200));
 
 extern std::vector<block_entry> blockreg;
 extern int world_time;
@@ -49,7 +49,7 @@ void worldrendr() {
         long long absposx = abs(posx);
 
         if (world_ref2->size() < (absposx + 100)) {
-          world_ref2->resize((absposx + 100), std::vector<block>(100));
+          world_ref2->resize((absposx + 100), std::vector<block>(200));
         }
         if (((absposx) < world_ref2->size()) &&
             (posy < (*world_ref2)[absposx].size()) && (posy) > 0) {
@@ -173,7 +173,7 @@ void worldtick() {
 
         long long absposx = abs(posx);
 
-        if (((absposx) < world_ref->size()) && (posy + scrnoffy) >= 0) {
+        if (((absposx) < world_ref->size()) && (posy + scrnoffy) >= 0&&posy < (*world_ref)[absposx].size()) {
           if ((blockreg[(*world_ref)[absposx][posy].type].bitfield &
                0b1000000)) {
             block_coll.push_back(aabb(posx, posy, posx + 1, posy + 1));
