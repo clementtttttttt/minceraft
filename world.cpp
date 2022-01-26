@@ -21,7 +21,7 @@ double scrnoffy;
 long long worldseed = -573947210;
 void worldrendr() {
   SDL_GetRendererOutputSize(mainapp.renderer, &scrnw, &scrnh);
-  long long blockcorner_x = floor(entity_list[0]->getpos().x) - (scrnw / 2 / 64);
+  long long blockcorner_x = (entity_list[0]->getpos().x) - (scrnw / 2 / 64);
   long long blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1;
   scrnoffx =
       entity_list[0]->getpos().x - (long long)(entity_list[0]->getpos().x);
