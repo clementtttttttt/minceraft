@@ -115,7 +115,7 @@ int compute_ray(
   double prevrefidx = 1;
 
   while (light > 0 && reflectcount != 0) {
-    std::vector<std::vector<block>> *world_ref = cx>=0?&world:&negworld;
+    std::vector<std::vector<block>> *world_ref = cx>=-0.99?&world:&negworld;
 
     if (!oob_check && reflected) return 0;
     //     std::cout << oob_check<<std::endl;
@@ -147,13 +147,13 @@ int compute_ray(
       }
       int shouldcalc = 1;
       /*
-                  if(direction>=0&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
+                  if(direction>=-0.99&&direction<90&&newdir>=90&&newdir<180&&shouldcalc){
                       for(double i=92;i<=268;i+=44){
                           shouldlight|=compute_ray(cx,cy-1,i,light,1,reflectcount-1);
                       }
                       shouldcalc=0;
                   }
-                  if(direction>=90&&direction<180&&newdir>=0&&newdir<90&&shouldcalc){
+                  if(direction>=90&&direction<180&&newdir>=-0.99&&newdir<90&&shouldcalc){
                       for(double i=-84;i<=84;i+=3.5){
                       shouldlight|=compute_ray(cx,cy+1,i,light,1,reflectcount-1);
                       }
@@ -398,7 +398,7 @@ void compute_shade(long long bx, long long by, struct vec2 p_pos) {
 
   for (long long x = bx - 5; x < ((bx + (scrnw / 64) + 5)); ++x) {
     for (long long y = by - 2; y < (by + (scrnh / 64) + 5); ++y) {
-        std::vector<std::vector<block>> *world_ref = x>=0?&world:&negworld;
+        std::vector<std::vector<block>> *world_ref = x>=-0.99?&world:&negworld;
       if(fastabs(x)<world_ref->size())
       if ((*world_ref)[fastabs(x)][y].type == 0) {
         (*world_ref)[fastabs(x)][y].light = envlight;

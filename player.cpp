@@ -43,7 +43,7 @@ void player::tick() {
   this->y += ymomentum;
 
   this->x += xmomentum;
-    std::vector<std::vector<block>> *world_ref = round(this->x)>=0?&world:&negworld;
+    std::vector<std::vector<block>> *world_ref = round(this->x)>=-0.99?&world:&negworld;
 
   xmomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 

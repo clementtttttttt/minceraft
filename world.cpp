@@ -7,7 +7,7 @@
 #include <world.hpp>
 extern app mainapp;
 extern SDL_Texture *tex;
-
+//NOTE: USE TRUNCF INSTEAD OF ROUNDING!!!
 int scrnw, scrnh;
 std::vector<std::vector<block>> world(1000,std::vector<block>(200)),negworld(1000,std::vector<block>(200));
 
@@ -19,9 +19,10 @@ bool init = false;
 double scrnoffx;
 double scrnoffy;
 long long worldseed = -573947210;
+double prevx;
 void worldrendr() {
   SDL_GetRendererOutputSize(mainapp.renderer, &scrnw, &scrnh);
-  long long blockcorner_x = (entity_list[0]->getpos().x) - (scrnw / 2 / 64);
+  long long blockcorner_x = (truncf(entity_list[0]->getpos().x) - (scrnw / 2 / 64));
   long long blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1;
   scrnoffx =
       entity_list[0]->getpos().x - (long long)(entity_list[0]->getpos().x);
@@ -38,9 +39,9 @@ void worldrendr() {
                                    (double)1024) *
                            10 +
                        10;
-    long long posx = blockcorner_x + x + scrnoffx;
+    long long posx = (blockcorner_x + x );
     std::cout << entity_list[0]->getpos().x<<" " <<blockcorner_x << std::endl;
-        std::vector<std::vector<block>> *world_ref2 = posx+scrnoffx>=0?&world:&negworld;
+        std::vector<std::vector<block>> *world_ref2 = (posx+scrnoffx>=-0.99)?&world:&negworld;
 
     for (long long y = 0; y <= (scrnh / 64) + 1; ++y) {
 
@@ -153,6 +154,7 @@ void worldrendr() {
 
 
     }
+    prevx=posx;
   }
   compute_shade(blockcorner_x, blockcorner_y, entity_list[0]->getpos());
 }
@@ -160,7 +162,7 @@ std::vector<aabb> block_coll;
 void worldtick() {
 
   block_coll.clear();
-  long long blockcorner_x = entity_list[0]->getpos().x - (scrnw / 2 / 64);
+  long long blockcorner_x = truncf(entity_list[0]->getpos().x) - (scrnw / 2 / 64);
   long long blockcorner_y = entity_list[0]->getpos().y - (scrnh / 2 / 64) - 1;
 
   for (long long x = -10; x <= (scrnw / 64) + 10; ++x) {
@@ -169,7 +171,7 @@ void worldtick() {
       long long posx = blockcorner_x + x;
 
       long long posy = blockcorner_y + y;
-        std::vector<std::vector<block>> *world_ref = posx>=0?&world:&negworld;
+        std::vector<std::vector<block>> *world_ref = posx>=-0.99?&world:&negworld;
 
         long long absposx = abs(posx);
 
