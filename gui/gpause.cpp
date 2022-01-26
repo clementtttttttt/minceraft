@@ -36,7 +36,7 @@ void save(){
 
 image gpause_background("guitex/gpause_background.png",0,0,screensz_x,screensz_y,128,72,255);
 button gpause_resume_button("Resume",screensz_x/2-96,calctoppos(50),192,64,resume);
-button gpause_save_button("Save",screensz_x/2-96-8,calctoppos(50+64+16),192,64,save);
+button gpause_save_button("Save",screensz_x/2-96+4,calctoppos(50+64+32),192,64,save);
 
 
 guielement* gpause[]={

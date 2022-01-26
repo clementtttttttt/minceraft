@@ -43,7 +43,7 @@ void player::tick() {
   this->y += ymomentum;
 
   this->x += xmomentum;
-    std::vector<std::vector<block>> *world_ref = this->x>=0?&world:&negworld;
+    std::vector<std::vector<block>> *world_ref = round(this->x)>=0?&world:&negworld;
 
   xmomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 
@@ -75,6 +75,7 @@ void player::rentick() {
   center.y = (entity_list[0]->getpos().y - blockcorner_y) * 64 + (scrnh%128);
   //center.y=scrnh/2-(scrnh/2%64);
   if (this->xmomentum > 0.009) {
+    this->direction=1;
     if (tickselapsed % (long long)(10 - abs(xmomentum * 30) + 2) == 0) {
       if (anim_count > 3) {
         anim_count = 1;
@@ -85,6 +86,7 @@ void player::rentick() {
         anim_count = 1;
     }
   } else if (this->xmomentum < -0.009) {
+    this->direction=0;
     if (tickselapsed % (long long)(10 - abs(xmomentum * 30) + 2) == 0) {
       if (anim_count < 3) {
         anim_count = 3;

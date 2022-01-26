@@ -10,6 +10,7 @@
 
 class entity{
     public:
+
         void setloc(double x,double y);
         virtual void tick(){}
         virtual void rentick(){}
@@ -44,7 +45,7 @@ class entity{
             return this->onground;
 
         }
-
+        int direction=0;//0=left,1=right
         aabb entity_aabb={0,0,0,0};
 
     protected:

@@ -21,7 +21,7 @@ double scrnoffy;
 long long worldseed = -573947210;
 void worldrendr() {
   SDL_GetRendererOutputSize(mainapp.renderer, &scrnw, &scrnh);
-  long long blockcorner_x = (entity_list[0]->getpos().x) - (scrnw / 2 / 64);
+  long long blockcorner_x = floor(entity_list[0]->getpos().x) - (scrnw / 2 / 64);
   long long blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1;
   scrnoffx =
       entity_list[0]->getpos().x - (long long)(entity_list[0]->getpos().x);
@@ -39,15 +39,15 @@ void worldrendr() {
                            10 +
                        10;
     long long posx = blockcorner_x + x + scrnoffx;
+    std::cout << entity_list[0]->getpos().x<<" " <<blockcorner_x << std::endl;
+        std::vector<std::vector<block>> *world_ref2 = posx+scrnoffx>=0?&world:&negworld;
 
     for (long long y = 0; y <= (scrnh / 64) + 1; ++y) {
 
       long long posy = blockcorner_y + y + scrnoffy;
 
-        std::vector<std::vector<block>> *world_ref2 = posx>=0?&world:&negworld;
 
         long long absposx = abs(posx);
-
         if (world_ref2->size() < (absposx + 100)) {
           world_ref2->resize((absposx + 100), std::vector<block>(200));
         }
