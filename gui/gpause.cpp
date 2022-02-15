@@ -29,16 +29,22 @@ void save(){
     }
     save_world(path);
     tinyfd_messageBox("YES!","World saved!","ok","info",1);
+    if(tinyfd_messageBox("Confirm QUIT", "Do you want to quit the game?", "yesno", "info", 0)){
+        exit(0);
+    }
     changegui(1);
     gamerunning=true;
 }
 
+void quit(){
+    exit(0);
+}
 
 image gpause_background("guitex/gpause_background.png",0,0,screensz_x,screensz_y,128,72,255);
 button gpause_resume_button("Resume",screensz_x/2-96,calctoppos(50),192,64,resume);
-button gpause_save_button("Save",screensz_x/2-96+4,calctoppos(50+64+32),192,64,save);
-
+button gpause_save_button("Save",screensz_x/2-96+4,calctoppos(50+96),192,64,save);
+button gpause_quit_button("Quit",screensz_x/2-96+4,calctoppos(50+96+96),192,64,quit);
 
 guielement* gpause[]={
-    &gpause_background,&gpause_resume_button,&gpause_save_button,(guielement*)0
+    &gpause_background,&gpause_resume_button,&gpause_save_button,&gpause_quit_button,(guielement*)0
 };

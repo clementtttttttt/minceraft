@@ -14,6 +14,7 @@ class entity{
         void setloc(double x,double y);
         virtual void tick(){}
         virtual void rentick(){}
+        vec2 spawnblockpos; //the block that spawns this entity
         virtual int gettype(){return 0;}
         void setmomentum(double xmomentum,double ymomentum){
             if(xmomentum){

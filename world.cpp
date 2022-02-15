@@ -40,8 +40,7 @@ void worldrendr() {
                            10 +
                        10;
     long long posx = (blockcorner_x + x );
-    std::cout << entity_list[0]->getpos().x<<" " <<blockcorner_x << std::endl;
-        std::vector<std::vector<block>> *world_ref2 = (posx+scrnoffx>=-0.99)?&world:&negworld;
+        std::vector<std::vector<block>> *world_ref2 = (posx>=-0.99)?&world:&negworld;
 
     for (long long y = 0; y <= (scrnh / 64) + 1; ++y) {
 
@@ -166,14 +165,21 @@ void worldtick() {
   long long blockcorner_y = entity_list[0]->getpos().y - (scrnh / 2 / 64) - 1;
 
   for (long long x = -10; x <= (scrnw / 64) + 10; ++x) {
+        long long posx = blockcorner_x + x;
+
+          std::vector<std::vector<block>> *world_ref = posx>=-0.99?&world:&negworld;
+          std::vector<std::vector<block>> *world_ref2 = (posx-1)>=-0.99?&world:&negworld;
+          std::vector<std::vector<block>> *world_ref3 = (posx+1)>=-0.99?&world:&negworld;
+
     for (long long y = 0; y <= (scrnh / 64) + 10; ++y) {
 
-      long long posx = blockcorner_x + x;
 
       long long posy = blockcorner_y + y;
-        std::vector<std::vector<block>> *world_ref = posx>=-0.99?&world:&negworld;
 
         long long absposx = abs(posx);
+        long long absposx2 = abs(posx-1);
+        long long absposx3 = abs(posx+1);
+
 
         if (((absposx) < world_ref->size()) && (posy + scrnoffy) >= 0&&posy < (*world_ref)[absposx].size()) {
           if ((blockreg[(*world_ref)[absposx][posy].type].bitfield &
@@ -210,34 +216,34 @@ void worldtick() {
                 (*world_ref)[absposx][posy].blockdat -= 1;
 
               } else if ((*world_ref)[absposx][posy].blockdat != 0) {
-                if ((*world_ref)[absposx + 1][posy].type == 0 &&
-                    (*world_ref)[absposx + 1][posy].generated) {
-                  (*world_ref)[absposx + 1][posy].type = 5;
-                  (*world_ref)[absposx + 1][posy].blockdat = 0;
+                if ((*world_ref3)[absposx3][posy].type == 0 &&
+                    (*world_ref3)[absposx3][posy].generated) {
+                  (*world_ref3)[absposx3][posy].type = 5;
+                  (*world_ref3)[absposx3][posy].blockdat = 0;
                 }
-                if((absposx-1)<world_ref->size()){
-                if ((*world_ref)[absposx - 1][posy].type == 0 &&
-                    (*world_ref)[absposx - 1][posy].generated) {
-                  (*world_ref)[absposx - 1][posy].type = 5;
-                  (*world_ref)[absposx - 1][posy].blockdat = 0;
+                if((absposx-1)<world_ref2->size()){
+                if ((*world_ref2)[absposx2][posy].type == 0 &&
+                    (*world_ref2)[absposx2][posy].generated) {
+                  (*world_ref2)[absposx2][posy].type = 5;
+                  (*world_ref2)[absposx2][posy].blockdat = 0;
                 }
-                if ((*world_ref)[absposx - 1][posy].generated &&
-                    ((*world_ref)[absposx - 1][posy].blockdat <
+                if ((*world_ref2)[absposx2][posy].generated &&
+                    ((*world_ref2)[absposx2][posy].blockdat <
                      (*world_ref)[absposx][posy].blockdat) &&
-                    (*world_ref)[absposx - 1][posy].type == 5 &&
-                    (*world_ref)[absposx - 1][posy].blockdat != 16 &&
+                    (*world_ref2)[absposx2][posy].type == 5 &&
+                    (*world_ref2)[absposx2][posy].blockdat != 16 &&
                     (*world_ref)[absposx][posy].blockdat > 0) {
-                  (*world_ref)[absposx - 1][posy].blockdat += 1;
+                  (*world_ref2)[absposx2][posy].blockdat += 1;
                   (*world_ref)[absposx][posy].blockdat -= 1;
                 }
                 }
-                if ((*world_ref)[absposx + 1][posy].generated &&
-                    ((*world_ref)[absposx + 1][posy].blockdat <
+                if ((*world_ref3)[absposx3][posy].generated &&
+                    ((*world_ref3)[absposx3][posy].blockdat <
                      (*world_ref)[absposx][posy].blockdat) &&
-                    (*world_ref)[absposx + 1][posy].type == 5 &&
-                    (*world_ref)[absposx + 1][posy].blockdat != 16 &&
+                    (*world_ref3)[absposx3][posy].type == 5 &&
+                    (*world_ref3)[absposx3][posy].blockdat != 16 &&
                     (*world_ref)[absposx][posy].blockdat > 0) {
-                  (*world_ref)[absposx + 1][posy].blockdat += 1;
+                  (*world_ref3)[absposx3][posy].blockdat += 1;
                   (*world_ref)[absposx][posy].blockdat -= 1;
                 }
               }
