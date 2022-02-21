@@ -1,4 +1,3 @@
-#include <SDL.h>
 #include <blocks.hpp>
 #include <chrono>
 #include <entity.hpp>
@@ -10,9 +9,9 @@
 #include <gui/gui.hpp>
 #include <cmath>
 #include <gui/guielement.hpp>
+#include <api.hpp>
 extern guielement* ingame[];
 extern int currentguiidx;
-extern app mainapp;
 extern unsigned char *keystate;
 extern unsigned long long tickselapsed;
 char mousebuttonstate[2]; // 0 is mleftbutton, 1 is mrightbutton
@@ -25,7 +24,7 @@ bool gamerunning=false;
 
 void ren_tick() {
   timer_start if (frameskip_toggle) {
-    SDL_RenderClear(mainapp.renderer);
+    sysspec_clearscrn();
 
     if(render_gamerunning){
         worldrendr();
@@ -33,13 +32,13 @@ void ren_tick() {
     }
     guitick();
 
-    SDL_RenderPresent(mainapp.renderer);
+    sysspec_updatescrn();
 
   }
   ++tickselapsed;
   timer_stop if ((timer_val / 1000) <= 17) {
     double d = (17 - (double)(timer_val / 1000));
-    SDL_Delay(d);
+    sysspec_delay(d);
     frameskip_toggle = 1;
   }
   else if ((timer_val / 1000) <= 34) frameskip_toggle = !frameskip_toggle;
@@ -47,7 +46,6 @@ void ren_tick() {
 }
 bool canbreak = true;
 double prevy;
-extern SDL_Event e;
 
 int current_invbar_idx=1;
 
@@ -61,30 +59,30 @@ void input_tick() {
     if(gamerunning){
         std::vector<std::vector<block>> *world_ref = pos.x>=-0.99?&world:&negworld;
 
-  if (keystate[SDL_SCANCODE_D]) {
+  if (keystate[sysspec_key_r]) {
 
     entity_list[0]->setmomentum(
-        keystate[SDL_SCANCODE_LSHIFT]
+        keystate[sysspec_key_run]
             ? 0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
             : 0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
         0);
   }
-  if (keystate[SDL_SCANCODE_A]) {
+  if (keystate[sysspec_key_l]) {
     entity_list[0]->setmomentum(
-        keystate[SDL_SCANCODE_LSHIFT]
+        keystate[sysspec_key_run]
             ? -0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
             : -0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
         0);
   }
 
-  if (keystate[SDL_SCANCODE_SPACE]) {
+  if (keystate[sysspec_key_jump]) {
     if (entity_list[0]->getonground() ||
         (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].bitfield & 1 << 5))
       entity_list[0]->setmomentum(
           0, 0.8 * (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction * 0.8));
   }
   }
-  if(keystate[SDL_SCANCODE_ESCAPE]&&!escpressed){
+  if(keystate[sysspec_key_pause]&&!escpressed){
     escpressed=true;
     if(currentguiidx!=2){
         changegui(2);
@@ -92,17 +90,17 @@ void input_tick() {
     else changegui(1);
     gamerunning=!gamerunning;
   }
-  if(!keystate[SDL_SCANCODE_ESCAPE])
+  if(!keystate[sysspec_key_pause])
     escpressed=false;
   for(int i=0;i<8;++i){
-    if(keystate[SDL_SCANCODE_1+i]){
+    if(keystate[sysspec_key_invbar0+i]){
         current_invbar_idx=i;
     }
   }
 
   prevy = entity_list[0]->getmomentum().y;
 
-  unsigned int mbuttons = SDL_GetMouseState(&mx, &my);
+  unsigned int mbuttons = sysspec_getmousepos(&mx, &my);
   extern int scrnw, scrnh;
   double scrnoffx =
       entity_list[0]->getpos().x - (long long)(entity_list[0]->getpos().x);
@@ -118,7 +116,7 @@ void input_tick() {
   if(gamerunning){
         std::vector<std::vector<block>> *world_ref = floor(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))>=-0.99?&world:&negworld;
 
-    if ((mbuttons & SDL_BUTTON_LMASK) && canbreak == true && (*world_ref)[abs(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
+    if ((mbuttons & sysspec_mleft) && canbreak == true && (*world_ref)[abs(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - my) / 64 - (scrnh % 64) / 64)].type != 5) {
         (*world_ref)[abs(blockcorner_x + lround(((double)mx-fmod(modmx,64.0)) / 64.0) - ((scrnw % 64) / 64))][(blockcorner_y + (scrnh - (my-modmy%64)) / 64 - (scrnh % 64) / 64)].type = 0;
     }
   }
@@ -135,7 +133,7 @@ void *game_thread(void *unused) {
     if(quitthread){
         break;
     }
-    keystate = (unsigned char *)SDL_GetKeyboardState(NULL);
+    keystate = (unsigned char *)sysspec_getkeystate();
     if(gamerunning){
         if ((world_time < 24000)) {
             if (wt_toggle == true)
@@ -149,7 +147,7 @@ void *game_thread(void *unused) {
     }
     input_tick();
 
-    SDL_Delay(25);
+    sysspec_delay(25);
   }
   return 0;
 }

@@ -5,13 +5,13 @@
 #include <iostream>
 #include <utils.hpp>
 #include <world.hpp>
-extern SDL_Texture *tex;
-extern app mainapp;
-SDL_Rect player_tex[]{{0, 16, 16, 96 * 2},   {16, 16, 16, 96 * 2},
+#include <api.hpp>
+extern void *tex;
+rect player_tex[]{{0, 16, 16, 96 * 2},   {16, 16, 16, 96 * 2},
                       {32, 16, 16, 96 * 2},  {0},
                       {16, 16, -16, 96 * 2}, {32, 16, -16, 96 * 2}};
 extern unsigned long long tickselapsed;
-SDL_Rect center;
+rect center;
 extern std::vector<aabb> block_coll;
 
 void player::tick() {
@@ -69,7 +69,7 @@ void player::rentick() {
   center.w = player_tex[0].w * 4;
   center.h = player_tex[0].h * 4;
   int w, h;
-  SDL_GetRendererOutputSize(mainapp.renderer, &w, &h);
+  sysspec_getscreensz(&w,&h);
   //            putblocc((*world_ref2)[absposx][posy].type,x * 64 - (scrnoffx * 64), scrnh - (y * 64 + scrnoffy * 64),64);
   center.x = (entity_list[0]->getpos().x - blockcorner_x) * 64 ;
   center.y = (entity_list[0]->getpos().y - blockcorner_y) * 64 + (scrnh%128);
@@ -98,5 +98,5 @@ void player::rentick() {
     }
   } else
     anim_count = 0;
-  blit(tex, &player_tex[anim_count], &center);
+  sysspec_putimg(tex, &player_tex[anim_count], &center);
 }

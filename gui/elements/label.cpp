@@ -1,5 +1,5 @@
-#include <utils.hpp>
 #include "gui/elements/label.hpp"
+#include <api.hpp>
 
 label::label(const char* text,u32 x,u32 y){
     this->x=x;
@@ -24,7 +24,8 @@ label::label(const char* text,u32 x,u32 y,float xsc,float ysc,u8 r,u8 g,u8 b){
 
 }
 void label::tick(){
-    SDL_SetTextureColorMod(font,this->r,this->g,this->b);
-    prints(this->x,this->y,this->xsc,this->ysc,"%s\n",this->text);
+extern void* font;
+    sysspec_setcolourmod(font,this->r,this->g,this->b);
+    sysspec_prints(this->x,this->y,this->xsc,this->ysc,"%s\n",this->text);
 
 }

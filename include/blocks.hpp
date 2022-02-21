@@ -1,6 +1,7 @@
 #ifndef BLOCKS_HPP_INCLUDED
 #define BLOCKS_HPP_INCLUDED
-#include <SDL.h>
+
+#include <types.hpp>
 #include <vector>
 struct block{
     unsigned char type;
@@ -16,7 +17,7 @@ struct block{
 }__attribute__((packed));
 struct block_entry{
     unsigned char bitfield;  //HAVEGRAV,HAVECOLL,infjmp,unused x 5
-    SDL_Rect tex;
+    rect tex;
     char* name;
     double cfriction,cgrav,refindex;
     unsigned int breakcounter;
@@ -28,7 +29,7 @@ being in it
 if collision then cfriction means friction of surface and gravity does nothing
 
 */
-void register_block(int val,char havegrav,char havecoll,char infjmp,SDL_Rect tex,const char* name,double cfriction,double cgrav,double refindex);
+void register_block(int val,char havegrav,char havecoll,char infjmp,rect tex,const char* name,double cfriction,double cgrav,double refindex);
 extern std::vector <block_entry> blockreg;
 
 #endif // BLOCKS_HPP_INCLUDED

@@ -1,5 +1,7 @@
 #include <utils.hpp>
+#include <api.hpp>
 #include "gui/elements/image.hpp"
+
 
 image::image(const char* path,u32 x,u32 y,u32 xs,u32 ys,u32 ixs,u32 iys,u8 transparency){
     this->x=x;
@@ -14,13 +16,13 @@ image::image(const char* path,u32 x,u32 y,u32 xs,u32 ys,u32 ixs,u32 iys,u8 trans
 }
 void image::tick(){
     if(!this->init){
-        this->i=loadtex(this->path);
+        this->i=sysspec_loadtex(this->path);
         this->init=true;
     }
 
-    SDL_Rect clip={(int)this->x,(int)this->y,(int)this->xs,(int)this->ys};
-    SDL_Rect tex_cliip={0,0,(int)this->ixs,(int)this->iys};
-    SDL_SetTextureAlphaMod(this->i, this->transparency );
-    blit(this->i,&tex_cliip,&clip);
+    rect clip={(int)this->x,(int)this->y,(int)this->xs,(int)this->ys};
+    rect tex_cliip={0,0,(int)this->ixs,(int)this->iys};
+    sysspec_settextrans(this->i, this->transparency );
+    sysspec_putimg(this->i,&tex_cliip,&clip);
 
 }

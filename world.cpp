@@ -4,9 +4,9 @@
 #include <iostream>
 #include <utils.hpp>
 #include <vector>
+#include <api.hpp>
 #include <world.hpp>
-extern app mainapp;
-extern SDL_Texture *tex;
+extern void *tex;
 //NOTE: USE TRUNCF INSTEAD OF ROUNDING!!!
 int scrnw, scrnh;
 std::vector<std::vector<block>> world(1000,std::vector<block>(200)),negworld(1000,std::vector<block>(200));
@@ -21,7 +21,7 @@ double scrnoffy;
 long long worldseed = -573947210;
 double prevx;
 void worldrendr() {
-  SDL_GetRendererOutputSize(mainapp.renderer, &scrnw, &scrnh);
+  sysspec_getscreensz(&scrnw,&scrnh);
   long long blockcorner_x = (truncf(entity_list[0]->getpos().x) - (scrnw / 2 / 64));
   long long blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1;
   scrnoffx =
@@ -131,7 +131,7 @@ void worldrendr() {
           if (c > 255) {
             c = 255;
           }
-          SDL_SetTextureColorMod(tex, c, c, c);
+          sysspec_setcolourmod(tex, c, c, c);
 
           if ((*world_ref2)[absposx][posy].type != 5)
             putblocc((*world_ref2)[absposx][posy].type,
