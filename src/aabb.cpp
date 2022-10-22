@@ -7,20 +7,7 @@ aabb::aabb(double minx, double miny, double maxx, double maxy) {
   this->maxx = maxx;
   this->maxy = maxy;
 }
-void aabb::expand(double xm, double ym) {
-  if (xm < 0) {
-    this->minx += xm;
-  }
-  if (xm > 0) {
-    this->maxx += xm;
-  }
-  if (ym < 0) {
-    this->miny += ym;
-  }
-  if (ym > 0) {
-    this->maxy += ym;
-  }
-}
+
 void aabb::move(double xa, double d) {
   this->minx += xa;
   this->miny += d;
@@ -31,14 +18,14 @@ double aabb::clipXCollide(aabb c, double xa) {
   if (c.maxy > this->miny && c.miny < this->maxy) {
     double max;
     if (xa > 0.0 && c.maxx < this->minx) {
-      max = this->minx - c.maxx;
+      max = this->minx - c.maxx - 0.005;
       if (max < xa) {
         xa = max;
       }
     }
 
     if (xa < 0.0 && c.minx > this->maxx) {
-      max = this->maxx - c.minx;
+      max = this->maxx - c.minx + 0.005;
       if (max > xa) {
         xa = max;
       }

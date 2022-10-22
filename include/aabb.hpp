@@ -12,7 +12,17 @@ class aabb
             aabb a=(*this);
             return px>=a.minx&&px<=a.maxx&&py>=a.miny&&py<=a.maxy;
         }
-        void expand(double x,double y);
+        bool isintersect_aabb(aabb c){
+            return c.minx > this->minx &&
+                   c.minx < this->maxx &&
+                   c.miny > this->miny &&
+                   c.miny < this->maxy ||
+
+                   c.maxx > this->minx &&
+                   c.maxx < this->maxx &&
+                   c.miny > this->miny &&
+                   c.miny < this->maxy;
+        }
         void move(double xa, double d);
 
 

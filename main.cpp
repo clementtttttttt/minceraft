@@ -1,4 +1,3 @@
-
 #include <blocks.hpp>
 #include <entity.hpp>
 #include <entity/player.hpp>
@@ -19,7 +18,8 @@ u8 upmousebutton;
 
 extern int mx,my;
 
-int main() {
+
+int main(){
 
   sysspec_init();
 

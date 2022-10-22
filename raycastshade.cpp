@@ -402,8 +402,9 @@ void compute_shade(long long bx, long long by, struct vec2 p_pos) {
       if(fastabs(x)<world_ref->size())
       if ((*world_ref)[fastabs(x)][y].type == 0) {
         (*world_ref)[fastabs(x)][y].light = envlight;
-      } else
+      } else {
         (*world_ref)[fastabs(x)][y].light = 0;
+      }
     }
   }
   pthread_create(&rtxthreado, NULL, rtxthread, NULL);

@@ -16,6 +16,7 @@ char const* pattern[]={"*.minceworld"};
 
 void playbuttonhandler(){
     char* path=tinyfd_openFileDialog("Select your minceraft world","",1,pattern,"minceraft world",0);
+    std::cout << path << std::endl;
     if(path==0){
 
         tinyfd_messageBox("Warning!","Making a new world!","ok","warning",1);

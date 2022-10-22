@@ -24,11 +24,10 @@ void player::tick() {
 
   for (unsigned long long i = 0; i < sz; ++i) {
     tmpy = block_coll[i].clipYCollide(this->entity_aabb, tmpy);
+    tmpx = block_coll[i].clipXCollide(this->entity_aabb, tmpx);
+
   }
 
-  for (unsigned long long i = 0; i < sz; ++i) {
-    tmpx = block_coll[i].clipXCollide(this->entity_aabb, tmpx);
-  }
  // tmpx = aabb(-20, -20, 20, 1000).clipXCollide(this->entity_aabb, tmpx);
 
   if (xmorg != tmpx) {
@@ -38,18 +37,33 @@ void player::tick() {
     ymomentum = 0;
   }
 
+  for (unsigned long long i = 0; i < sz; ++i) {
+
+
+    if(block_coll[i].isintersect_aabb(this->entity_aabb)){
+
+            this->y = block_coll[i].maxy + 0.2;
+    }
+
+  }
+
+
+
   this->onground = ymorg != tmpy && ymorg < 0;
 
   this->y += ymomentum;
 
   this->x += xmomentum;
+
+    this->entity_aabb = aabb(this->x, this->y, this->x + 0.9, this->y + 1.8);
+
+
     std::vector<std::vector<block>> *world_ref = truncf(this->x)>=-0.99?&world:&negworld;
 
   xmomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 
   ymomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
 
-  this->entity_aabb = aabb(this->x, this->y, this->x + 0.9, this->y + 1.8);
   if (ymomentum > -blockreg[(*world_ref)[abs(this->x)][this->y].type].cgrav) {
     ymomentum -= 0.07;
   }
