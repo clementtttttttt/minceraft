@@ -8,8 +8,9 @@
 #include <types.hpp>
 #include <fileformat.hpp>
 #include <api.hpp>
+#include <audio.hpp>
 int quitthread=0;
-pthread_t gamethread;
+pthread_t gamethread, audiothread;
 extern std::vector<entity *> entity_list;
 unsigned char *keystate;
 unsigned long long tickselapsed = 0;
@@ -32,7 +33,10 @@ int main(){
   register_block(5, 0, 0, 1, (rect){80, 0, 16, 16}, "Water", 0.5, 1, 1.33333333);
   entity_list.push_back(new player(180, 60));
   bool init = false;
+
+
   while (1) {
+
     while (sysspec_poll()) {
       upmousebutton = 0;
       sysspec_checkquit();
@@ -41,6 +45,7 @@ int main(){
       if (init == false) {
         init = true;
         pthread_create(&gamethread, NULL, game_thread, NULL);
+        pthread_create(&audiothread, NULL, audio_thread, NULL);
       }
     ren_tick();
   }
@@ -48,6 +53,7 @@ int main(){
 quit:
   quitthread=1;
   pthread_join(gamethread,0);
+  pthread_join(audiothread,0);
   pthread_join(rtxthreado,0);
 
   exit(0);

@@ -1,5 +1,6 @@
 #include <string>
 #include <types.hpp>
+#include <SDL_mixer.h>
 #ifndef API_HPP_INCLUDED
 #define API_HPP_INCLUDED
 

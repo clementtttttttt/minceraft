@@ -5,6 +5,7 @@
 #include <iostream>
 #include <utils.hpp>
 #include <world.hpp>
+#include <audio.hpp>
 #include <api.hpp>
 extern void *tex;
 rect player_tex[]{{0, 16, 16, 96 * 2},   {16, 16, 16, 96 * 2},
@@ -88,9 +89,26 @@ void player::rentick() {
   center.x = (entity_list[0]->getpos().x - blockcorner_x) * 64 ;
   center.y = (entity_list[0]->getpos().y - blockcorner_y) * 64 + (scrnh%128);
   //center.y=scrnh/2-(scrnh/2%64);
+    std::vector<std::vector<block>> *world_ref = truncf(this->x)>=-0.99?&world:&negworld;
+
   if (this->xmomentum > 0.009) {
     this->direction=1;
-    if (tickselapsed % (long long)(10 - abs(xmomentum * 30) + 2) == 0) {
+    if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 1){
+            playnoise(12,1,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 2){
+            playnoise(12,40 ,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 3){
+            playnoise(12,75,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
+            playnoise(12,30,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
+            playnoise(12,100,0.7);
+        }
       if (anim_count > 3) {
         anim_count = 1;
       }
@@ -101,7 +119,22 @@ void player::rentick() {
     }
   } else if (this->xmomentum < -0.009) {
     this->direction=0;
-    if (tickselapsed % (long long)(10 - abs(xmomentum * 30) + 2) == 0) {
+    if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 1){
+            playnoise(12,1,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 2){
+            playnoise(12,40,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 3){
+            playnoise(12,75,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
+            playnoise(12,30,0.7);
+        }
+        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
+            playnoise(12,100,0.7);
+        }
       if (anim_count < 3) {
         anim_count = 3;
       }

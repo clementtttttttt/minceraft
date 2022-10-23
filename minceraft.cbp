@@ -12,9 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-fomit-frame-pointer" />
-					<Add option="-fexpensive-optimizations" />
-					<Add option="-flto" />
+					<Add option="-Og" />
 					<Add option="-g" />
 					<Add option="-std=gnu++17" />
 					<Add option="-O0" />
@@ -22,10 +20,10 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-flto" />
 					<Add option="-lSDL2_image" />
 					<Add option="-lpthread" />
 					<Add option="-lgcov" />
+					<Add option="-lSDL2_mixer" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -35,17 +33,16 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-fomit-frame-pointer" />
-					<Add option="-fexpensive-optimizations" />
 					<Add option="-flto" />
 					<Add option="-Ofast" />
 					<Add option="-mtune=native" />
 					<Add option="-march=native" />
 					<Add option="-mavx" />
 					<Add option="-mavx2" />
+					<Add option="-ffat-lto-objects" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
 					<Add option="-flto" />
 				</Linker>
 			</Target>
@@ -63,6 +60,8 @@
 			<Add before="./generate-gitrev" />
 		</ExtraCommands>
 		<Unit filename=".gitignore" />
+		<Unit filename="api.cpp" />
+		<Unit filename="audio.cpp" />
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
 		<Unit filename="fileformat.cpp" />
@@ -76,6 +75,8 @@
 		<Unit filename="gui/pause" />
 		<Unit filename="gui/title.cpp" />
 		<Unit filename="include/aabb.hpp" />
+		<Unit filename="include/api.hpp" />
+		<Unit filename="include/audio.hpp" />
 		<Unit filename="include/blocks.hpp" />
 		<Unit filename="include/entity.hpp" />
 		<Unit filename="include/entity/player.hpp" />

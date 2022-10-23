@@ -96,10 +96,16 @@ void sysspec_init(){
   *((unsigned __int128 *)&mainapp) = 0;
 #endif
   SDL_Rect a1;
-  if (SDL_Init(SDL_INIT_VIDEO)) {
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
     std::cout << "SDL_Init() ERROR" << std::endl;
     exit(1);
   }
+
+    if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 1024 ) < 0 )
+    {
+        printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+        exit(1);
+    }
 
   mainapp.window =
       SDL_CreateWindow("Minceraft", SDL_WINDOWPOS_CENTERED,

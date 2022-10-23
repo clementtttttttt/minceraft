@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1666430840 source:/home/clement/Desktop/minceraft/main.cpp
+1666471627 source:/home/clement/Desktop/minceraft/main.cpp
 	<blocks.hpp>
 	<entity.hpp>
 	<entity/player.hpp>
@@ -10,6 +10,7 @@
 	<types.hpp>
 	<fileformat.hpp>
 	<api.hpp>
+	<audio.hpp>
 
 1655759121 /usr/include/SDL2/SDL.h
 	"SDL_main.h"
@@ -445,7 +446,7 @@
 
 1666429521 /home/clement/Desktop/minceraft/include/tick.hpp
 
-1666429521 source:/home/clement/Desktop/minceraft/tick.cpp
+1666524033 source:/home/clement/Desktop/minceraft/tick.cpp
 	<blocks.hpp>
 	<chrono>
 	<entity.hpp>
@@ -487,12 +488,13 @@
 1615966127 source:/home/clement/Desktop/minceraft/api.c
 	<api.hpp>
 
-1666429521 /home/clement/Desktop/minceraft/include/api.hpp
+1666465041 /home/clement/Desktop/minceraft/include/api.hpp
 	<string>
 	<types.hpp>
+	<SDL_mixer.h>
 	<SDL.h>
 
-1666463929 source:/home/clement/Desktop/minceraft/player.cpp
+1666531280 source:/home/clement/Desktop/minceraft/player.cpp
 	"aabb.hpp"
 	<blocks.hpp>
 	<entity.hpp>
@@ -500,6 +502,7 @@
 	<iostream>
 	<utils.hpp>
 	<world.hpp>
+	<audio.hpp>
 	<api.hpp>
 
 1666429521 /home/clement/Desktop/minceraft/include/entity/player.hpp
@@ -672,11 +675,30 @@
 1666429521 /home/clement/Desktop/minceraft/include/fileformat.hpp
 	"types.hpp"
 
-1666429521 source:/home/clement/Desktop/minceraft/api.cpp
+1666529650 source:/home/clement/Desktop/minceraft/api.cpp
 	<api.hpp>
 	<types.hpp>
 	<utils.hpp>
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
+
+1666529809 source:/home/clement/Desktop/minceraft/audio.cpp
+	<SDL_mixer.h>
+	<vector>
+	<random>
+	<api.hpp>
+	<audio.hpp>
+
+1611309578 /usr/include/SDL2/SDL_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1666526158 /home/clement/Desktop/minceraft/include/audio.hpp
+	<SDL_mixer.h>
 
