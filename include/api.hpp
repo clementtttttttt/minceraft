@@ -1,6 +1,5 @@
 #include <string>
 #include <types.hpp>
-#include <SDL_mixer.h>
 #ifndef API_HPP_INCLUDED
 #define API_HPP_INCLUDED
 
@@ -24,7 +23,9 @@ void sysspec_delay(double d);
 unsigned char * sysspec_getkeystate();
 
 #if defined(__MINGW32__) || defined(__linux__)
+    #define SDL_MAIN_HANDLED
     #include <SDL.h>
+    #include <SDL_mixer.h>
     #define sysspec_mleft SDL_BUTTON_LMASK
     #define sysspec_key_r SDL_SCANCODE_D
     #define sysspec_key_l SDL_SCANCODE_A

@@ -6,6 +6,7 @@
 #include <utils.hpp>
 #include <world.hpp>
 #include <audio.hpp>
+#include <math.h>
 #include <api.hpp>
 extern void *tex;
 rect player_tex[]{{0, 16, 16, 96 * 2},   {16, 16, 16, 96 * 2},
@@ -104,10 +105,10 @@ void player::rentick() {
             playnoise(12,75,0.7);
         }
         if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
-            playnoise(12,30,0.7);
+            playnoise(12,20,0.7);
         }
         if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
-            playnoise(12,100,0.7);
+            playnoise(12,140,0.7);
         }
       if (anim_count > 3) {
         anim_count = 1;
@@ -130,10 +131,10 @@ void player::rentick() {
             playnoise(12,75,0.7);
         }
         if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
-            playnoise(12,30,0.7);
+            playnoise(12,20,0.7);
         }
         if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
-            playnoise(12,100,0.7);
+            playnoise(12,140,0.7);
         }
       if (anim_count < 3) {
         anim_count = 3;

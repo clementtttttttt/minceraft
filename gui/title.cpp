@@ -8,6 +8,7 @@
 #include <fileformat.hpp>
 #include <tinyfiledialogs.h>
 #include <string>
+#include <cstring>
 extern const char* gitversion;
 
 #define calccentrepos(strlength) screensz_x/2-(strlength/2*32)-(strlength/2*4)
@@ -43,7 +44,7 @@ image title_minceraft("guitex/title_minceraft.png",screensz_x/2-(319*8/4/2*scree
 button play_button("Play",calccentrepos(4),calctoppos(200),32*4,64,playbuttonhandler);
 image background("guitex/title_background.png",0,0,screensz_x,screensz_y,128,72,255);
 char gitrevstr[77]="git rev ";
-label commitver(strcat(gitrevstr,gitversion),5,screensz_y-24,0.25,0.25,255,255,255);
+label commitver(std::strcat(gitrevstr,gitversion),5,screensz_y-24,0.25,0.25,255,255,255);
 
 guielement* title[]={
     &background,&title_minceraft,&play_button,&commitver,(guielement*) 0

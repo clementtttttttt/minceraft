@@ -1,8 +1,6 @@
 #ifndef TYPES_HPP_INCLUDED
 #define TYPES_HPP_INCLUDED
-#if defined(__WIN32) || defined(__linux__)
-#include <SDL.h>
-#endif
+
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;

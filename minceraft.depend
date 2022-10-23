@@ -380,8 +380,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1666429521 /home/clement/Desktop/minceraft/include/types.hpp
-	<SDL.h>
+1666545683 /home/clement/Desktop/minceraft/include/types.hpp
 
 1666429521 source:/home/clement/Desktop/minceraft/utils.cpp
 	<blocks.hpp>
@@ -392,8 +391,7 @@
 	<stdarg.h>
 	<api.hpp>
 
-1666459806 /home/clement/Desktop/minceraft/include/utils.hpp
-	<SDL.h>
+1666545631 /home/clement/Desktop/minceraft/include/utils.hpp
 	<string>
 	<types.hpp>
 	<chrono>
@@ -488,13 +486,13 @@
 1615966127 source:/home/clement/Desktop/minceraft/api.c
 	<api.hpp>
 
-1666465041 /home/clement/Desktop/minceraft/include/api.hpp
+1666545539 /home/clement/Desktop/minceraft/include/api.hpp
 	<string>
 	<types.hpp>
-	<SDL_mixer.h>
 	<SDL.h>
+	<SDL_mixer.h>
 
-1666531280 source:/home/clement/Desktop/minceraft/player.cpp
+1666545315 source:/home/clement/Desktop/minceraft/player.cpp
 	"aabb.hpp"
 	<blocks.hpp>
 	<entity.hpp>
@@ -503,6 +501,7 @@
 	<utils.hpp>
 	<world.hpp>
 	<audio.hpp>
+	<math.h>
 	<api.hpp>
 
 1666429521 /home/clement/Desktop/minceraft/include/entity/player.hpp
@@ -683,7 +682,7 @@
 	<SDL_image.h>
 	<iostream>
 
-1666529809 source:/home/clement/Desktop/minceraft/audio.cpp
+1666541769 source:/home/clement/Desktop/minceraft/audio.cpp
 	<SDL_mixer.h>
 	<vector>
 	<random>
