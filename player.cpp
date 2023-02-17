@@ -95,19 +95,19 @@ void player::rentick() {
   if (this->xmomentum > 0.009) {
     this->direction=1;
     if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 1){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 1){
             playnoise(12,1,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 2){
-            playnoise(12,40 ,0.7);
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 2){
+            playnoise(12,40,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 3){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 3){
             playnoise(12,75,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 4){
             playnoise(12,20,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 5){
             playnoise(12,140,0.7);
         }
       if (anim_count > 3) {
@@ -121,19 +121,19 @@ void player::rentick() {
   } else if (this->xmomentum < -0.009) {
     this->direction=0;
     if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 1){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 1){
             playnoise(12,1,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 2){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 2){
             playnoise(12,40,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 3){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 3){
             playnoise(12,75,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 4){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 4){
             playnoise(12,20,0.7);
         }
-        if((*world_ref)[truncf(entity_list[0]->getpos().x)][truncf(entity_list[0]->getpos().y)-1].type == 5){
+        if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 5){
             playnoise(12,140,0.7);
         }
       if (anim_count < 3) {

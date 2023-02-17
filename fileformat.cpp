@@ -2,6 +2,7 @@
 #include "fileformat.hpp"
 #include "world.hpp"
 #include <iostream>
+#include <cstring>
 extern int world_time;
 //each yrow start withs a unsigned long long that specifies the blocks in a y row
 void save_world(char* filename){
@@ -29,6 +30,45 @@ void save_world(char* filename){
 
     }
     fclose(worldfile);
+}
+
+int off;
+
+int load_world(std::string_view buf){
+    std::cout << "LOADING WORLD " << std::endl;
+    FILE * worldfile;
+    u64 test_magic;
+    struct minceraft_world_file currentworld;
+
+    memcpy(&currentworld,buf.data(),std::min(sizeof(minceraft_world_file),buf.size()));
+    /*
+    u64 magic=0xC3C56D696E636572;
+    u64 magic2=0x6166746D61746521;*/
+    std::cout << "TEST" << std::endl;
+    if(currentworld.magic!=0xC3C56D696E636572&&currentworld.magic2!=0x6166746D61746521){
+        std::cout << "crikey mate wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
+        return 1;
+    }
+    off += sizeof(minceraft_world_file);
+    negworld.resize(currentworld.negworldsize);
+    world.resize(currentworld.wxsize);
+   // struct block test;
+    for(long long x=currentworld.worldstartx;x<(long long)currentworld.wxsize;++x){
+
+        std::vector<std::vector<block>> *world_ref = x>=0?&world:&negworld;
+        unsigned long long ysz;
+        memcpy(&ysz,buf.data()+off,8);
+
+        (*world_ref)[abs(x)].resize(ysz);
+        for(unsigned long long y=0;y<ysz;++y){
+            fread(&(*world_ref)[abs(x)][y],sizeof(struct block),1,worldfile);
+        }
+
+
+    }
+    world_time=currentworld.world_time;
+    entity_list[0]->setloc(currentworld.playerpos.x,currentworld.playerpos.y);
+    return 0;
 }
 
 int load_world(char* filename){

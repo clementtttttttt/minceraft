@@ -19,9 +19,10 @@ long long tmpx, tmpy;
 
 
 // TODO: NEW IMPROVED RAY SYSTEM
-extern "C" {
-double *fastsincos(double val);
-}
+
+#define fastsin sin
+#define fastcos cos
+
 union cvert {
   double d;
   long long i;
@@ -49,39 +50,6 @@ double diffuse_normal[] = {
     -82, -10, 80,  1,   72,  31,  -43, -60, -18, 11,  25,  -36, -81, -76, 16,
     34,  46,  -57, -2,  -66, 57,  52,  69,  -15, -20, 46,  34};
 
-asm(
-    R"(
-        .globl fastsincos
-        .globl fastsin
-
-        .section .data
-            asmtmp: .quad 0
-            asmtmp2: .quad 0
-        .section .text
-    fastsincos:
-        movq %xmm0,asmtmp(%rip)
-        fldl asmtmp(%rip)
-        fsincos
-        fstpl asmtmp(%rip)
-        fstpl asmtmp2(%rip)
-        leaq asmtmp(%rip), %rax
-        ret
-    fastsin:
-        movq %xmm0,asmtmp(%rip)
-        fldl asmtmp(%rip)
-        fsin
-        fstpl asmtmp(%rip)
-        movq asmtmp(%rip),%xmm0
-        ret
-
-    fastasin:
-        movq %xmm0,asmtmp(%rip)
-        fldl asmtmp(%rip)
-        fsin
-        fstpl asmtmp(%rip)
-        movq asmtmp(%rip),%xmm0
-        ret
-    )");
 extern "C"{
     double fastsin(double in);
 
@@ -99,9 +67,8 @@ int compute_ray(
         // returns true when the ray hits player, false when ray gets to
               // light==0 without hitting player eye, LIGHT SRC ONLY
   struct vec2 hitblock, ppos;
-  double *p = fastsincos(direction rad);
-  double sx = p[1] * 0.5;
-  double sy = p[0] * 0.5;
+  double sx = sin(direction rad) * 0.5;
+  double sy = cos(direction rad) * 0.5;
   double cx = orgx, cy = orgy;
   double d2 = direction;
   ppos = entity_list[0]->getpos();
@@ -339,9 +306,8 @@ int compute_ray(
         if (refang < 0) {
           refang = (360 rad) + refang;
         }
-        p = fastsincos(refang);
-        sx = p[1] * 0.5;
-        sy = p[0] * 0.5;
+        sx = sin(refang) * 0.5;
+        sy = cos(refang) * 0.5;
         direction=refang deg;
         d2=refang deg;
       }
@@ -407,12 +373,17 @@ void compute_shade(long long bx, long long by, struct vec2 p_pos) {
       }
     }
   }
+  #ifndef EMCXX
   pthread_create(&rtxthreado, NULL, rtxthread, NULL);
-
+    #endif
   for (double x = bx - 13;
        x < (bx + ((scrnw / 64)) / 2); x += 0.02) {
         compute_ray(x, tmpy + 0.5, sun_deg, 15, 0);
 
   }
+  #ifndef EMCXX
   pthread_join(rtxthreado, NULL);
+  #else
+  rtxthread((void*)1);
+  #endif
 }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1666471627 source:/home/clement/Desktop/minceraft/main.cpp
+1676637186 source:/home/clement/Desktop/minceraft/main.cpp
 	<blocks.hpp>
 	<entity.hpp>
 	<entity/player.hpp>
@@ -11,8 +11,9 @@
 	<fileformat.hpp>
 	<api.hpp>
 	<audio.hpp>
+	<emscripten.h>
 
-1655759121 /usr/include/SDL2/SDL.h
+1675830167 /usr/include/SDL2/SDL.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -25,7 +26,9 @@
 	"SDL_events.h"
 	"SDL_filesystem.h"
 	"SDL_gamecontroller.h"
+	"SDL_guid.h"
 	"SDL_haptic.h"
+	"SDL_hidapi.h"
 	"SDL_hints.h"
 	"SDL_joystick.h"
 	"SDL_loadso.h"
@@ -48,12 +51,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_main.h
+1675830167 /usr/include/SDL2/SDL_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_stdinc.h
+1675830167 /usr/include/SDL2/SDL_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -82,20 +85,20 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_config.h
-	<SDL2/_real_SDL_config.h>
+1675830167 /usr/include/SDL2/SDL_config.h
+	"SDL_platform.h"
 
-1655759121 /usr/include/SDL2/begin_code.h
+1675830167 /usr/include/SDL2/begin_code.h
 
-1655759121 /usr/include/SDL2/close_code.h
+1675830167 /usr/include/SDL2/close_code.h
 
-1655759121 /usr/include/SDL2/SDL_assert.h
-	"SDL_config.h"
+1675830167 /usr/include/SDL2/SDL_assert.h
+	"SDL_stdinc.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_atomic.h
+1675830167 /usr/include/SDL2/SDL_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -103,14 +106,14 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_platform.h
-	"AvailabilityMacros.h"
-	"TargetConditionals.h"
+1675830167 /usr/include/SDL2/SDL_platform.h
+	<AvailabilityMacros.h>
+	<TargetConditionals.h>
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_audio.h
+1675830167 /usr/include/SDL2/SDL_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -120,50 +123,53 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_error.h
+1675830167 /usr/include/SDL2/SDL_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_endian.h
+1675830167 /usr/include/SDL2/SDL_endian.h
 	"SDL_stdinc.h"
+	<intrin.h>
 	<endian.h>
 	<endian.h>
+	<sys/endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_mutex.h
+1675830167 /usr/include/SDL2/SDL_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_thread.h
+1675830167 /usr/include/SDL2/SDL_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
 	"SDL_mutex.h"
-	"begin_code.h"
 	<process.h>
 	<process.h>
 	<stdlib.h>
+	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_rwops.h
+1675830167 /usr/include/SDL2/SDL_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_clipboard.h
+1675830167 /usr/include/SDL2/SDL_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_cpuinfo.h
+1675830167 /usr/include/SDL2/SDL_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
+	<arm_neon.h>
 	<altivec.h>
 	<arm_neon.h>
 	<armintr.h>
@@ -171,6 +177,8 @@
 	<arm64intr.h>
 	<arm64_neon.h>
 	<mm3dnow.h>
+	<lsxintrin.h>
+	<lasxintrin.h>
 	<immintrin.h>
 	<mmintrin.h>
 	<xmmintrin.h>
@@ -179,7 +187,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_events.h
+1675830167 /usr/include/SDL2/SDL_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -193,7 +201,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_video.h
+1675830167 /usr/include/SDL2/SDL_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -201,13 +209,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_pixels.h
+1675830167 /usr/include/SDL2/SDL_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_rect.h
+1675830167 /usr/include/SDL2/SDL_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -215,7 +223,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_surface.h
+1675830167 /usr/include/SDL2/SDL_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -224,11 +232,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_blendmode.h
+1675830167 /usr/include/SDL2/SDL_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_keyboard.h
+1675830167 /usr/include/SDL2/SDL_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -236,27 +244,28 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_keycode.h
+1675830167 /usr/include/SDL2/SDL_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1655759121 /usr/include/SDL2/SDL_scancode.h
+1675830167 /usr/include/SDL2/SDL_scancode.h
 	"SDL_stdinc.h"
 
-1655759121 /usr/include/SDL2/SDL_mouse.h
+1675830167 /usr/include/SDL2/SDL_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_joystick.h
+1675830167 /usr/include/SDL2/SDL_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
+	"SDL_guid.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_gamecontroller.h
+1675830167 /usr/include/SDL2/SDL_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -265,17 +274,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_sensor.h
+1675830167 /usr/include/SDL2/SDL_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_quit.h
+1675830167 /usr/include/SDL2/SDL_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1655759121 /usr/include/SDL2/SDL_gesture.h
+1675830167 /usr/include/SDL2/SDL_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -283,65 +292,65 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_touch.h
+1675830167 /usr/include/SDL2/SDL_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_filesystem.h
+1675830167 /usr/include/SDL2/SDL_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_haptic.h
+1675830167 /usr/include/SDL2/SDL_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_hints.h
+1675830167 /usr/include/SDL2/SDL_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_loadso.h
+1675830167 /usr/include/SDL2/SDL_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_log.h
+1675830167 /usr/include/SDL2/SDL_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_messagebox.h
+1675830167 /usr/include/SDL2/SDL_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_metal.h
+1675830167 /usr/include/SDL2/SDL_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_power.h
+1675830167 /usr/include/SDL2/SDL_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_render.h
+1675830167 /usr/include/SDL2/SDL_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_shape.h
+1675830167 /usr/include/SDL2/SDL_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -350,7 +359,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_system.h
+1675830167 /usr/include/SDL2/SDL_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -358,24 +367,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_timer.h
+1675830167 /usr/include/SDL2/SDL_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_version.h
+1675830167 /usr/include/SDL2/SDL_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_locale.h
+1675830167 /usr/include/SDL2/SDL_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1655759121 /usr/include/SDL2/SDL_misc.h
+1675830167 /usr/include/SDL2/SDL_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -396,7 +405,7 @@
 	<types.hpp>
 	<chrono>
 
-1580767326 /usr/include/SDL2/SDL_image.h
+1675777168 /usr/include/SDL2/SDL_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"
@@ -492,7 +501,7 @@
 	<SDL.h>
 	<SDL_mixer.h>
 
-1666545315 source:/home/clement/Desktop/minceraft/player.cpp
+1676640148 source:/home/clement/Desktop/minceraft/player.cpp
 	"aabb.hpp"
 	<blocks.hpp>
 	<entity.hpp>
@@ -509,14 +518,14 @@
 
 1615993508 /home/clement/Desktop/minceraft/include/worldrendr.hpp
 
-1666429521 source:/home/clement/Desktop/minceraft/world.cpp
+1670778885 source:/home/clement/Desktop/minceraft/world.cpp
 	"fastnoise.hpp"
 	"raycastshade.hpp"
+	<api.hpp>
 	<blocks.hpp>
 	<iostream>
 	<utils.hpp>
 	<vector>
-	<api.hpp>
 	<world.hpp>
 
 1666429521 /home/clement/Desktop/minceraft/include/world.hpp
@@ -534,7 +543,7 @@
 1666429521 /home/clement/Desktop/minceraft/include/fastnoise.hpp
 	<cmath>
 
-1666432187 source:/home/clement/Desktop/minceraft/raycastshade.cpp
+1676637004 source:/home/clement/Desktop/minceraft/raycastshade.cpp
 	"raycastshade.hpp"
 	"aabb.hpp"
 	"blocks.hpp"
@@ -573,7 +582,7 @@
 	<gui/guielement.hpp>
 	<vector>
 
-1666430959 source:/home/clement/Desktop/minceraft/gui/title.cpp
+1676638813 source:/home/clement/Desktop/minceraft/gui/title.cpp
 	<gui/title.hpp>
 	<gui/elements/label.hpp>
 	<gui/elements/button.hpp>
@@ -584,6 +593,9 @@
 	<fileformat.hpp>
 	<tinyfiledialogs.h>
 	<string>
+	<cstring>
+	<emscripten.h>
+	"emscripten_browser_file.h"
 
 1666429521 /home/clement/Desktop/minceraft/include/gui/title.hpp
 	"gui/guielement.hpp"
@@ -649,7 +661,7 @@
 
 1645417465 source:/home/clement/Desktop/minceraft/rev.c
 
-1642206177 /usr/include/SDL2/SDL_hidapi.h
+1675830167 /usr/include/SDL2/SDL_hidapi.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -666,15 +678,17 @@
 1666429521 /home/clement/Desktop/minceraft/include/gui/gpause.hpp
 	"gui/guielement.hpp"
 
-1666429521 source:/home/clement/Desktop/minceraft/fileformat.cpp
+1676638903 source:/home/clement/Desktop/minceraft/fileformat.cpp
 	"fileformat.hpp"
 	"world.hpp"
 	<iostream>
+	<cstring>
 
-1666429521 /home/clement/Desktop/minceraft/include/fileformat.hpp
+1676635971 /home/clement/Desktop/minceraft/include/fileformat.hpp
 	"types.hpp"
+	<string_view>
 
-1666529650 source:/home/clement/Desktop/minceraft/api.cpp
+1676634924 source:/home/clement/Desktop/minceraft/api.cpp
 	<api.hpp>
 	<types.hpp>
 	<utils.hpp>
@@ -682,14 +696,14 @@
 	<SDL_image.h>
 	<iostream>
 
-1666541769 source:/home/clement/Desktop/minceraft/audio.cpp
+1676634840 source:/home/clement/Desktop/minceraft/audio.cpp
 	<SDL_mixer.h>
 	<vector>
 	<random>
 	<api.hpp>
 	<audio.hpp>
 
-1611309578 /usr/include/SDL2/SDL_mixer.h
+1675780619 /usr/include/SDL2/SDL_mixer.h
 	"SDL_stdinc.h"
 	"SDL_rwops.h"
 	"SDL_audio.h"
@@ -698,6 +712,16 @@
 	"begin_code.h"
 	"close_code.h"
 
-1666526158 /home/clement/Desktop/minceraft/include/audio.hpp
+1667721137 /home/clement/Desktop/minceraft/include/audio.hpp
 	<SDL_mixer.h>
+
+1675830167 /usr/include/SDL2/SDL_guid.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1676635339 /home/clement/Desktop/minceraft/include/emscripten_browser_file.h
+	<string>
+	<emscripten.h>
 

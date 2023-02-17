@@ -75,7 +75,7 @@ void *sysspec_loadtex(std::string file) {
   SDL_Texture *texture;
   texture = IMG_LoadTexture(mainapp.renderer, file.c_str());
   if (!texture) {
-    std::cout << "TEXTURE LOAD ERROR: " << file << std::endl;
+    std::cout << "TEXTURE LOAD ERROR: " << file << " " << SDL_GetError( ) << std::endl;
   } else
     std::cout << "TEXTURE LOADED SUCCESSFULLY:" << file << std::endl;
   return texture;
@@ -101,7 +101,7 @@ void sysspec_init(){
     exit(1);
   }
 
-    if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 1024 ) < 0 )
+    if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 1024) < 0 )
     {
         printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
         exit(1);

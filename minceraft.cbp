@@ -12,9 +12,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-Og" />
-					<Add option="-g" />
 					<Add option="-std=gnu++17" />
+					<Add option="-g" />
 					<Add option="-O0" />
 					<Add directory="/home/clement/Desktop/minceraft/include" />
 					<Add directory="include" />
@@ -34,16 +33,14 @@
 				<Compiler>
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-flto" />
-					<Add option="-Ofast" />
 					<Add option="-mtune=native" />
-					<Add option="-march=native" />
-					<Add option="-mavx" />
-					<Add option="-mavx2" />
+					<Add option="-Ofast" />
 					<Add option="-ffat-lto-objects" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-flto" />
+					<Add option="-lSDL2_mixer" />
 				</Linker>
 			</Target>
 		</Build>

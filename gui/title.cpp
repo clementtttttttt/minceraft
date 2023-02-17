@@ -9,14 +9,48 @@
 #include <tinyfiledialogs.h>
 #include <string>
 #include <cstring>
+
+#ifdef EMCXX
+#include <emscripten.h>
+#include "emscripten_browser_file.h"
+
+#endif // EMCXX
 extern const char* gitversion;
 
 #define calccentrepos(strlength) screensz_x/2-(strlength/2*32)-(strlength/2*4)
 #define calctoppos(pos) pos*screensz_y/640
 char const* pattern[]={"*.minceworld"};
-
+int err;
+int loaded = 0;
+void em_load_wrd(
+    std::string const &filename,  // the filename of the file the user selected
+    std::string const &mime_type, // the MIME type of the file the user selected, for example "image/png"
+    std::string_view buffer,      // the file's content is exposed in this string_view - access the data with buffer.data() and size with buffer.size().
+    void *callback_data = nullptr // optional callback data - identical to whatever you passed to handle_upload_file()
+){
+    err=load_world(buffer);
+    loaded=1;
+}
 void playbuttonhandler(){
+    #ifdef EMCXX
+    loaded=0;
+    emscripten_browser_file::upload(".minceworld,",em_load_wrd);
+    while(loaded == 0){
+        emscripten_sleep(10);
+        std::cout << loaded << std::endl;
+    }
+    switch(err){
+            case 1:
+                std::cout << "CRIKEY!" << " Invalid magic! Making a new world!" << std::endl;
+            break;
+            case 2:
+                        std::cout << "File doesn't exist / accecss denied! Making a new world!" << std::endl;
+
+            break;
+        }
+    #else
     char* path=tinyfd_openFileDialog("Select your minceraft world","",1,pattern,"minceraft world",0);
+
     std::cout << path << std::endl;
     if(path==0){
 
@@ -33,6 +67,8 @@ void playbuttonhandler(){
             break;
         }
     }
+    #endif
+
         changegui(1);
 
     togglegame();

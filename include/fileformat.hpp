@@ -1,6 +1,6 @@
 #include "types.hpp"
 
-
+#include <string_view>
 
 struct minceraft_world_file{
     u64 magic;
@@ -13,3 +13,4 @@ struct minceraft_world_file{
 }__attribute__((packed));
 int load_world(char* filename);
 void save_world(char* filename);
+int load_world(std::string_view buf);
