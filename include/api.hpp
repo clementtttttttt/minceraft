@@ -10,7 +10,7 @@ void prints(u32 x,u32 y,float xscale,float yscale,const char* format, ...);
 void sysspec_init();
 void sysspec_putimg(void* tex, rect *src, rect *des);
 void* sysspec_loadtex(std::string file);
-void sysspec_prints(u32 x,u32 y,float xscale,float yscale,const char* format, ...);
+void sysspec_prints(u32 x,u32 y,float xscale,float yscale,const char* buf);
 void    sysspec_clearscrn();
 void    sysspec_updatescrn();
 void sysspec_settextrans(void* tex, u8 alpha);

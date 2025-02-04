@@ -4,13 +4,13 @@
 	<Project>
 		<Option title="minceraft" />
 		<Option pch_mode="2" />
-		<Option compiler="gcc" />
+		<Option compiler="clang" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/minceraft" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="clang" />
 				<Compiler>
 					<Add option="-std=gnu++17" />
 					<Add option="-g" />
@@ -29,7 +29,7 @@
 				<Option output="bin/Release/minceraft" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
-				<Option compiler="gcc" />
+				<Option compiler="clang" />
 				<Compiler>
 					<Add option="-fomit-frame-pointer" />
 					<Add option="-flto" />
@@ -61,6 +61,7 @@
 		<Unit filename="audio.cpp" />
 		<Unit filename="blocks/blocks.cpp" />
 		<Unit filename="entity/entity.cpp" />
+		<Unit filename="entity/pig.cpp" />
 		<Unit filename="fileformat.cpp" />
 		<Unit filename="gui/elements/button.cpp" />
 		<Unit filename="gui/elements/customtick.cpp" />
@@ -76,6 +77,7 @@
 		<Unit filename="include/audio.hpp" />
 		<Unit filename="include/blocks.hpp" />
 		<Unit filename="include/entity.hpp" />
+		<Unit filename="include/entity/pig.hpp" />
 		<Unit filename="include/entity/player.hpp" />
 		<Unit filename="include/fastnoise.hpp" />
 		<Unit filename="include/fileformat.hpp" />

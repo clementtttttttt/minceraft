@@ -46,7 +46,7 @@ int load_world(std::string_view buf){
     u64 magic2=0x6166746D61746521;*/
     std::cout << "TEST" << std::endl;
     if(currentworld.magic!=0xC3C56D696E636572&&currentworld.magic2!=0x6166746D61746521){
-        std::cout << "crikey mate wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
+        std::cout << "Wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
         return 1;
     }
     off += sizeof(minceraft_world_file);
@@ -80,7 +80,7 @@ int load_world(char* filename){
 
     worldfile=fopen(filename,"rb");
     if(worldfile==NULL){
-        std::cout << "crikey mate the world doesnt exist" << std::endl;
+        std::cout << "Failed to open world file" << std::endl;
         return 2;
     }
     fread(&currentworld,sizeof(minceraft_world_file),1,worldfile);
@@ -88,7 +88,7 @@ int load_world(char* filename){
     u64 magic=0xC3C56D696E636572;
     u64 magic2=0x6166746D61746521;*/
     if(currentworld.magic!=0xC3C56D696E636572&&currentworld.magic2!=0x6166746D61746521){
-        std::cout << "crikey mate wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
+        std::cout << "Wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
         return 1;
     }
     negworld.resize(currentworld.negworldsize);

@@ -27,6 +27,7 @@ void ren_tick() {
     sysspec_clearscrn();
 
     if(render_gamerunning){
+
         worldrendr();
         entity_rentick();
     }
@@ -36,8 +37,8 @@ void ren_tick() {
 
   }
   ++tickselapsed;
-  timer_stop if ((timer_val / 1000) <= 17) {
-    double d = (17 - (double)(timer_val / 1000));
+  timer_stop if ((timer_val / 1000) <= 6) {
+    double d = (6 - (double)(timer_val / 1000));
     sysspec_delay(d);
     frameskip_toggle = 1;
   }
@@ -76,7 +77,7 @@ void input_tick() {
   }
 
   if (keystate[sysspec_key_jump]) {
-    if (entity_list[0]->getonground() ||
+    if (entity_list[0]->get_onground() ||
         (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].bitfield & 1 << 5))
       entity_list[0]->setmomentum(
           0, 0.8 * (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction * 0.8));
@@ -98,7 +99,7 @@ void input_tick() {
     }
   }
 
-  prevy = entity_list[0]->getmomentum().y;
+  prevy = entity_list[0]->get_momentum().y;
 
   unsigned int mbuttons = sysspec_getmousepos(&mx, &my);
   extern int scrnw, scrnh;
@@ -109,7 +110,7 @@ void input_tick() {
   double blockcorner_x =
       (entity_list[0]->getpos().x) - (scrnw / 2 / 64) + scrnoffx;
   double blockcorner_y =
-      (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1 + scrnoffy;
+      (entity_list[0]->getpos().y) - (scrnh / 2 / 64)  + scrnoffy;
   int modmx=(mx+(scrnoffx*64));
   int modmy=(my+(scrnoffy*64));
 
@@ -135,6 +136,7 @@ void *game_thread(void *unused) {
     }
     keystate = (unsigned char *)sysspec_getkeystate();
     if(gamerunning){
+
         if ((world_time < 24000)) {
             if (wt_toggle == true)
                 world_time += 1;

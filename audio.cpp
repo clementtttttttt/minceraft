@@ -113,6 +113,7 @@ short* randtonegen(short mod, double volume, unsigned int *len){
         if(i%mod == 0)
             randtone[i] = past = normal_dist(randgen)*32767*volume;
         else randtone[i] = past;
+        randtone[i]*=(i/32768.0);
       //  printf("%i\n",randtone[i]);
     }
     *len = 65536;

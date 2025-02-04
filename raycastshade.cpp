@@ -54,10 +54,12 @@ extern "C"{
     double fastsin(double in);
 
 }
-double refangcalc(double iidx, double ridx, double ai) {
-  return asin(iidx * fastsin(ai) / ridx)+(90 rad);
+constexpr double refangcalc(double iidx, double ridx, double ai) {
+  return asin(iidx * sin(ai) / ridx)+(90 rad);
 }
-
+#define oob_check                                                              \
+  ((fastabs(cx) < world_ref->size()) && (cx >= (tmpx - 30)) && (cy <= (tmpy + 2)) &&             \
+   (cx < (30 + tmpx + scrnw / 64)) && (cy > fround(tmpy - scrnh / 64)))
 int rec_count = 0;
 int compute_ray(
     double orgx, double orgy, double direction, int light, int reflected,
@@ -76,9 +78,7 @@ int compute_ray(
   std::vector<vec2> air_list;
 // oob
 // check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
-#define oob_check                                                              \
-  ((fastabs(cx) < world_ref->size()) && (cx >= (tmpx - 30)) && (cy <= (tmpy + 2)) &&             \
-   (cx < (30 + tmpx + scrnw / 64)) && (cy > fround(tmpy - scrnh / 64)))
+
   double prevrefidx = 1;
 
   while (light > 0 && reflectcount != 0) {

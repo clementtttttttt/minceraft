@@ -151,7 +151,14 @@ void sysspec_putfont(char in,u32 x,u32 y,float xscale,float yscale){
     if(in>='0'&&in<='9'){
         xindex=((in-'0'+4)%12)*8;
         yindex=((in-'0'+4)/12+4)*16;
+
     }
+    if(in>='!' && in <= '/'){
+        xindex=((in-'!'+2)%12)*8;
+        yindex=((in-'!')%12+5)*16;
+
+    }
+
     if(in=='&'){
         xindex=56;
         yindex=80;
@@ -161,17 +168,14 @@ void sysspec_putfont(char in,u32 x,u32 y,float xscale,float yscale){
       blit((SDL_Texture*)font, &texrec, &rec);
 
 }
+  char buf[2048];
 
 
-void sysspec_prints(u32 x,u32 y,float xscale,float yscale,const char* format, ...){
-  char buf[1024];
-  va_list args;
-  va_start (args, format);
-  vsprintf(buf,format,args);
-  char* s=&buf[0];
+void sysspec_prints(u32 x,u32 y,float xscale,float yscale,const char* buf){
+
+  const char* s=buf;
   u32 c=0,yc=0;
   while(*s){
-
     sysspec_putfont(*s,x+c*(32*xscale)+c*4*xscale,y+yc*(yscale*64),xscale,yscale);
     if(*s=='\n'){
         c=0;
@@ -181,16 +185,12 @@ void sysspec_prints(u32 x,u32 y,float xscale,float yscale,const char* format, ..
     }
     ++s;
   }
-    va_end(args);
 
 }
 
-void sysspec_prints(u32 x,u32 y,const char* format, ...){
-  char buf[1024];
-  va_list args;
-  va_start (args, format);
-  vsprintf(buf,format,args);
-  char* s=&buf[0];
+void sysspec_prints(u32 x,u32 y,const char* buf){
+
+const   char* s=buf;
   u32 c=0,yc=0;
   while(*s){
 
@@ -203,7 +203,6 @@ void sysspec_prints(u32 x,u32 y,const char* format, ...){
     }
     ++s;
   }
-    va_end(args);
 
 }
 #endif

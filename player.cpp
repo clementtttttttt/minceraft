@@ -13,11 +13,13 @@ rect player_tex[]{{0, 16, 16, 96 * 2},   {16, 16, 16, 96 * 2},
                       {32, 16, 16, 96 * 2},  {0},
                       {16, 16, -16, 96 * 2}, {32, 16, -16, 96 * 2}};
 extern unsigned long long tickselapsed;
-rect center;
+static rect center;
 extern std::vector<aabb> block_coll;
 
-void player::tick() {
+void player::tick(){
+entity::tick();
 
+/*s
   double ymorg = ymomentum;
   double xmorg = xmomentum;
   double tmpx = xmomentum;
@@ -68,19 +70,20 @@ void player::tick() {
 
   if (ymomentum > -blockreg[(*world_ref)[abs(this->x)][this->y].type].cgrav) {
     ymomentum -= 0.07;
-  }
+  }*/
 }
-player::player(double x, double y) {
-  this->x = x;
-  this->y = y;
+player::player(double x, double y) :
+entity(x, y)
+{
+    this->entity_aabb = aabb(this->x,this->y,this->x+0.9, this->y+1.8);
 }
 
-int player::gettype() { return player_t; }
-int anim_count = 0;
+int player::gettype() { return ENTITY_PLAYER; }
+static int anim_count = 0;
 extern int scrnw, scrnh;
 void player::rentick() {
   double blockcorner_x = (entity_list[0]->getpos().x) - (scrnw / 2 / 64);
-  double blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64) + 1;
+  double blockcorner_y = (entity_list[0]->getpos().y) - (scrnh / 2 / 64)+1;
   ;
   center.w = player_tex[0].w * 4;
   center.h = player_tex[0].h * 4;
@@ -94,7 +97,7 @@ void player::rentick() {
 
   if (this->xmomentum > 0.009) {
     this->direction=1;
-    if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
+    if ((tickselapsed % (long long)(20 - abs(xmomentum * 30) + 2)) == 0) {
         if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 1){
             playnoise(12,1,0.7);
         }
@@ -111,7 +114,7 @@ void player::rentick() {
             playnoise(12,140,0.7);
         }
       if (anim_count > 3) {
-        anim_count = 1;
+        anim_count = 0;
       }
       if (anim_count + 1 != 3)
         ++anim_count;
@@ -120,7 +123,7 @@ void player::rentick() {
     }
   } else if (this->xmomentum < -0.009) {
     this->direction=0;
-    if (tickselapsed % (long long)(12 - abs(xmomentum * 30) + 2) == 0) {
+    if ((tickselapsed % (long long)(20 - abs(xmomentum * 30) + 2)) == 0) {
         if((*world_ref)[abs(truncf(entity_list[0]->getpos().x))][truncf(entity_list[0]->getpos().y)-1].type == 1){
             playnoise(12,1,0.7);
         }

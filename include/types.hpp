@@ -1,6 +1,8 @@
 #ifndef TYPES_HPP_INCLUDED
 #define TYPES_HPP_INCLUDED
 
+#include <cmath>
+
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
@@ -32,6 +34,19 @@ class vec2{
     }
     vec2(){
 
+    }
+
+    friend bool operator==(const vec2& lhs,const vec2& rhs){
+        return (lhs.x == lhs.y) && (rhs.x == rhs.y);
+    }
+
+    vec2(const vec2& other){
+        this->x = other.x;
+        this->y = other.y;
+    }
+
+    double distance(vec2  second){
+        return sqrt(((this->x-second.x)*(this->x-second.x))+(this->y-second.y)*(this->y-second.y));
     }
 }__attribute__((packed));
 

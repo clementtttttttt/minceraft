@@ -9,6 +9,6 @@ extern std::vector<entity*> entity_list;
 
 extern std::vector<std::vector<block>> world,negworld;
 
-
+block getBlock(double x, double y);
 
 #endif // WORLDRENDR_HPP_INCLUDED

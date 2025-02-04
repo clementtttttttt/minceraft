@@ -6,6 +6,8 @@
 #include <utils.hpp>
 #include <vector>
 #include <world.hpp>
+
+#include "entity/pig.hpp"
 extern void *tex;
 // NOTE: USE TRUNCF INSTEAD OF ROUNDING!!!
 int scrnw, scrnh;
@@ -19,7 +21,7 @@ long waterlvl = 42;
 bool init = false;
 double scrnoffx;
 double scrnoffy;
-long long worldseed = -573947210;
+long long worldseed = 4202639445;
 double prevx;
 void
 worldrendr ()
@@ -28,10 +30,10 @@ worldrendr ()
   long long blockcorner_x
       = (truncf (entity_list[0]->getpos ().x) - (scrnw / 2 / 64));
   long long blockcorner_y
-      = (entity_list[0]->getpos ().y) - (scrnh / 2 / 64) + 1;
+      = (entity_list[0]->getpos ().y) - (scrnh / 2 / 64) ;
   scrnoffx
       = entity_list[0]->getpos ().x - (long long)(entity_list[0]->getpos ().x);
-  scrnoffy = round (entity_list[0]->getpos ().y) - entity_list[0]->getpos ().y;
+  scrnoffy = -( ((entity_list[0]->getpos ().y) - truncf(entity_list[0]->getpos ().y)));
   n.SetSeed ((long long)worldseed);
   n2.SetSeed ((long long)worldseed * 12 ^ 1157);
   bool watercheck = false, fillwater = false;
@@ -53,8 +55,8 @@ worldrendr ()
 
       for (long long y = 0; y <= (scrnh / 64) + 1; ++y)
         {
-
-          long long posy = blockcorner_y + y + scrnoffy;
+//            std::cout << scrnoffy << std::endl;
+          long long posy = blockcorner_y + y;
 
           long long absposx = abs (posx);
           if (world_ref2->size () < (absposx + 100))
@@ -194,6 +196,13 @@ worldrendr ()
   compute_shade (blockcorner_x, blockcorner_y, entity_list[0]->getpos ());
 }
 std::vector<aabb> block_coll;
+
+block getBlock(double x, double y){
+      std::vector<std::vector<block> > *world_ref
+          = x >= -0.99 ? &world : &negworld;
+    return (*world_ref)[abs(truncf(x))][truncf(y)];
+}
+
 void
 worldtick ()
 {
@@ -201,8 +210,10 @@ worldtick ()
   block_coll.clear ();
   long long blockcorner_x
       = truncf (entity_list[0]->getpos ().x) - (scrnw / 2 / 64);
-  long long blockcorner_y = entity_list[0]->getpos ().y - (scrnh / 2 / 64) - 1;
-
+  long long blockcorner_y = entity_list[0]->getpos ().y - (scrnh / 2 / 64);
+            if( (world_time % 100 == 0) && entity_list.size() < 2){
+                entity_list.push_back(new pig(entity_list[0]->getpos().x, entity_list[0]->getpos().y));
+            }
   for (long long x = -10; x <= (scrnw / 64) + 10; ++x)
     {
       long long posx = blockcorner_x + x;
@@ -216,6 +227,7 @@ worldtick ()
 
       for (long long y = 0; y <= (scrnh / 64) + 10; ++y)
         {
+
 
           long long posy = blockcorner_y + y;
 

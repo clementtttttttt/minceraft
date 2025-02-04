@@ -46,6 +46,6 @@ void button::tick(){
     extern void* font;
         sysspec_setcolourmod(font,0,0,0);
 
-    sysspec_prints(this->x+(this->szx/2-strlen(this->text)*8)-3-4,this->y+10,0.6,0.6,"%s\n",this->text,255);
+    sysspec_prints(this->x+(this->szx/2-strlen(this->text)*8)-3-4,this->y+10,0.6,0.6,this->text);
 
 }

@@ -41,17 +41,16 @@ void playbuttonhandler(){
     }
     switch(err){
             case 1:
-                std::cout << "CRIKEY!" << " Invalid magic! Making a new world!" << std::endl;
+                std::cout << "WARNING!" << " Invalid magic! Making a new world!" << std::endl;
             break;
             case 2:
-                        std::cout << "File doesn't exist / accecss denied! Making a new world!" << std::endl;
+                std::cout << "File doesn't exist / accecss denied! Making a new world!" << std::endl;
 
             break;
         }
     #else
     char* path=tinyfd_openFileDialog("Select your minceraft world","",1,pattern,"minceraft world",0);
 
-    std::cout << path << std::endl;
     if(path==0){
 
         tinyfd_messageBox("Warning!","Making a new world!","ok","warning",1);
@@ -60,10 +59,10 @@ void playbuttonhandler(){
         int err=load_world(path);
         switch(err){
             case 1:
-                tinyfd_messageBox("CRIKEY!","Invalid magic! Making a new world!","ok","warning",1);
+                tinyfd_messageBox("WARNING!","Invalid magic! Making a new world!","ok","warning",1);
             break;
             case 2:
-                tinyfd_messageBox("CRIKEY!","File doesn't exist / accecss denied! Making a new world!","ok","warning",1);
+                tinyfd_messageBox("WARNING!","File doesn't exist / accecss denied! Making a new world!","ok","warning",1);
             break;
         }
     }
