@@ -24,7 +24,8 @@ void save_world(char* filename){
         unsigned long long ysz=(*world_ref)[abs(x)].size();
         fwrite(&ysz,8,1,worldfile);
         for(unsigned long long y=0;y<ysz;++y){
-            fwrite(&(*world_ref)[abs(x)][y],sizeof(struct block),1,worldfile);
+            block b = getBlock(x,y);
+            fwrite(&b,sizeof(struct block),1,worldfile);
         }
 
 

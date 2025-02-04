@@ -59,28 +59,29 @@ void input_tick() {
   vec2 pos = entity_list[0]->getpos();
     if(gamerunning){
         std::vector<std::vector<block>> *world_ref = pos.x>=-0.99?&world:&negworld;
-
+    block_entry be =  getBlockType(pos.x,pos.y);
   if (keystate[sysspec_key_r]) {
+
 
     entity_list[0]->setmomentum(
         keystate[sysspec_key_run]
-            ? 0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
-            : 0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
+            ? 0.3 * be.cfriction
+            : 0.2 * be.cfriction,
         0);
   }
   if (keystate[sysspec_key_l]) {
     entity_list[0]->setmomentum(
         keystate[sysspec_key_run]
-            ? -0.3 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction
-            : -0.2 * blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction,
+            ? -0.3 * be.cfriction
+            : -0.2 *be.cfriction,
         0);
   }
 
   if (keystate[sysspec_key_jump]) {
     if (entity_list[0]->get_onground() ||
-        (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].bitfield & 1 << 5))
+        (be.bitfield & 1 << 5))
       entity_list[0]->setmomentum(
-          0, 0.8 * (blockreg[(*world_ref)[abs(pos.x)][pos.y].type].cfriction * 0.8));
+          0, 0.8 * (be.cfriction * 0.8));
   }
   }
   if(keystate[sysspec_key_pause]&&!escpressed){

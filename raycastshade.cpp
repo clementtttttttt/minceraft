@@ -2,6 +2,7 @@
 #include "aabb.hpp"
 #include "blocks.hpp"
 #include "entity.hpp"
+#include "world.hpp"
 #include <cmath>
 #include <pthread.h>
 #include <utils.hpp>
@@ -74,13 +75,12 @@ int compute_ray(
   double cx = orgx, cy = orgy;
   double d2 = direction;
   ppos = entity_list[0]->getpos();
-  int weakencounter = 60;
+  int weakencounter = 20;
   std::vector<vec2> air_list;
 // oob
 // check:((cx>=blockcorner_x)&&(cy>=blockcorner_y)&&(cx<(blockcorner_x+scrnw/64))&&(cy<(blockcorner_y+scrnh)/64))
 
   double prevrefidx = 1;
-
   while (light > 0 && reflectcount != 0) {
     std::vector<std::vector<block>> *world_ref = cx>=-0.99?&world:&negworld;
 
@@ -99,8 +99,9 @@ int compute_ray(
 //    if (oob_check && (*world_ref)[fastabs(cx)][cy].light<light)  (*world_ref)[fastabs(cx)][cy].light=light;
 
 
-
-    if (oob_check && (blockreg[(*world_ref)[fastabs(cx)][cy].type].bitfield & (1 << 6))) {
+    block_entry b_ent = getBlockType(cx,cy);
+    block b = getBlock(cx,cy);
+    if (oob_check && (b_ent.bitfield & (1 << 6))) {
 
       double newdir = 180 - direction;
       int shouldlight = 0;
@@ -154,7 +155,7 @@ int compute_ray(
 
       if (direction >= 0 && direction < 90 && newdir >= 90 && newdir < 180 &&
           shouldcalc) {
-        double f = modf(fastabs(cx), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
         shouldlight |= compute_ray(cx, cy - 1, 180 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -162,7 +163,7 @@ int compute_ray(
       }
       if (direction >= 90 && direction < 180 && newdir >= 0 && newdir < 90 &&
           shouldcalc) {
-        double f = modf(fastabs(cx), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
 
         shouldlight |= compute_ray(cx, cy + 1, (diffuse_normal[(long)f]), light,
                                    1, reflectcount - 1);
@@ -171,7 +172,7 @@ int compute_ray(
       }
       if (direction >= 180 && direction < 270 && newdir >= 270 &&
           newdir < 360 && shouldcalc) {
-        double f = modf(fastabs(cx), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
         shouldlight |= compute_ray(cx, cy + 1, -(diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -179,7 +180,7 @@ int compute_ray(
       }
       if (direction >= 0 && direction < 90 && newdir >= 270 && newdir < 360 &&
           shouldcalc) {
-        double f = modf(fastabs(cy), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
 
         shouldlight |= compute_ray(cx - 1, cy, 90 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
@@ -188,7 +189,7 @@ int compute_ray(
       }
       if (direction >= 90 && direction < 180 && newdir >= 180 && newdir < 270 &&
           shouldcalc) {
-        double f = modf(fastabs(cy), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
 
         shouldlight |= compute_ray(cx - 1, cy, 90 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
@@ -197,7 +198,7 @@ int compute_ray(
       }
       if (direction >= 270 && direction < 360 && newdir >= 180 &&
           newdir < 270 && shouldcalc) {
-        double f = modf(fastabs(cy), &unused) * 100;
+        size_t f = (size_t)truncf(abs(cx*100)) % 100;
         shouldlight |= compute_ray(cx + 1, cy, 180 + (diffuse_normal[(long)f]),
                                    light, 1, reflectcount - 1);
 
@@ -205,7 +206,7 @@ int compute_ray(
       }
 
       if (shouldlight) {
-        if ((*world_ref)[fastabs(cx)][cy].light < light) {
+        if (b.light < light) {
           (*world_ref)[fastabs(cx)][cy].light = light;
         }
         for (int i = 0; i < air_list.size(); ++i) {
@@ -218,11 +219,11 @@ int compute_ray(
       return 0;
     }
     //water
-    if (oob_check && blockreg[(*world_ref)[fastabs(cx)][cy].type].refindex != prevrefidx) {
+    if (oob_check && b_ent.refindex != prevrefidx) {
         if (direction < 0) {
           direction = 360 + direction;
         }
-      double refang = refangcalc(prevrefidx, getBlockType(cx,cy).refindex, direction rad);
+      double refang = refangcalc(prevrefidx, b_ent.refindex, direction rad);
       if (std::isnan(refang)) {
         int shouldlight = 0;
         double unused;
@@ -291,7 +292,7 @@ int compute_ray(
         }
 
         if (shouldlight) {
-          if ((*world_ref)[fastabs(cx)][cy].light < light) {
+          if (b.light < light) {
             (*world_ref)[fastabs(cx)][cy].light = light;
           }
           for (int i = 0; i < air_list.size(); ++i) {
@@ -313,7 +314,7 @@ int compute_ray(
       }
     }
     if (((fround(cx) == fround(ppos.x)) && (fround(cy) == fround(ppos.y + 1)))||((fround(cx) == fround(ppos.x)) && (fround(cy) == fround(ppos.y)))) {
-      if ((*world_ref)[fastabs(cx)][cy].light < light)
+      if (b.light < light)
         (*world_ref)[fastabs(cx)][cy].light = light;
 
       return 1;
@@ -326,7 +327,7 @@ int compute_ray(
     } else {
       --weakencounter;
     }
-    prevrefidx = oob_check ? (blockreg[(*world_ref)[fastabs(cx)][cy].type].refindex) : 1;
+    prevrefidx = oob_check ? (b_ent.refindex) : 1;
     cx += sx;
     cy += sy;
   }
