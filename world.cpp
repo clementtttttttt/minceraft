@@ -203,6 +203,15 @@ block getBlock(double x, double y){
     return (*world_ref)[abs(truncf(x))][truncf(y)];
 }
 
+block_entry getBlockType(double x, double y){
+      std::vector<std::vector<block> > *world_ref
+          = x >= -0.99 ? &world : &negworld;
+    return blockreg[(*world_ref)[abs(truncf(x))][truncf(y)].type];
+}
+
+
+
+
 void
 worldtick ()
 {

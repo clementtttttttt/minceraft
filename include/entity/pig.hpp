@@ -2,7 +2,7 @@
 #define ENTITY_PIG_H
 #include "entity.hpp"
 
-
+#include <queue>
 class pig : public entity
 {
     public:

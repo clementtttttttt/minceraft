@@ -31,5 +31,6 @@ if collision then cfriction means friction of surface and gravity does nothing
 */
 void register_block(int val,char havegrav,char havecoll,char infjmp,rect tex,const char* name,double cfriction,double cgrav,double refindex, char wassolid);
 extern std::vector <block_entry> blockreg;
+block_entry getBlockType(double x, double y);
 
 #endif // BLOCKS_HPP_INCLUDED

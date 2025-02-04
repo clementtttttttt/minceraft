@@ -2,15 +2,15 @@
 #include "api.hpp"
 #include <unordered_map>
 #include "world.hpp"
+#include <stack>
 rect pig_tex[]{{0, 0, 32, 16},  {0, 16, 32, 16}
                  };
 static int anim_count;
 static rect center;
 extern void *tex;
 extern void *mob;
-pig::pig(double x,double y): entity(x,y)
+pig::pig(double x,double y): entity(x,y,1.8,0.9)
 {
-    this->entity_aabb = aabb(this->x,this->y,this->x+1.8, this->y+0.9);
 
     //ctor
 }
@@ -97,7 +97,7 @@ bool pig::is_valid_walking_target(){
     if((walk_target.y - y) > 1.2){
         return false;
     }
-    if(blockreg[getBlock(walk_target.x, walk_target.y).type].bitfield & (0b1000000)){
+    if(getBlockType(walk_target.x, walk_target.y).bitfield & (0b1000000)){
         return false;
     }
     return true;

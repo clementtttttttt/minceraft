@@ -9,6 +9,7 @@ int anim_count;
 void entity::setloc(double x,double y){
     this->x=x;
     this->y=y;
+    this->entity_aabb = aabb(this->x,this->y,x+this->xsz,y+this->ysz);
 }
 
 
@@ -55,11 +56,11 @@ void entity::tick(){
 
     std::vector<std::vector<block>> *world_ref = truncf(this->x)>=-0.99?&world:&negworld;
 
-  xmomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
+  xmomentum *= getBlockType(x,y).cfriction;
 
-  ymomentum *= blockreg[(*world_ref)[abs(this->x)][this->y].type].cfriction;
+  ymomentum *= getBlockType(x,y).cfriction;
 
-  if (ymomentum > -blockreg[(*world_ref)[abs(this->x)][this->y].type].cgrav) {
+  if (ymomentum > -getBlockType(x,y).cgrav) {
     ymomentum -= 0.07;
   }
 }
@@ -72,9 +73,13 @@ void entity_tick(){
 
 }
 
-entity::entity(double x, double y){
+entity::entity(double x, double y, double xsz, double ysz){
     this->x=x;
     this->y=y;
+    this->xsz = xsz;
+    this->ysz = ysz;
+        this->entity_aabb = aabb(this->x,this->y,this->x+xsz, this->y+ysz);
+
 
 }
 void entity_rentick(){

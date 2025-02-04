@@ -44,7 +44,6 @@ int load_world(std::string_view buf){
     /*
     u64 magic=0xC3C56D696E636572;
     u64 magic2=0x6166746D61746521;*/
-    std::cout << "TEST" << std::endl;
     if(currentworld.magic!=0xC3C56D696E636572&&currentworld.magic2!=0x6166746D61746521){
         std::cout << "Wrong magic " << currentworld.magic << " " << currentworld.magic2 <<std::endl;
         return 1;

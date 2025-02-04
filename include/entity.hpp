@@ -10,7 +10,7 @@
 
 class entity{
     public:
-        entity(double x,double y);
+        entity(double x,double y, double xsz, double ysz);
 
         void setloc(double x,double y);
         virtual void tick();
@@ -56,6 +56,7 @@ class entity{
 
         double x=0,y=0,xmomentum=0,ymomentum=0;
         int health=100;
+        double xsz, ysz;
         long long inventory[8][4];
 };
 void entity_rentick();
